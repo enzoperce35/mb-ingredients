@@ -1,3 +1,69 @@
-body { 
-  background-color: beige;
+.App {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.App tbody tr td {
+  padding: 10px 10px 10px 0; /* Remove left padding */
+  background-color: white; /* Optional: Ensure consistent background */
+}
+
+.App tbody tr td:first-child {
+  max-width: 25vw;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.table-container {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.App table {
+  width: 100%;
+  text-align: left; /* Align text to the left */
+  border-collapse: collapse;
+}
+
+/* Table Borders */
+.App tbody tr {
+  border-bottom: none;
+}
+
+/* Update Indicators */
+.update-indicators {
+  padding-right: 22px;
+  display: flex;
+  justify-content: flex-start; /* Align indicators to the left */
+  gap: 5px;
+}
+
+.update-indicators div {
+  width: 12px;
+  height: 12px;
+  background-color: #ccc;
+  border-radius: 50%;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .App table {
+    font-size: 12px;
+    width: 100%;
+  }
+  
+  .table-container {
+    overflow-x: auto;
+  }
+  
+  .update-indicators div {
+    width: 10px;
+    height: 10px;
+  }
 }
