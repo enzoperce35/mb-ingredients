@@ -18,6 +18,11 @@
   text-overflow: ellipsis;
 }
 
+.App a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Use the default text color */
+  font-weight: bold;
+}
 
 .table-container {
   width: 100%;
@@ -35,6 +40,11 @@
 .App tbody tr {
   border-bottom: none;
 }
+
+.due-check {
+  color: red;
+}
+
 
 /* Update Indicators */
 .update-indicators {
