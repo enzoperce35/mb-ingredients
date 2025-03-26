@@ -1,0 +1,112 @@
+.editable-cell {
+  position: relative;
+  cursor: pointer;
+}
+
+.floating-form {
+  position: absolute;
+  left: 100%; /* Position to the right of the cell by default */
+  top: 0; /* Align it with the ingredient name */
+  margin-left: 10px; /* Spacing from the cell */
+  background: white;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  z-index: 10;
+  min-width: 180px;
+  max-width: 250px;
+  white-space: normal; /* Prevent text from being cut */
+  overflow: visible; /* Ensure it's not clipped */
+}
+
+h3 {
+  margin-top: 5px;
+}
+
+ .price-container {
+  display: flex;
+  align-items: center;
+  gap: 5px; /* Adds spacing between input and text */
+}
+
+.price-container span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px; /* Ensures the text has enough space */
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.quantity-unit-container {
+  display: flex;
+  gap: 5px;
+}
+
+.quantity-unit-container input {
+  flex: 1; /* Make both inputs share equal width */
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.floating-form input,
+.quantity-unit-container input {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 10vw; /* Set all inputs to 10% of viewport width */
+  min-width: 100px; /* Prevents them from being too small on small screens */
+  max-width: 200px; /* Prevents them from being too large on large screens */
+}
+
+.brand-container input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.floating-form button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+
+.floating-form button:hover {
+  background-color: #218838;
+}
+
+.close-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  color: #888;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+
+@media (max-width: 600px) {
+  .floating-form {
+    left: auto;
+    right: 0; /* Ensure it doesn't overflow the screen */
+    min-width: 200px;
+  }
+}

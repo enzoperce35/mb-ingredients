@@ -1,29 +1,3 @@
-.App {
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.App tbody tr td {
-  padding: 10px 10px 10px 0; /* Remove left padding */
-  background-color: white; /* Optional: Ensure consistent background */
-}
-
-.App tbody tr td:first-child {
-  max-width: 25vw;
-  white-space: nowrap; /* Prevent text wrapping */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.App a {
-  text-decoration: none; /* Remove underline */
-  color: inherit; /* Use the default text color */
-  font-weight: bold;
-}
-
 .table-container {
   width: 100%;
   max-width: 100%;
@@ -36,6 +10,18 @@
   border-collapse: collapse;
 }
 
+tbody tr td {
+  padding: 10px 10px 10px 0; /* Remove left padding */
+  background-color: white; /* Optional: Ensure consistent background */
+}
+
+tbody tr td:first-child {
+  max-width: 25vw;
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* Table Borders */
 .App tbody tr {
   border-bottom: none;
@@ -44,7 +30,6 @@
 .due-check {
   color: red;
 }
-
 
 /* Update Indicators */
 .update-indicators {
@@ -63,11 +48,6 @@
 
 /* Responsive Design */
 @media (max-width: 600px) {
-  .App table {
-    font-size: 12px;
-    width: 100%;
-  }
-  
   .table-container {
     overflow-x: auto;
   }
