@@ -21,6 +21,8 @@
   max-width: 250px;
   white-space: normal; /* Prevent text from being cut */
   overflow: visible; /* Ensure it's not clipped */
+  left: auto;
+  right: 0; /* Ensure it doesn't overflow the screen */
 }
 
 h3 {
@@ -102,11 +104,8 @@ h3 {
   color: #333;
 }
 
-
 @media (max-width: 600px) {
   .floating-form {
-    left: auto;
-    right: 0; /* Ensure it doesn't overflow the screen */
     min-width: 200px;
   }
 }

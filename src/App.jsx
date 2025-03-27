@@ -4,6 +4,10 @@ import { ingredients } from './ingredients';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import IngredientDetail from './IngredientDetail';
 
+// Unit categories
+const weightUnits = ["mg", "g", "kg", "oz", "lb"];
+const volumeUnits = ["ml", "l", "tsp", "Tbs", "fl-oz", "cup", "gal"];
+
 function App() {
   const [editingIngredient, setEditingIngredient] = useState(null);
   const [formData, setFormData] = useState({ price: '', quantity: '', unit: '', brand: '' });
@@ -22,7 +26,7 @@ function App() {
 
   // Handle opening the form
   const handleEditClick = (ingredient, event) => {
-    event.stopPropagation(); // Prevent unintended bubbling
+    event.stopPropagation();
     setEditingIngredient(ingredient.id);
     setFormData({ 
       price: ingredient.price, 
@@ -36,11 +40,11 @@ function App() {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  
   // Handle saving changes
   const handleUpdate = () => {
     console.log('Updated Data:', formData);
-    setEditingIngredient(null); // Close the form
+    setEditingIngredient(null);
   };
 
   return (
@@ -59,6 +63,12 @@ function App() {
                       nextCheckDate.setDate(lastUpdatedDate.getDate() + ingredient.daysBeforeCheck);
                       const isDue = nextCheckDate <= new Date();
 
+                      // Determine the correct unit category
+                      const isWeightUnit = weightUnits.includes(ingredient.unit);
+                      const isVolumeUnit = volumeUnits.includes(ingredient.unit);
+                      const availableUnits = isWeightUnit ? weightUnits : isVolumeUnit ? volumeUnits : weightUnits;
+                      const isEach = ingredient.unit === "each"; // Check if the unit is "each"
+
                       return (
                         <tr key={ingredient.id || ingredient.name} className={isDue ? 'due-check' : ''}>
                           <td>
@@ -75,15 +85,15 @@ function App() {
                           
                           <td className="editable-cell" onClick={(e) => handleEditClick(ingredient, e)}>
                             {editingIngredient === ingredient.id ? (
-                              <div className="floating-form">
+                              <div className="floating-form" onClick={(e) => e.stopPropagation()}>
                                 <button 
                                   className="close-btn" 
                                   onClick={(e) => {
-                                    e.stopPropagation(); // Prevents unwanted clicks on parent elements
+                                    e.stopPropagation();
                                     setEditingIngredient(null);
                                   }}
                                 >
-                                ✖
+                                  ✖
                                 </button>
 
                                 <h3>{ingredient.name}</h3>
@@ -95,7 +105,7 @@ function App() {
                                       name="brand"
                                       value={formData.brand}
                                       onChange={handleChange}
-                                      placeholder={ingredient.brand}
+                                      placeholder="Brand"
                                     />
                                   </div>
                                 )}
@@ -119,13 +129,19 @@ function App() {
                                     onChange={handleChange}
                                     placeholder="Quantity"
                                   />
-                                  <input
-                                    type="text"
-                                    name="unit"
-                                    value={formData.unit}
-                                    onChange={handleChange}
-                                    placeholder="Unit"
-                                  />
+
+                                  {/* Show 'each' as plain text, otherwise use dropdown */}
+                                  {isEach ? (
+                                    <span className="unit-text">each</span>
+                                  ) : (
+                                    <select name="unit" value={formData.unit} onChange={handleChange} className="unit-dropdown">
+                                      {availableUnits.map((unit) => (
+                                        <option key={unit} value={unit}>
+                                          {unit}
+                                        </option>
+                                      ))}
+                                    </select>
+                                  )}
                                 </div>
 
                                 <button onClick={handleUpdate}>update</button>
