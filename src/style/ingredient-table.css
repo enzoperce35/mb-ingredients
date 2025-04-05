@@ -33,10 +33,10 @@ tbody tr td:first-child {
 
 /* Update Indicators */
 .update-indicators {
-  padding-right: 22px;
   display: flex;
-  justify-content: flex-start; /* Align indicators to the left */
+  flex-direction: row-reverse;
   gap: 5px;
+  justify-content: center;
 }
 
 .update-indicators div {
@@ -44,6 +44,24 @@ tbody tr td:first-child {
   height: 12px;
   background-color: #ccc;
   border-radius: 50%;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.update-indicators .indicator-circle.filled {
+  transform: scale(1.2); /* Optionally add a little effect when filled */
+}
+
+/* Colors for Update Directions */
+.update-indicators .indicator-circle.greater {
+  background-color: red;
+}
+
+.update-indicators .indicator-circle.lower {
+  background-color: green;
+}
+
+.update-indicators .indicator-circle.equal {
+  background-color: blue;
 }
 
 /* Responsive Design */

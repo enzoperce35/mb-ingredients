@@ -6,7 +6,7 @@
 .floating-form {
   position: absolute;
   left: 100%; /* Position to the right of the cell by default */
-  top: 0; /* Align it with the ingredient name */
+  top: 100%; /* Position at the bottom of the ingredient name */
   margin-left: 10px; /* Spacing from the cell */
   background: white;
   padding: 10px;

@@ -1,5 +1,6 @@
 @import "ingredient-table.css";
 @import "ingredient-update-form.css";
+@import "ingredient-detail.css";
 
 .App {
   padding: 10px;

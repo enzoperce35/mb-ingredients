@@ -1,0 +1,183 @@
+/* IngredientDetail.css */
+.ingredient-detail {
+  font-family: Arial, sans-serif;
+  color: #333;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 1.6rem; /* Adjusted for smaller screens */
+  color: #5f6368;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.back-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.back-button:hover {
+  background-color: #45a049;
+}
+
+.back-button:focus {
+  outline: none;
+}
+
+.next-check {
+  padding-bottom: 35px;
+}
+
+/* Updated styles for the table to take full width */
+.update-history {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  table-layout: auto;  /* Allow the table to expand and take full width */
+}
+
+.update-history th, .update-history td {
+  padding: 15px 20px;  /* Increased padding for a larger table */
+  text-align: left;
+  word-wrap: break-word;
+}
+
+.update-history th {
+  background-color: #4caf50;
+  color: white;
+  font-size: 1.1rem;
+}
+
+.update-history td {
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #ddd;
+}
+
+.update-history tr:nth-child(even) td {
+  background-color: #e9f7e4;
+}
+
+.update-history tr:hover td {
+  background-color: #d4edda;
+}
+
+.update-history td {
+  font-size: 0.9rem;
+}
+
+.update-history td:last-child {
+  text-align: center;
+}
+
+.delete-button {
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+
+.delete-button:focus {
+  outline: none;
+}
+
+/* Mobile Styles (Small screens) */
+@media (max-width: 600px) {
+  .ingredient-detail {
+    padding: 15px;
+  }
+
+  h2 {
+    font-size: 1.4rem; /* Smaller font size for mobile */
+  }
+
+  p {
+    font-size: 0.9rem; /* Slightly smaller text for mobile */
+  }
+
+  .back-button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .update-history th, .update-history td {
+    font-size: 0.8rem;
+    padding: 8px 12px;
+  }
+
+  .delete-button {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+}
+
+/* Tablet Styles (Medium screens) */
+@media (max-width: 768px) {
+  .ingredient-detail {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 1.5rem; /* Adjust font size for tablet */
+  }
+
+  .back-button {
+    font-size: 1rem;
+    padding: 9px 18px;
+  }
+
+  .update-history th, .update-history td {
+    font-size: 0.9rem;
+    padding: 9px 14px;
+  }
+
+  .delete-button {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+  }
+}
+
+/* Larger Screens (Desktop and beyond) */
+@media (min-width: 1024px) {
+  .ingredient-detail {
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .back-button {
+    font-size: 1rem;
+    padding: 10px 20px;
+  }
+
+  .update-history th, .update-history td {
+    font-size: 1rem;
+    padding: 10px 15px;
+  }
+
+  .delete-button {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+}
