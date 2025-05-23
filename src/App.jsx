@@ -1,8 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './style/App.css';
 import { ingredients } from './ingredients';
-import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { useGesture } from '@use-gesture/react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import IngredientDetail from './IngredientDetail';
 import IngredientTable from './IngredientTable';
 import IngredientChanges from './IngredientChanges';
@@ -92,27 +91,6 @@ function App() {
     return isWeightUnit ? weightUnits : isVolumeUnit ? volumeUnits : weightUnits;
   };
 
-  const convertToGramsOrMl = (value, unit) => {
-    const num = parseFloat(value);
-    if (isNaN(num)) return null;
-    const conversions = {
-      mg: num / 1000,
-      g: num,
-      kg: num * 1000,
-      oz: num * 28.35,
-      lb: num * 453.6,
-      ml: num,
-      l: num * 1000,
-      tsp: num * 4.93,
-      Tbs: num * 14.79,
-      'fl-oz': num * 29.57,
-      cup: num * 236.6,
-      gal: num * 3785,
-      each: num,
-    };
-    return conversions[unit] || null;
-  };
-
   const getUpdateDirectionsHistory = (ingredient) => {
     const changes = JSON.parse(localStorage.getItem(`ingredient_changes_${ingredient.id}`)) || [];
     const directions = [];
@@ -143,76 +121,67 @@ function App() {
     return directions;
   };
 
+  const convertToGramsOrMl = (value, unit) => {
+    const num = parseFloat(value);
+    if (isNaN(num)) return null;
+    const conversions = {
+      mg: num / 1000,
+      g: num,
+      kg: num * 1000,
+      oz: num * 28.35,
+      lb: num * 453.6,
+      ml: num,
+      l: num * 1000,
+      tsp: num * 4.93,
+      Tbs: num * 14.79,
+      'fl-oz': num * 29.57,
+      cup: num * 236.6,
+      gal: num * 3785,
+      each: num,
+    };
+    return conversions[unit] || null;
+  };
+
   const colors = {
     greater: 'red',
     lower: 'green',
     equal: 'blue'
   };
 
-  // Swipe logic using react-use-gesture
-  function SwipeableContainer({ children }) {
-    const navigate = useNavigate();
-    const location = useLocation();
-
-    const bind = useGesture({
-      onDragEnd: ({ swipe: [swipeX] }) => {
-        if (swipeX === -1 && location.pathname === '/') {
-          // Swipe left on main page → go to changes
-          navigate('/ingredient-changes');
-        } else if (swipeX === 1 && location.pathname === '/ingredient-changes') {
-          // Swipe right on changes page → back to main
-          navigate('/');
-        }
-      }
-    }, {
-      drag: {
-        swipe: {
-          distance: 50,
-          velocity: 0.3,
-        },
-        axis: 'x',
-        filterTaps: true,
-      }
-    });
-
-    return (
-      <div {...bind()} style={{ height: '100vh', touchAction: 'pan-y' }}>
-        {children}
-      </div>
-    );
-  }
-
   return (
     <Router>
-      <SwipeableContainer>
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <div className="App">
-                <IngredientTable
-                  ingredients={ingredients}
-                  editingIngredient={editingIngredient}
-                  setEditingIngredient={setEditingIngredient}
-                  formData={formData}
-                  setFormData={setFormData}
-                  updatedIngredientId={updatedIngredientId}
-                  ingredientRefs={ingredientRefs}
-                  handleEditClick={handleEditClick}
-                  handleChange={handleChange}
-                  handleUpdate={handleUpdate}
-                  getLatestUpdatedDate={getLatestUpdatedDate}
-                  getAvailableUnits={getAvailableUnits}
-                  getUpdateDirectionsHistory={getUpdateDirectionsHistory}
-                  colors={colors}
-                />
-              </div>
-            }
-          />
-          <Route path="/ingredient/:ingredientId" element={<IngredientDetail />} />
-          <Route path="/ingredient-changes" element={<IngredientChanges />} />
-        </Routes>
-      </SwipeableContainer>
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div className="App">
+              <nav style={{ marginBottom: '1rem' }}>
+                <Link to="/ingredient-changes">
+                  <button type="button">View Ingredient Changes</button>
+                </Link>
+              </nav>
+              <IngredientTable
+                ingredients={ingredients}
+                editingIngredient={editingIngredient}
+                setEditingIngredient={setEditingIngredient}
+                formData={formData}
+                setFormData={setFormData}
+                updatedIngredientId={updatedIngredientId}
+                ingredientRefs={ingredientRefs}
+                handleEditClick={handleEditClick}
+                handleChange={handleChange}
+                handleUpdate={handleUpdate}
+                getLatestUpdatedDate={getLatestUpdatedDate}
+                getAvailableUnits={getAvailableUnits}
+                getUpdateDirectionsHistory={getUpdateDirectionsHistory}
+                colors={colors}
+              />
+            </div>
+          }
+        />
+        <Route path="/ingredient/:ingredientId" element={<IngredientDetail />} />
+        <Route path="/ingredient-changes" element={<IngredientChanges />} />
+      </Routes>
     </Router>
   );
 }
