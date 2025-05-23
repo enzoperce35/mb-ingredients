@@ -1,13 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './style/App.css';
 import { ingredients } from './ingredients';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import { useGesture } from '@use-gesture/react';
 import IngredientDetail from './IngredientDetail';
+import IngredientTable from './IngredientTable';
+import IngredientChanges from './IngredientChanges';
 
 const weightUnits = ["mg", "g", "kg", "oz", "lb"];
 const volumeUnits = ["ml", "l", "tsp", "Tbs", "fl-oz", "cup", "gal"];
 
-// ✅ New Helper Function
 const getLatestUpdatedDate = (ingredient) => {
   const storedChanges = JSON.parse(localStorage.getItem(`ingredient_changes_${ingredient.id}`)) || [];
 
@@ -23,20 +25,9 @@ const getLatestUpdatedDate = (ingredient) => {
 function App() {
   const [editingIngredient, setEditingIngredient] = useState(null);
   const [formData, setFormData] = useState({ price: '', quantity: '', unit: '', brand: '' });
-  const [updatedIngredientId, setUpdatedIngredientId] = useState(null);  // Track updated ingredient ID
+  const [updatedIngredientId, setUpdatedIngredientId] = useState(null);
 
-  const ingredientRefs = useRef({}); // Create ref object to store rows
-
-  const sortedIngredients = [...ingredients].sort((a, b) => {
-    const now = new Date();
-    const aDue = getLatestUpdatedDate(a);
-    aDue.setDate(aDue.getDate() + a.daysBeforeCheck);
-
-    const bDue = getLatestUpdatedDate(b);
-    bDue.setDate(bDue.getDate() + b.daysBeforeCheck);
-
-    return aDue < now && bDue >= now ? -1 : bDue < now && aDue >= now ? 1 : 0;
-  });
+  const ingredientRefs = useRef({});
 
   useEffect(() => {
     if (editingIngredient) {
@@ -57,27 +48,6 @@ function App() {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const convertToGramsOrMl = (value, unit) => {
-    const num = parseFloat(value);
-    if (isNaN(num)) return null;
-    const conversions = {
-      mg: num / 1000,
-      g: num,
-      kg: num * 1000,
-      oz: num * 28.35,
-      lb: num * 453.6,
-      ml: num,
-      l: num * 1000,
-      tsp: num * 4.93,
-      Tbs: num * 14.79,
-      'fl-oz': num * 29.57,
-      cup: num * 236.6,
-      gal: num * 3785,
-      each: num,
-    };
-    return conversions[unit] || null;
   };
 
   const handleUpdate = () => {
@@ -106,9 +76,8 @@ function App() {
     localStorage.setItem(`ingredient_changes_${updatedIngredient.id}`, JSON.stringify(existingChanges));
 
     setEditingIngredient(null);
-    setUpdatedIngredientId(updatedIngredient.id);  // Update state to reflect the changed ingredient
+    setUpdatedIngredientId(updatedIngredient.id);
 
-    // Scroll to updated ingredient row after update
     setTimeout(() => {
       const el = ingredientRefs.current[updatedIngredient.id];
       if (el) {
@@ -123,25 +92,42 @@ function App() {
     return isWeightUnit ? weightUnits : isVolumeUnit ? volumeUnits : weightUnits;
   };
 
+  const convertToGramsOrMl = (value, unit) => {
+    const num = parseFloat(value);
+    if (isNaN(num)) return null;
+    const conversions = {
+      mg: num / 1000,
+      g: num,
+      kg: num * 1000,
+      oz: num * 28.35,
+      lb: num * 453.6,
+      ml: num,
+      l: num * 1000,
+      tsp: num * 4.93,
+      Tbs: num * 14.79,
+      'fl-oz': num * 29.57,
+      cup: num * 236.6,
+      gal: num * 3785,
+      each: num,
+    };
+    return conversions[unit] || null;
+  };
+
   const getUpdateDirectionsHistory = (ingredient) => {
     const changes = JSON.parse(localStorage.getItem(`ingredient_changes_${ingredient.id}`)) || [];
     const directions = [];
-  
-    // Convert ingredient.lastUpdated to a Date object for comparison
+
     const lastUpdatedDate = new Date(ingredient.lastUpdated);
-  
-    // Filter changes after lastUpdated
+
     const filteredChanges = changes.filter(change => new Date(change.lastUpdated) > lastUpdatedDate);
-    
-    // Only take the most recent 5 changes after filtering
     const recentChanges = filteredChanges.slice(-5);
-  
+
     for (let i = 0; i < 5; i++) {
       if (i < recentChanges.length) {
         const change = recentChanges[recentChanges.length - 1 - i];
         const basePricePerGramOrMl = parseFloat(ingredient.price) / convertToGramsOrMl(ingredient.quantity, ingredient.unit);
         const changePerGramOrMl = parseFloat(change.price) / convertToGramsOrMl(change.quantity, change.unit);
-  
+
         if (changePerGramOrMl > basePricePerGramOrMl) {
           directions[i] = 'greater';
         } else if (changePerGramOrMl < basePricePerGramOrMl) {
@@ -153,7 +139,7 @@ function App() {
         directions[i] = null;
       }
     }
-  
+
     return directions;
   };
 
@@ -163,122 +149,70 @@ function App() {
     equal: 'blue'
   };
 
+  // Swipe logic using react-use-gesture
+  function SwipeableContainer({ children }) {
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const bind = useGesture({
+      onDragEnd: ({ swipe: [swipeX] }) => {
+        if (swipeX === -1 && location.pathname === '/') {
+          // Swipe left on main page → go to changes
+          navigate('/ingredient-changes');
+        } else if (swipeX === 1 && location.pathname === '/ingredient-changes') {
+          // Swipe right on changes page → back to main
+          navigate('/');
+        }
+      }
+    }, {
+      drag: {
+        swipe: {
+          distance: 50,
+          velocity: 0.3,
+        },
+        axis: 'x',
+        filterTaps: true,
+      }
+    });
+
+    return (
+      <div {...bind()} style={{ height: '100vh', touchAction: 'pan-y' }}>
+        {children}
+      </div>
+    );
+  }
+
   return (
     <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="App">
-              <div className="table-container">
-                <table>
-                  <tbody>
-                    {sortedIngredients.map((ingredient) => {
-                      const lastUpdatedDate = getLatestUpdatedDate(ingredient);
-                      const nextCheckDate = new Date(lastUpdatedDate);
-                      nextCheckDate.setDate(lastUpdatedDate.getDate() + ingredient.daysBeforeCheck);
-                      const isDue = nextCheckDate <= new Date();
-                      const availableUnits = getAvailableUnits(ingredient.unit);
-                      const isEach = ingredient.unit === "each";
-                      const updateDirections = getUpdateDirectionsHistory(ingredient);
-
-                      return (
-                        <tr
-                          key={ingredient.id || ingredient.name}
-                          className={isDue ? 'due-check' : ''}
-                          ref={(el) => (ingredientRefs.current[ingredient.id] = el)}
-                        >
-                          <td>
-                            <div
-                              className="ingredient-name"
-                              style={{
-                                color: updatedIngredientId === ingredient.id ? 'orange' : 'inherit'
-                              }}
-                            >
-                              <Link to={`/ingredient/${ingredient.id}`}>{ingredient.name}</Link>
-                            </div>
-                          </td>
-                          
-                          <td>
-                            <div className="update-indicators">
-                              {updateDirections.map((direction, i) => (
-                                <div
-                                  key={i}
-                                  className={`indicator-circle ${direction ? direction : ''} ${direction ? 'filled' : ''}`}
-                                ></div>
-                              ))}
-                            </div>
-                          </td>
-                          
-                          <td className="editable-cell" onClick={(e) => handleEditClick(ingredient, e)}>
-                            {editingIngredient === ingredient.id ? (
-                              <div className="floating-form" onClick={(e) => e.stopPropagation()}>
-                                <button
-                                  className="close-btn"
-                                  onClick={(e) => {
-                                    e.stopPropagation();
-                                    setEditingIngredient(null);
-                                  }}
-                                >
-                                  ✖
-                                </button>
-                                <h3>{ingredient.name}</h3>
-                                {ingredient.brand && (
-                                  <div className="brand-container">
-                                    <input
-                                      type="text"
-                                      name="brand"
-                                      value={formData.brand}
-                                      onChange={handleChange}
-                                      placeholder="Brand"
-                                    />
-                                  </div>
-                                )}
-                                <div className="price-container">
-                                  <input
-                                    type="text"
-                                    name="price"
-                                    value={formData.price}
-                                    onChange={handleChange}
-                                    placeholder="Price"
-                                  />
-                                  <span>Pesos per</span>
-                                </div>
-                                <div className="quantity-unit-container">
-                                  <input
-                                    type="text"
-                                    name="quantity"
-                                    value={formData.quantity}
-                                    onChange={handleChange}
-                                    placeholder="Quantity"
-                                  />
-                                  {isEach ? (
-                                    <span className="unit-text">each</span>
-                                  ) : (
-                                    <select name="unit" value={formData.unit} onChange={handleChange} className="unit-dropdown">
-                                      {availableUnits.map((unit) => (
-                                        <option key={unit} value={unit}>{unit}</option>
-                                      ))}
-                                    </select>
-                                  )}
-                                </div>
-                                <button onClick={handleUpdate}>update</button>
-                              </div>
-                            ) : (
-                              <span>{ingredient.price} per {ingredient.quantity} {ingredient.unit}</span>
-                            )}
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+      <SwipeableContainer>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div className="App">
+                <IngredientTable
+                  ingredients={ingredients}
+                  editingIngredient={editingIngredient}
+                  setEditingIngredient={setEditingIngredient}
+                  formData={formData}
+                  setFormData={setFormData}
+                  updatedIngredientId={updatedIngredientId}
+                  ingredientRefs={ingredientRefs}
+                  handleEditClick={handleEditClick}
+                  handleChange={handleChange}
+                  handleUpdate={handleUpdate}
+                  getLatestUpdatedDate={getLatestUpdatedDate}
+                  getAvailableUnits={getAvailableUnits}
+                  getUpdateDirectionsHistory={getUpdateDirectionsHistory}
+                  colors={colors}
+                />
               </div>
-            </div>
-          }
-        />
-        <Route path="/ingredient/:ingredientId" element={<IngredientDetail />} />
-      </Routes>
+            }
+          />
+          <Route path="/ingredient/:ingredientId" element={<IngredientDetail />} />
+          <Route path="/ingredient-changes" element={<IngredientChanges />} />
+        </Routes>
+      </SwipeableContainer>
     </Router>
   );
 }
