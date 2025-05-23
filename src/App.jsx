@@ -126,14 +126,22 @@ function App() {
   const getUpdateDirectionsHistory = (ingredient) => {
     const changes = JSON.parse(localStorage.getItem(`ingredient_changes_${ingredient.id}`)) || [];
     const directions = [];
+  
+    // Convert ingredient.lastUpdated to a Date object for comparison
+    const lastUpdatedDate = new Date(ingredient.lastUpdated);
+  
+    // Filter changes after lastUpdated
+    const filteredChanges = changes.filter(change => new Date(change.lastUpdated) > lastUpdatedDate);
     
-    const recentChanges = changes.slice(-5);
+    // Only take the most recent 5 changes after filtering
+    const recentChanges = filteredChanges.slice(-5);
+  
     for (let i = 0; i < 5; i++) {
       if (i < recentChanges.length) {
         const change = recentChanges[recentChanges.length - 1 - i];
         const basePricePerGramOrMl = parseFloat(ingredient.price) / convertToGramsOrMl(ingredient.quantity, ingredient.unit);
         const changePerGramOrMl = parseFloat(change.price) / convertToGramsOrMl(change.quantity, change.unit);
-
+  
         if (changePerGramOrMl > basePricePerGramOrMl) {
           directions[i] = 'greater';
         } else if (changePerGramOrMl < basePricePerGramOrMl) {
@@ -145,7 +153,7 @@ function App() {
         directions[i] = null;
       }
     }
-
+  
     return directions;
   };
 
@@ -190,6 +198,7 @@ function App() {
                               <Link to={`/ingredient/${ingredient.id}`}>{ingredient.name}</Link>
                             </div>
                           </td>
+                          
                           <td>
                             <div className="update-indicators">
                               {updateDirections.map((direction, i) => (
@@ -200,6 +209,7 @@ function App() {
                               ))}
                             </div>
                           </td>
+                          
                           <td className="editable-cell" onClick={(e) => handleEditClick(ingredient, e)}>
                             {editingIngredient === ingredient.id ? (
                               <div className="floating-form" onClick={(e) => e.stopPropagation()}>

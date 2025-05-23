@@ -1,17 +1,25 @@
 import { useParams, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import { ingredients } from './ingredients';
 
 function IngredientDetail() {
   const { ingredientId } = useParams();
-  const navigate = useNavigate(); // useNavigate hook to navigate programmatically
+  const navigate = useNavigate();
 
   const ingredient = ingredients.find((item) => String(item.id) === String(ingredientId));
+
+  const [history, setHistory] = useState([]);
+
+  useEffect(() => {
+    if (ingredient) {
+      const storedHistory = JSON.parse(localStorage.getItem(`ingredient_changes_${ingredient.id}`)) || [];
+      setHistory(storedHistory);
+    }
+  }, [ingredient]);
 
   if (!ingredient) {
     return <h2>Ingredient not found</h2>;
   }
-
-  let updateHistory = JSON.parse(localStorage.getItem(`ingredient_changes_${ingredient.id}`)) || [];
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
@@ -22,18 +30,23 @@ function IngredientDetail() {
     });
   };
 
-  const lastUpdatedFormatted = formatDate(ingredient.lastUpdated);
-  const nextCheckDate = new Date(ingredient.lastUpdated);
+  const latestUpdate = history.length > 0
+    ? history.reduce((latest, entry) =>
+        new Date(entry.lastUpdated) > new Date(latest.lastUpdated) ? entry : latest
+      )
+    : null;
+
+  const effectiveLastUpdated = latestUpdate?.lastUpdated || ingredient.lastUpdated;
+  const lastUpdatedFormatted = formatDate(effectiveLastUpdated);
+
+  const nextCheckDate = new Date(effectiveLastUpdated);
   nextCheckDate.setDate(nextCheckDate.getDate() + ingredient.daysBeforeCheck);
   const nextCheckFormatted = formatDate(nextCheckDate);
 
   const handleDeleteUpdate = (index) => {
-    // Remove the update from the array
-    updateHistory = updateHistory.filter((_, i) => i !== index);
-    // Update the localStorage with the new array
-    localStorage.setItem(`ingredient_changes_${ingredient.id}`, JSON.stringify(updateHistory));
-    // Force the component to re-render (if you're using state, you'd use setState)
-    window.location.reload();  // This reloads the page to reflect changes (can be optimized)
+    const newHistory = history.filter((_, i) => i !== index);
+    localStorage.setItem(`ingredient_changes_${ingredient.id}`, JSON.stringify(newHistory));
+    setHistory(newHistory);
   };
 
   return (
@@ -48,8 +61,8 @@ function IngredientDetail() {
       <p><strong>Last Updated:</strong> {lastUpdatedFormatted}</p>
       <p className='next-check'><strong>Next Check:</strong> {nextCheckFormatted}</p>
 
-      {/* Update History as a Table */}
-      {updateHistory.length > 0 && (
+      {/* Update History Table */}
+      {history.length > 0 ? (
         <div className="update-history-container">
           <table className="update-history">
             <thead>
@@ -61,7 +74,7 @@ function IngredientDetail() {
               </tr>
             </thead>
             <tbody>
-              {updateHistory.map((change, index) => {
+              {history.map((change, index) => {
                 const changeDateFormatted = formatDate(change.lastUpdated);
                 const priceQuantityUnit = `P${change.price} / ${change.quantity}${change.unit}`;
 
@@ -71,7 +84,6 @@ function IngredientDetail() {
                     <td>{priceQuantityUnit}</td>
                     <td>{change.brand}</td>
                     <td>
-                      {/* Delete Button */}
                       <button className="delete-button" onClick={() => handleDeleteUpdate(index)}>
                         Delete
                       </button>
@@ -82,6 +94,8 @@ function IngredientDetail() {
             </tbody>
           </table>
         </div>
+      ) : (
+        <p>No update history available.</p>
       )}
     </div>
   );
