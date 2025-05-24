@@ -10,14 +10,16 @@ const conversionTable = {
   ml: { to: "ml", factor: 1 },
   l: { to: "ml", factor: 1000 },
   tsp: { to: "ml", factor: 4.92892 },
-  Tbs: { to: "ml", factor: 14.7868 },
+  tbs: { to: "ml", factor: 14.7868 },
   "fl-oz": { to: "ml", factor: 29.5735 },
   cup: { to: "ml", factor: 240 },
   gal: { to: "ml", factor: 3785.41 },
 };
 
 function convertToBaseUnit(quantity, unit) {
-  const entry = conversionTable[unit];
+  if (!unit) return { quantity, unit };
+  const unitKey = unit.toLowerCase();
+  const entry = conversionTable[unitKey];
   if (!entry) return { quantity, unit };
   return {
     quantity: quantity * entry.factor,
@@ -71,8 +73,67 @@ export default function IngredientChanges() {
     setIngredientChanges(matchedIngredients);
   }, []);
 
+  function handleExportJS() {
+    // Create a map from ingredient ID to avgScaledPrice for quick lookup
+    const avgPriceMap = {};
+    ingredientChanges.forEach((ingredient) => {
+      const baseQtyRaw = Number(ingredient.quantity);
+      const baseUnit = ingredient.unit;
+
+      const scaledPrices = ingredient.updates
+        .map((update) => {
+          const updateQty = Number(update.quantity);
+          if (!baseQtyRaw || !updateQty || !baseUnit || !update.unit) return null;
+
+          const { quantity: baseQty, unit: baseBase } = convertToBaseUnit(baseQtyRaw, baseUnit);
+          const { quantity: updateQtyConv, unit: updateBase } = convertToBaseUnit(updateQty, update.unit);
+
+          if (baseBase !== updateBase || updateQtyConv === 0) return null;
+          return (update.price / updateQtyConv) * baseQty;
+        })
+        .filter((p) => p !== null);
+
+      const avgScaledPrice =
+        scaledPrices.length > 0
+          ? scaledPrices.reduce((sum, p) => sum + p, 0) / scaledPrices.length
+          : null;
+
+      if (avgScaledPrice !== null) {
+        avgPriceMap[ingredient.id] = avgScaledPrice;
+      }
+    });
+
+    const nowISOString = new Date().toISOString();
+
+    // Map original ingredients and apply updates if available
+    const updatedIngredients = ingredients.map((ing) => {
+      if (avgPriceMap.hasOwnProperty(ing.id)) {
+        return {
+          ...ing,
+          price: Number(avgPriceMap[ing.id].toFixed(2)),
+          lastUpdated: nowISOString,
+        };
+      }
+      return ing;
+    });
+
+    const jsContent = `export const ingredients = ${JSON.stringify(updatedIngredients, null, 2)};\n`;
+
+    const blob = new Blob([jsContent], { type: "application/javascript" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "ingredients.js";
+    a.click();
+
+    URL.revokeObjectURL(url);
+
+    alert("Ingredients JS file downloaded with updated prices and timestamps!");
+  }
+
   return (
-    <div>
+    <div className="ingredient-changes-container">
       {ingredientChanges.length > 0 ? (
         ingredientChanges.map((ingredient) => {
           const baseQtyRaw = Number(ingredient.quantity);
@@ -161,8 +222,13 @@ export default function IngredientChanges() {
           );
         })
       ) : (
-        <p>No chnages yet.</p>
+        <p>No Significant Changes Yet.</p>
       )}
+
+      {/* 📥 JS Export Button */}
+      <button onClick={handleExportJS} className="export-button">
+        Download Ingredients as JS
+      </button>
     </div>
   );
-} 
+}
