@@ -1,9 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const weightUnits = ["mg", "g", "kg", "oz", "lb"];
-const volumeUnits = ["ml", "l", "tsp", "Tbs", "fl-oz", "cup", "gal"];
-
 const IngredientTable = ({
   ingredients,
   editingIngredient,
@@ -20,27 +17,6 @@ const IngredientTable = ({
   getUpdateDirectionsHistory,
   colors
 }) => {
-  
-  const convertToGramsOrMl = (value, unit) => {
-    const num = parseFloat(value);
-    if (isNaN(num)) return null;
-    const conversions = {
-      mg: num / 1000,
-      g: num,
-      kg: num * 1000,
-      oz: num * 28.35,
-      lb: num * 453.6,
-      ml: num,
-      l: num * 1000,
-      tsp: num * 4.93,
-      Tbs: num * 14.79,
-      'fl-oz': num * 29.57,
-      cup: num * 236.6,
-      gal: num * 3785,
-      each: num,
-    };
-    return conversions[unit] || null;
-  };
 
   const sortedIngredients = [...ingredients].sort((a, b) => {
     const now = new Date();

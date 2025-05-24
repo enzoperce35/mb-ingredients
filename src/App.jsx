@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './style/App.css';
 import { ingredients } from './ingredients';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import IngredientDetail from './IngredientDetail';
 import IngredientTable from './IngredientTable';
 import IngredientChanges from './IngredientChanges';
@@ -21,11 +21,84 @@ const getLatestUpdatedDate = (ingredient) => {
   return latestStoredDate > originalDate ? latestStoredDate : originalDate;
 };
 
+function Header() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const path = location.pathname;
+  const isOnMain = path === '/';
+  const isOnChanges = path === '/ingredient-changes';
+
+  const title = isOnMain
+    ? 'UPDATES'
+    : isOnChanges
+    ? 'CHANGES'
+    : path.startsWith('/ingredient/')
+    ? 'Ingredient Details'
+    : '';
+
+  const handleLeftClick = () => {
+    if (isOnChanges) navigate('/');
+  };
+
+  const handleRightClick = () => {
+    if (isOnMain) navigate('/ingredient-changes');
+  };
+
+  return (
+    <header className="app-header">
+      <button className="arrow-button left" onClick={handleLeftClick} disabled={!isOnChanges} aria-label="Go to Ingredient Table">
+        ◀
+      </button>
+      <h1>{title}</h1>
+      <button className="arrow-button right" onClick={handleRightClick} disabled={!isOnMain} aria-label="Go to Ingredient Changes">
+        ▶
+      </button>
+    </header>
+  );
+}
+
+// Convert units to grams or ml for comparison
+const convertToGramsOrMl = (value, unit) => {
+  const num = parseFloat(value);
+  if (isNaN(num)) return null;
+  const conversions = {
+    mg: num / 1000,
+    g: num,
+    kg: num * 1000,
+    oz: num * 28.35,
+    lb: num * 453.6,
+    ml: num,
+    l: num * 1000,
+    tsp: num * 4.93,
+    Tbs: num * 14.79,
+    'fl-oz': num * 29.57,
+    cup: num * 236.6,
+    gal: num * 3785,
+    each: num,
+  };
+  return conversions[unit] || null;
+};
+
+// Compare unit price and return direction
+const getPriceChangeDirection = (original, updated) => {
+  const originalAmount = convertToGramsOrMl(original.quantity, original.unit);
+  const updatedAmount = convertToGramsOrMl(updated.quantity, updated.unit);
+
+  if (!originalAmount || !updatedAmount) return 'equal';
+
+  const originalPricePerUnit = parseFloat(original.price) / originalAmount;
+  const updatedPricePerUnit = parseFloat(updated.price) / updatedAmount;
+
+  if (updatedPricePerUnit > originalPricePerUnit) return 'greater';
+  if (updatedPricePerUnit < originalPricePerUnit) return 'lower';
+  return 'equal';
+};
+
 function App() {
   const [editingIngredient, setEditingIngredient] = useState(null);
   const [formData, setFormData] = useState({ price: '', quantity: '', unit: '', brand: '' });
   const [updatedIngredientId, setUpdatedIngredientId] = useState(null);
-
   const ingredientRefs = useRef({});
 
   useEffect(() => {
@@ -50,11 +123,11 @@ function App() {
   };
 
   const handleUpdate = () => {
-    if (!formData.price || isNaN(formData.price)) {
+    if (formData.price === '' || isNaN(formData.price)) {
       alert('Please enter a valid price.');
       return;
     }
-    if (!formData.quantity || isNaN(formData.quantity)) {
+    if (formData.quantity === '' || isNaN(formData.quantity)) {
       alert('Please enter a valid quantity.');
       return;
     }
@@ -62,12 +135,26 @@ function App() {
     const currentDate = new Date().toISOString();
     const updatedIngredient = ingredients.find(ing => ing.id === editingIngredient);
 
+    const priceChangeDirection = getPriceChangeDirection(
+      {
+        price: updatedIngredient.price,
+        quantity: updatedIngredient.quantity,
+        unit: updatedIngredient.unit,
+      },
+      {
+        price: formData.price,
+        quantity: formData.quantity,
+        unit: formData.unit,
+      }
+    );
+
     const ingredientChange = {
       price: formData.price,
       quantity: formData.quantity,
       unit: formData.unit,
       brand: formData.brand || updatedIngredient.brand,
       lastUpdated: currentDate,
+      priceChangeDirection,
     };
 
     const existingChanges = JSON.parse(localStorage.getItem(`ingredient_changes_${updatedIngredient.id}`)) || [];
@@ -88,7 +175,7 @@ function App() {
   const getAvailableUnits = (unit) => {
     const isWeightUnit = weightUnits.includes(unit);
     const isVolumeUnit = volumeUnits.includes(unit);
-    return isWeightUnit ? weightUnits : isVolumeUnit ? volumeUnits : weightUnits;
+    return isWeightUnit ? weightUnits : isVolumeUnit ? volumeUnits : ["each"];
   };
 
   const getUpdateDirectionsHistory = (ingredient) => {
@@ -96,50 +183,14 @@ function App() {
     const directions = [];
 
     const lastUpdatedDate = new Date(ingredient.lastUpdated);
-
     const filteredChanges = changes.filter(change => new Date(change.lastUpdated) > lastUpdatedDate);
     const recentChanges = filteredChanges.slice(-5);
 
     for (let i = 0; i < 5; i++) {
-      if (i < recentChanges.length) {
-        const change = recentChanges[recentChanges.length - 1 - i];
-        const basePricePerGramOrMl = parseFloat(ingredient.price) / convertToGramsOrMl(ingredient.quantity, ingredient.unit);
-        const changePerGramOrMl = parseFloat(change.price) / convertToGramsOrMl(change.quantity, change.unit);
-
-        if (changePerGramOrMl > basePricePerGramOrMl) {
-          directions[i] = 'greater';
-        } else if (changePerGramOrMl < basePricePerGramOrMl) {
-          directions[i] = 'lower';
-        } else {
-          directions[i] = 'equal';
-        }
-      } else {
-        directions[i] = null;
-      }
+      directions[i] = i < recentChanges.length ? recentChanges[recentChanges.length - 1 - i].priceChangeDirection : null;
     }
 
     return directions;
-  };
-
-  const convertToGramsOrMl = (value, unit) => {
-    const num = parseFloat(value);
-    if (isNaN(num)) return null;
-    const conversions = {
-      mg: num / 1000,
-      g: num,
-      kg: num * 1000,
-      oz: num * 28.35,
-      lb: num * 453.6,
-      ml: num,
-      l: num * 1000,
-      tsp: num * 4.93,
-      Tbs: num * 14.79,
-      'fl-oz': num * 29.57,
-      cup: num * 236.6,
-      gal: num * 3785,
-      each: num,
-    };
-    return conversions[unit] || null;
   };
 
   const colors = {
@@ -150,16 +201,12 @@ function App() {
 
   return (
     <Router>
+      <Header />
       <Routes>
         <Route
           path="/"
           element={
             <div className="App">
-              <nav style={{ marginBottom: '1rem' }}>
-                <Link to="/ingredient-changes">
-                  <button type="button">View Ingredient Changes</button>
-                </Link>
-              </nav>
               <IngredientTable
                 ingredients={ingredients}
                 editingIngredient={editingIngredient}

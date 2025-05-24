@@ -1,6 +1,7 @@
 @import "ingredient-table.css";
 @import "ingredient-update-form.css";
 @import "ingredient-detail.css";
+@import "ingredient-changes.css";
 
 .App {
   padding: 10px;
@@ -14,6 +15,40 @@
   text-decoration: none; /* Remove underline */
   color: inherit; /* Use the default text color */
   font-weight: bold;
+}
+
+.app-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 1rem;
+
+}
+
+.arrow-button {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #444;
+  transition: color 0.2s ease;
+}
+
+.arrow-button:disabled {
+  color: #ccc;
+  cursor: default;
+}
+
+.arrow-button.left {
+  left: 1rem;
+}
+
+.arrow-button.right {
+  right: 1rem;
 }
 
 /* Responsive Design */
