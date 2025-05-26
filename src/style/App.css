@@ -1,7 +1,7 @@
-@import "ingredient-table.css";
-@import "ingredient-update-form.css";
-@import "ingredient-detail.css";
-@import "ingredient-changes.css";
+@import "ingredients/table/table.css";
+@import "ingredients/table/ingredient-update-form.css";
+@import "ingredients/detail.css";
+@import "ingredients/changes.css";
 
 .App {
   padding: 10px;

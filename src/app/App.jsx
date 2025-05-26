@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './style/App.css';
-import { ingredients } from './ingredients';
+import './../style/App.css';
+import { ingredients } from './ingredients/ingredients';
 import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import IngredientDetail from './IngredientDetail';
-import IngredientTable from './IngredientTable';
-import IngredientChanges from './IngredientChanges';
+import IngredientDetail from './ingredients/detail';
+import IngredientTable from './ingredients/table';
+import IngredientChanges from './ingredients/changes';
 
 const weightUnits = ["mg", "g", "kg", "oz", "lb"];
 const volumeUnits = ["ml", "l", "tsp", "Tbs", "fl-oz", "cup", "gal"];
