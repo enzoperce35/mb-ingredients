@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { ingredients } from './ingredients';
+import { ingredients } from './ingredient-list';
 
 function IngredientDetail() {
   const { ingredientId } = useParams();

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ingredients } from "./ingredients";
+import { ingredients } from "./ingredient-list";
 
 const conversionTable = {
   mg: { to: "g", factor: 0.001 },

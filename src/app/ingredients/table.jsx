@@ -66,7 +66,7 @@ const IngredientTable = ({
                   </div>
                 </td>
                 
-                <td>
+                <td className='indicator-container'>
                   <div className="update-indicators">
                     {updateDirections.map((direction, i) => (
                       <div
