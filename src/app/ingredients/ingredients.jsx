@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect, useRef } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { ingredients } from './ingredient-list';
 import IngredientChanges from './changes';
 import IngredientDetail from './detail';
@@ -19,43 +19,6 @@ const getLatestUpdatedDate = (ingredient) => {
   const originalDate = new Date(ingredient.lastUpdated);
   return latestStoredDate > originalDate ? latestStoredDate : originalDate;
 };
-
-function Header() {
-  const location = useLocation();
-  const navigate = useNavigate();
-
-  const path = location.pathname;
-  const isOnMain = path === '/';
-  const isOnChanges = path === '/ingredient-changes';
-
-  const title = isOnMain
-    ? 'UPDATES Test'
-    : isOnChanges
-    ? 'CHANGES'
-    : path.startsWith('/ingredient/')
-    ? 'Ingredient Details'
-    : '';
-
-  const handleLeftClick = () => {
-    if (isOnChanges) navigate('/');
-  };
-
-  const handleRightClick = () => {
-    if (isOnMain) navigate('/ingredient-changes');
-  };
-
-  return (
-    <header className="app-header">
-      <button className="arrow-button left" onClick={handleLeftClick} disabled={!isOnChanges} aria-label="Go to Ingredient Table">
-        ◀
-      </button>
-      <h1>{title}</h1>
-      <button className="arrow-button right" onClick={handleRightClick} disabled={!isOnMain} aria-label="Go to Ingredient Changes">
-        ▶
-      </button>
-    </header>
-  );
-}
 
 // Convert units to grams or ml for comparison
 const convertToGramsOrMl = (value, unit) => {
@@ -199,36 +162,31 @@ function Ingredients() {
   };
 
   return (
-    <Router>
-      <Header />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <div className="App">
-              <IngredientTable
-                ingredients={ingredients}
-                editingIngredient={editingIngredient}
-                setEditingIngredient={setEditingIngredient}
-                formData={formData}
-                setFormData={setFormData}
-                updatedIngredientId={updatedIngredientId}
-                ingredientRefs={ingredientRefs}
-                handleEditClick={handleEditClick}
-                handleChange={handleChange}
-                handleUpdate={handleUpdate}
-                getLatestUpdatedDate={getLatestUpdatedDate}
-                getAvailableUnits={getAvailableUnits}
-                getUpdateDirectionsHistory={getUpdateDirectionsHistory}
-                colors={colors}
-              />
-            </div>
-          }
-        />
-        <Route path="/ingredient/:ingredientId" element={<IngredientDetail />} />
-        <Route path="/ingredient-changes" element={<IngredientChanges />} />
-      </Routes>
-    </Router>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <IngredientTable
+            ingredients={ingredients}
+            editingIngredient={editingIngredient}
+            setEditingIngredient={setEditingIngredient}
+            formData={formData}
+            setFormData={setFormData}
+            updatedIngredientId={updatedIngredientId}
+            ingredientRefs={ingredientRefs}
+            handleEditClick={handleEditClick}
+            handleChange={handleChange}
+            handleUpdate={handleUpdate}
+            getLatestUpdatedDate={getLatestUpdatedDate}
+            getAvailableUnits={getAvailableUnits}
+            getUpdateDirectionsHistory={getUpdateDirectionsHistory}
+            colors={colors}
+          />
+        }
+      />
+      <Route path="/ingredient/:ingredientId" element={<IngredientDetail />} />
+      <Route path="/ingredient-changes" element={<IngredientChanges />} />
+    </Routes>
   );
 }
 

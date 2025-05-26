@@ -1,6 +1,6 @@
 function Recipes() {
   return (
-    <h1>Recipes</h1>
+    <h1></h1>
   )
 }
 
