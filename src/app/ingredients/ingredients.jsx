@@ -29,7 +29,7 @@ function Header() {
   const isOnChanges = path === '/ingredient-changes';
 
   const title = isOnMain
-    ? 'UPDATES'
+    ? 'UPDATES Test'
     : isOnChanges
     ? 'CHANGES'
     : path.startsWith('/ingredient/')
