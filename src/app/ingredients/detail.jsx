@@ -57,7 +57,7 @@ function IngredientDetail() {
       </button>
 
       <h2>{ingredient.name}</h2>
-      <p><strong>Price:</strong> {ingredient.price} per {ingredient.quantity} {ingredient.unit}</p>
+      <p><strong>Price:</strong> {ingredient.price} per {ingredient.quantity} {ingredient.unit === 'each' ? 'pcs' : ingredient.unit}</p>
       <p><strong>Last Updated:</strong> {lastUpdatedFormatted}</p>
       <p className='next-check'><strong>Next Check:</strong> {nextCheckFormatted}</p>
 

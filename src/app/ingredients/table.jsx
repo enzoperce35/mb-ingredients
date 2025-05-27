@@ -133,7 +133,7 @@ const IngredientTable = ({
                       <button onClick={handleUpdate}>update</button>
                     </div>
                   ) : (
-                    <span>{ingredient.price} per {ingredient.quantity} {ingredient.unit}</span>
+                    <span>{ingredient.price} per {ingredient.quantity} {ingredient.unit === 'each' ? 'pcs' : ingredient.unit}</span>
                   )}
                 </td>
               </tr>
