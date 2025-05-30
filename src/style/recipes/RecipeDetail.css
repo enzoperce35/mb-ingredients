@@ -1,0 +1,123 @@
+.recipe-detail-container {
+  max-width: 700px;
+  margin: 2rem auto;
+  padding: 1.5rem 2rem;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+}
+
+.back-button {
+  background-color: transparent;
+  border: none;
+  color: #3498db;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.back-button:hover {
+  color: #1d6fa5;
+}
+
+.recipe-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.recipe-title {
+  font-size: 2.5rem;
+  margin: 0;
+  color: #2c3e50;
+  flex: 1 1 auto;
+}
+
+.recipe-info {
+  text-align: right;
+  flex-shrink: 0;
+  min-width: 150px;
+}
+
+.recipe-quantity,
+.recipe-preptime {
+  font-size: 1rem;
+  color: #555;
+  margin: 0.2rem 0;
+}
+
+.recipe-quantity,
+.recipe-preptime {
+  font-size: 1.1rem;
+  margin: 0.3rem 0 1.5rem;
+  color: #555;
+}
+
+.ingredients-section,
+.instructions-section {
+  margin-bottom: 2rem;
+}
+
+.ingredients-section h2,
+.instructions-section h2 {
+  font-size: 1.8rem;
+  border-bottom: 2px solid #3498db;
+  padding-bottom: 0.3rem;
+  margin-bottom: 1rem;
+  color: #2980b9;
+}
+
+.ingredient-item {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.4;
+}
+
+.instruction-step {
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+  line-height: 1.5;
+}
+
+.ingredient-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ingredient-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.ingredient-name {
+  flex: 1;
+  text-align: left;
+  margin-left: 2rem;
+}
+
+.ingredient-amount {
+  flex-shrink: 0;
+  text-align: right;
+  margin-right: 3rem;
+  min-width: 80px;
+}
+
+@media (max-width: 600px) {
+  .recipe-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .recipe-info {
+    text-align: left;
+    margin-top: 0.5rem;
+  }
+}

@@ -1,31 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ingredients } from "./ingredient-list";
-
-const conversionTable = {
-  mg: { to: "g", factor: 0.001 },
-  g: { to: "g", factor: 1 },
-  kg: { to: "g", factor: 1000 },
-  oz: { to: "g", factor: 28.3495 },
-  lb: { to: "g", factor: 453.592 },
-  ml: { to: "ml", factor: 1 },
-  l: { to: "ml", factor: 1000 },
-  tsp: { to: "ml", factor: 4.92892 },
-  tbs: { to: "ml", factor: 14.7868 },
-  "fl-oz": { to: "ml", factor: 29.5735 },
-  cup: { to: "ml", factor: 240 },
-  gal: { to: "ml", factor: 3785.41 },
-};
-
-function convertToBaseUnit(quantity, unit) {
-  if (!unit) return { quantity, unit };
-  const unitKey = unit.toLowerCase();
-  const entry = conversionTable[unitKey];
-  if (!entry) return { quantity, unit };
-  return {
-    quantity: quantity * entry.factor,
-    unit: entry.to,
-  };
-}
+import { getScaledPrice } from "../utils/scaledPrice";
 
 export default function IngredientChanges() {
   const [ingredientChanges, setIngredientChanges] = useState([]);
@@ -74,23 +49,13 @@ export default function IngredientChanges() {
   }, []);
 
   function handleExportJS() {
-    // Create a map from ingredient ID to avgScaledPrice for quick lookup
     const avgPriceMap = {};
     ingredientChanges.forEach((ingredient) => {
       const baseQtyRaw = Number(ingredient.quantity);
       const baseUnit = ingredient.unit;
 
       const scaledPrices = ingredient.updates
-        .map((update) => {
-          const updateQty = Number(update.quantity);
-          if (!baseQtyRaw || !updateQty || !baseUnit || !update.unit) return null;
-
-          const { quantity: baseQty, unit: baseBase } = convertToBaseUnit(baseQtyRaw, baseUnit);
-          const { quantity: updateQtyConv, unit: updateBase } = convertToBaseUnit(updateQty, update.unit);
-
-          if (baseBase !== updateBase || updateQtyConv === 0) return null;
-          return (update.price / updateQtyConv) * baseQty;
-        })
+        .map((update) => getScaledPrice(update, baseQtyRaw, baseUnit))
         .filter((p) => p !== null);
 
       const avgScaledPrice =
@@ -105,7 +70,6 @@ export default function IngredientChanges() {
 
     const nowISOString = new Date().toISOString();
 
-    // Map original ingredients and apply updates if available
     const updatedIngredients = ingredients.map((ing) => {
       if (avgPriceMap.hasOwnProperty(ing.id)) {
         return {
@@ -140,16 +104,7 @@ export default function IngredientChanges() {
           const baseUnit = ingredient.unit;
 
           const scaledPrices = ingredient.updates
-            .map((update) => {
-              const updateQty = Number(update.quantity);
-              if (!baseQtyRaw || !updateQty || !baseUnit || !update.unit) return null;
-
-              const { quantity: baseQty, unit: baseBase } = convertToBaseUnit(baseQtyRaw, baseUnit);
-              const { quantity: updateQtyConv, unit: updateBase } = convertToBaseUnit(updateQty, update.unit);
-
-              if (baseBase !== updateBase || updateQtyConv === 0) return null;
-              return (update.price / updateQtyConv) * baseQty;
-            })
+            .map((update) => getScaledPrice(update, baseQtyRaw, baseUnit))
             .filter((p) => p !== null);
 
           const avgScaledPrice =
@@ -185,15 +140,7 @@ export default function IngredientChanges() {
                 </thead>
                 <tbody>
                   {ingredient.updates.map((update, idx) => {
-                    const updateQty = Number(update.quantity);
-                    const { quantity: baseQty, unit: baseBase } = convertToBaseUnit(baseQtyRaw, baseUnit);
-                    const { quantity: updateQtyConv, unit: updateBase } = convertToBaseUnit(updateQty, update.unit);
-
-                    const scaled =
-                      baseBase === updateBase && updateQtyConv !== 0
-                        ? (update.price / updateQtyConv) * baseQty
-                        : null;
-
+                    const scaled = getScaledPrice(update, baseQtyRaw, baseUnit);
                     return (
                       <tr key={idx}>
                         <td>{new Date(update.lastUpdated).toLocaleDateString()}</td>
@@ -225,7 +172,6 @@ export default function IngredientChanges() {
         <p>No Significant Changes Yet.</p>
       )}
 
-      {/* 📥 JS Export Button */}
       <button onClick={handleExportJS} className="export-button">
         Download Ingredients as JS
       </button>

@@ -2,6 +2,10 @@
 @import "ingredients/table/ingredient-update-form.css";
 @import "ingredients/detail.css";
 @import "ingredients/changes.css";
+@import "recipes/recipes.css";
+@import "recipes/RecipeDetail.css";
+@import "products/products.css";
+@import "products/productCostBreakdown.css";
 
 .App {
   padding: 10px;

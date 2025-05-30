@@ -57,6 +57,11 @@ function IngredientDetail() {
       </button>
 
       <h2>{ingredient.name}</h2>
+      {ingredient.brand && (
+        <p>
+          <strong>Brand:</strong> {ingredient.brand} {ingredient.alterUnit && `(${ingredient.alterUnit})`}
+        </p>
+      )}
       <p><strong>Price:</strong> {ingredient.price} per {ingredient.quantity} {ingredient.unit === 'each' ? 'pcs' : ingredient.unit}</p>
       <p><strong>Last Updated:</strong> {lastUpdatedFormatted}</p>
       <p className='next-check'><strong>Next Check:</strong> {nextCheckFormatted}</p>
