@@ -17,7 +17,7 @@ function Header({ activeTab }) {
   } else if (activeTab === "Products") {
     title = "All Products";
   } else if (isOnMain) {
-    title = "UPDATES";
+    title = "UPDATES test";
   } else if (isOnChanges) {
     title = "CHANGES";
   } else if (isOnDetail) {
