@@ -5,7 +5,7 @@ import Ingredients from "./ingredients/ingredients";
 import IngredientChanges from "./ingredients/changes";
 import IngredientDetail from "./ingredients/detail";
 import Recipes from "./recipes/recipes";
-import RecipeDetail from "./recipes/recipeDetail";
+import RecipeDetail from "./recipes/recipe-detail";
 import Products from "./products/products";
 import ProductTable from "./products/products";
 import ProductCostBreakdown from "./products/ProductCostBreakdown";
