@@ -2,6 +2,7 @@ import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { recipes } from "./all-recipes";
 import convertToExactKitchenUnit from "../utils/exactkitchenunits";
+import { getProductCost } from "../utils/costCalculations";
 
 export default function RecipeDetail() {
   const { id } = useParams();
@@ -34,6 +35,9 @@ export default function RecipeDetail() {
               <strong>Prep Time:</strong> {recipe.prepTime}
             </p>
           )}
+          <p className="recipe-cost">
+            <strong>Cost:</strong> {`₱${getProductCost(recipe).toFixed(2)}`}
+          </p>
         </div>
       </div>
 

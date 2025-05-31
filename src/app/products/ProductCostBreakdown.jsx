@@ -3,8 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { products } from "./all-products";
 import { ingredients } from "../ingredients/ingredient-list";
 import { recipes } from "../recipes/all-recipes";
-import getIngredientCost from "../utils/ingredientCost";
-import getRecipeCost from "../utils/recipeCost";
+import { getRecipeCost, getIngredientCost } from "../utils/costCalculations";
 
 const IngredientRow = ({ name, cost, quantity, unit, className }) => (
   <div className={`ingredient-row ${className ?? ""}`}>

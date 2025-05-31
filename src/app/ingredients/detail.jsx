@@ -1,13 +1,12 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { ingredients } from './ingredient-list';
+import { getScaledPrice } from '../utils/scaledPrice';
 
 function IngredientDetail() {
   const { ingredientId } = useParams();
   const navigate = useNavigate();
-
   const ingredient = ingredients.find((item) => String(item.id) === String(ingredientId));
-
   const [history, setHistory] = useState([]);
 
   useEffect(() => {
@@ -23,11 +22,7 @@ function IngredientDetail() {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    });
+    return date.toLocaleDateString();
   };
 
   const latestUpdate = history.length > 0
@@ -72,22 +67,34 @@ function IngredientDetail() {
           <table className="update-history">
             <thead>
               <tr>
-                <th>Updates</th>
+                <th>Date</th>
+                <th className="brand-col">Brand</th>
+                <th>Update</th>
+                <th>Scaled</th>
                 <th>Change</th>
-                <th>Brand</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               {history.map((change, index) => {
                 const changeDateFormatted = formatDate(change.lastUpdated);
-                const priceQuantityUnit = `P${change.price} / ${change.quantity}${change.unit}`;
+                const priceQuantityUnit = `₱${change.price} / ${change.quantity}${change.unit}`;
+                const scaled = getScaledPrice(change, ingredient.quantity, ingredient.unit);
+                const scaledPrice = `₱${scaled.toFixed(2)} / ${ingredient.quantity}${ingredient.unit}`;
+
+                const priceDiff = scaled - Number(ingredient.price);
+                const arrow = priceDiff !== null ? (priceDiff > 0 ? "↑" : "↓") : "";
+                const arrowColor = priceDiff !== null ? (priceDiff > 0 ? "red" : "green") : "black";
+                const formattedDiff = priceDiff !== null ? `₱${Math.abs(priceDiff).toFixed(2)}` : "N/A";
+
 
                 return (
                   <tr key={index}>
                     <td>{changeDateFormatted}</td>
+                    <td className="brand-col">{change.brand}</td>
                     <td>{priceQuantityUnit}</td>
-                    <td>{change.brand}</td>
+                    <td>{scaledPrice}</td>
+                    <td style={{ color: arrowColor }}>{`${arrow} ${formattedDiff} / ${ingredient.quantity}${ingredient.unit}`} </td>
                     <td>
                       <button className="delete-button" onClick={() => handleDeleteUpdate(index)}>
                         Delete

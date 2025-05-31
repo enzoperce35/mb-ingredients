@@ -1,18 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { products } from "./all-products";
-import getIngredientCost from "../utils/ingredientCost";
-import getRecipeCost from "../utils/recipeCost";
-
-const getProductCost = (product) => {
-  return product.ingredients.reduce((total, ing) => {
-    if (ing.recipe) {
-      return total + getRecipeCost(ing.ingId, ing.quantity, ing.unit);
-    } else {
-      return total + getIngredientCost(ing.ingId, ing.quantity, ing.unit);
-    }
-  }, 0);
-};
+import { getProductCost } from "../utils/costCalculations";
 
 const ProductTable = () => {
   const navigate = useNavigate();
