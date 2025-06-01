@@ -21,7 +21,15 @@ const ProductTable = () => {
         <tbody>
           {products.map((product, idx) => {
             const cost = getProductCost(product);
+            const updated = getProductCost(product, true);
             const profit = product.price - cost;
+            const diff = cost - updated  ;
+
+            let diffClass = "";
+            if (diff > 0) diffClass = "diff-positive";
+            else if (diff < 0) diffClass = "diff-negative";
+
+            const diffText = diff > 0 ? `+${diff.toFixed(2)}` : `${diff.toFixed(2)}`;
 
             return (
               <tr key={product.id || idx}>
@@ -41,7 +49,7 @@ const ProductTable = () => {
                 </td>
                 <td>₱{product.price.toFixed(2)}</td>
                 <td>₱{profit.toFixed(2)}</td>
-                <td>-</td>
+                <td className={diffClass}>{diffText}</td>
               </tr>
             );
           })}

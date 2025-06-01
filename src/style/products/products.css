@@ -61,3 +61,13 @@
   outline: 2px solid #0056b3;
   outline-offset: 2px;
 }
+
+td.diff-positive {
+  color: green;
+  font-weight: bold;
+}
+
+td.diff-negative {
+  color: red;
+  font-weight: bold;
+}
