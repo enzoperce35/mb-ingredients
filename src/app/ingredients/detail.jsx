@@ -22,7 +22,11 @@ function IngredientDetail() {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toLocaleDateString();
+    return date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
   };
 
   const latestUpdate = history.length > 0
@@ -69,7 +73,7 @@ function IngredientDetail() {
               <tr>
                 <th>Date</th>
                 <th className="brand-col">Brand</th>
-                <th>Update</th>
+                <th className='update-col'>Update</th>
                 <th>Scaled</th>
                 <th>Change</th>
                 <th>Action</th>
@@ -92,7 +96,7 @@ function IngredientDetail() {
                   <tr key={index}>
                     <td>{changeDateFormatted}</td>
                     <td className="brand-col">{change.brand}</td>
-                    <td>{priceQuantityUnit}</td>
+                    <td className='update-col'>{priceQuantityUnit}</td>
                     <td>{scaledPrice}</td>
                     <td style={{ color: arrowColor }}>{`${arrow} ${formattedDiff} / ${ingredient.quantity}${ingredient.unit}`} </td>
                     <td>

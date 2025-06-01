@@ -10,6 +10,9 @@ function Header({ activeTab }) {
   const isOnChanges = path === "/ingredient-changes";
   const isOnDetail = path.startsWith("/ingredient/");
 
+  // Hide entire header on ingredient detail page
+  if (isOnDetail) return null;
+
   // Determine the title based on route or activeTab
   let title = "";
   if (activeTab === "Recipes") {

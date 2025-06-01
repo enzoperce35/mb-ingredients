@@ -12,7 +12,6 @@ export default function Recipes() {
           <div className="recipe-card">
             <h2>{name}</h2>
             <p><strong>Quantity:</strong> {quantity} {unit}</p>
-            {prepTime && <p><strong>Prep Time:</strong> {prepTime}</p>}
           </div>
         </Link>
       ))}

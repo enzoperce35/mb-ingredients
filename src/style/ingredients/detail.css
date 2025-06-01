@@ -183,7 +183,8 @@ p {
 }
 
 @media screen and (max-width: 1024px) and (orientation: portrait) {
-  .brand-col {
+  .brand-col,
+  .update-col {
     display: none;
   }
 }

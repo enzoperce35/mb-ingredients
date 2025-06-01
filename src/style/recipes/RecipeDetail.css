@@ -47,14 +47,6 @@
 .recipe-quantity,
 .recipe-preptime,
 .recipe-cost {
-  font-size: 1rem;
-  color: #555;
-  margin: 0.2rem 0;
-}
-
-.recipe-quantity,
-.recipe-preptime,
-.recipe-cost {
   font-size: 1.1rem;
   margin: 0.3rem 0 1.5rem;
   color: #555;
@@ -78,6 +70,23 @@
   font-size: 1.1rem;
   margin-bottom: 0.4rem;
   line-height: 1.4;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.ingredient-name {
+  flex: 1;
+  text-align: left;
+  padding-left: 1rem;
+}
+
+.ingredient-amount {
+  flex-shrink: 0;
+  text-align: right;
+  margin-right: 3rem;
+  min-width: 80px;
 }
 
 .instruction-step {
@@ -92,26 +101,6 @@
   margin: 0;
 }
 
-.ingredient-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 4px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.ingredient-name {
-  flex: 1;
-  text-align: left;
-  margin-left: 2rem;
-}
-
-.ingredient-amount {
-  flex-shrink: 0;
-  text-align: right;
-  margin-right: 3rem;
-  min-width: 80px;
-}
-
 @media (max-width: 600px) {
   .recipe-header {
     flex-direction: column;
@@ -121,5 +110,94 @@
   .recipe-info {
     text-align: left;
     margin-top: 0.5rem;
+  }
+}
+
+/* Landscape mode styles */
+@media (orientation: landscape) and (min-width: 600px) {
+  .recipe-detail-container {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 3rem;
+  }
+
+  .recipe-header {
+    flex-direction: row;            /* horizontal layout */
+    justify-content: space-between; /* space between title and info */
+    align-items: center;            /* vertical center */
+    flex-wrap: nowrap;              /* no wrapping */
+    margin-bottom: 1.5rem;
+  }
+
+  .recipe-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    flex: 1 1 auto;                 /* fill available space on left */
+  }
+
+  .recipe-info {
+    flex: 0 0 auto;                 /* only as wide as content */
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #555;
+    text-align: right;
+    margin-top: 0;
+  }
+
+  /* Hide the labels ("Quantity:", "Prep Time:", "Cost:") */
+  .recipe-info strong {
+    display: none;
+  }
+
+  /* Add separator bars between values */
+  .recipe-quantity::after {
+    content: " |";
+  }
+
+  .recipe-preptime::after {
+    content: " |";
+  }
+
+  .recipe-cost::after {
+    content: "";
+  }
+
+  .recipe-quantity,
+  .recipe-preptime,
+  .recipe-cost {
+    margin: 0;
+    font-weight: normal;
+  }
+
+  .back-button,
+  .recipe-header {
+    flex-basis: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .recipe-content-landscape {
+    display: flex;
+    gap: 2rem;
+    flex: 1;
+  }
+
+  .ingredients-section,
+  .instructions-section {
+    flex: 1 1 50%;
+    max-height: 80vh;
+  }
+
+  .ingredients-section {
+    position: sticky;
+    top: 2rem;
+    overflow-y: hidden;
+  }
+
+  .instructions-section {
+    overflow-y: auto;
+    border-left: 1px solid #ddd;
+    padding-left: 1.5rem;
   }
 }
