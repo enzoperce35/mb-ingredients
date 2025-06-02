@@ -7,8 +7,12 @@ export const products = [
     { name: 'fried egg', ingId: "friedegg", recipe: true,  quantity: 1, unit: "each" },
     { name: 'siomai plate', ingId: "siomaiplate", recipe: false, quantity: 1, unit: "each" },
   ] },
-  { name: "Extra Bbq sauce", type: 'i', id: "extrabbqsauce", price: 20, quantity: 1, unit: "each", ingredients: [
+  { name: "Extra bbq sauce", type: 'i', id: "extrabbqsauce", price: 20, quantity: 1, unit: "each", ingredients: [
     { name: 'BBQ sauce', ingId: "bbqsauce", recipe: true,  quantity: 3, unit: "Tbs", noNest: true },
+    { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Extra buffalo sauce", type: 'i', id: "extrabuffalosauce", price: 20, quantity: 1, unit: "each", ingredients: [
+    { name: 'Buffalo sauce', ingId: "buffalosauce", recipe: true,  quantity: 3, unit: "Tbs", noNest: true },
     { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
   ] },
 ]

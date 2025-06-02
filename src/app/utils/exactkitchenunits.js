@@ -42,9 +42,33 @@ const commonWeightUnits = [
   { label: "1 lb", g: 453.6 },
 ];
 
+// Convert decimal to common fraction (very simple)
+function toCommonFraction(decimal) {
+  const fractions = {
+    0.125: "1/8",
+    0.25: "1/4",
+    0.333: "1/3",
+    0.5: "1/2",
+    0.667: "2/3",
+    0.75: "3/4",
+    0.875: "7/8",
+  };
+  const rounded = Object.keys(fractions).find(key =>
+    Math.abs(decimal - parseFloat(key)) < 0.01
+  );
+  return rounded ? fractions[rounded] : null;
+}
+
 function convertToExactKitchenUnit(quantity, unit) {
+  if (unit === "each") {
+    const fraction = toCommonFraction(quantity);
+    return fraction ? `${fraction} each` : `${quantity} each`;
+  }
+
   if (volumeUnits.includes(unit)) {
-    const ml = quantity * volumeToMl[unit];
+    const mlFactor = volumeToMl[unit];
+    if (!mlFactor) return `${quantity} ${unit}`;
+    const ml = quantity * mlFactor;
     const match = commonVolumeUnits.find(item =>
       Math.abs(item.ml - ml) < 0.05
     );
@@ -52,7 +76,9 @@ function convertToExactKitchenUnit(quantity, unit) {
   }
 
   if (weightUnits.includes(unit)) {
-    const g = quantity * weightToG[unit];
+    const gFactor = weightToG[unit];
+    if (!gFactor) return `${quantity} ${unit}`;
+    const g = quantity * gFactor;
     const match = commonWeightUnits.find(item =>
       Math.abs(item.g - g) < 0.05
     );

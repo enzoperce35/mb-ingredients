@@ -37,6 +37,7 @@ export const ingredients = [
   { name: "Ham", type: 'a', id: "ham", brand: "All Time", price: 79, quantity: 250, unit: "g", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 25 },
   { name: "Harina", type: 'a', id: "harina", brand: null, price: 45, quantity: 1, unit: "kg", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 20 },
   { name: "Hotdog", type: 'a', id: "hotdog", brand: "All Time", price: 169, quantity: 30, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },
+  { name: "Hot sauce", type: 'a', id: "hotsauce", brand: "Red Label", price: 24, quantity: 100, unit: "g", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },
   { name: "Iced tea", type: 'a', id: "icedtea", brand: "Pitchel", price: 16, quantity: 20, unit: "g", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 50 },
   { name: "Jelly powder", type: 'a', id: "jellypowder", brand: "Mr Gulaman", price: 14.50, quantity: 25, unit: "g", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 50 },
   { name: "Kalamansi", type: 'a', id: "kalamansi", brand: null, price: 70, quantity: 1, unit: "kg", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 15 },

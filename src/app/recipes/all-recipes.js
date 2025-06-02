@@ -39,7 +39,27 @@ export const recipes = [
         "Tunawin ang cornstach sa tubig at ihalo ng paunti-unti hanggang sa makuha ang tamang lapot."
       ],
     },
-  }
+  },
+  { name: "Buffalo sauce", type: 'f', id: "buffalosauce", quantity: 36, unit: "Tbs", prepTime: '8 mins',
+    ingredients: [
+      { name: 'butter', ingId: "butter", recipe: false, quantity: 50, unit: "g", alterQuantity: 0.25, alterUnit: 'each' },
+      { name: 'hot sauce', ingId: "hotsauce", recipe: false, quantity: 100, unit: "g" },
+      { name: 'chili powder', ingId: "chilipowder", recipe: false, quantity: 3, unit: "g", alterQuantity: 1, alterUnit: 'tsp' },
+      { name: 'paprika', ingId: "paprika", recipe: false, quantity: 1.5, unit: "g", alterQuantity: 0.5, alterUnit: 'tsp' },
+      { name: 'chili flakes', ingId: "chiliflakes", recipe: false, quantity: 3.5, unit: "g", alterQuantity: 0.5, alterUnit: 'Tbs'},
+      { name: 'garlic powder', ingId: "garlicpowder", recipe: false, quantity: 2.84, unit: "g", alterQuantity: 0.5, alterUnit: 'tsp' },
+      { name: 'brown sugar', ingId: "sugarbrown", recipe: false, quantity: 12, unit: "g", alterQuantity: 1, alterUnit: 'Tbs' },
+      { name: 'suka', ingId: "vinegar", recipe: false, quantity: 7.4, unit: "ml", alterQuantity: 0.5, alterUnit: 'Tbs' },
+      { name: 'banana ketchup', ingId: "bananaketchup", recipe: false, quantity: 120, unit: "g", alterQuantity: 0.5, alterUnit: 'cup' }
+    ],
+    instructions: {
+      steps: [
+        "Paghalu-haluin ang butter, hot sauce, chili powder, paprika, chili flakes, garlic powder, brown sugar at ketchup.",
+        "Pakuluan",
+        "Huling ilagay ang suka at mag-intay ng ilang minuto bago haluin."
+      ],
+    },
+  },
 ]
 
 // quantity and unit are market units they will be used for price computations
