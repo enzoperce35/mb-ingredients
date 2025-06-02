@@ -8,7 +8,8 @@ import { getRecipeCost, getIngredientCost } from "../utils/costCalculations";
 const IngredientRow = ({ name, cost, quantity, unit, className }) => (
   <div className={`ingredient-row ${className ?? ""}`}>
     <div className="col name">{name}</div>
-    <div className="col quantity">{quantity} {unit}</div>
+    <div className="col quantity">{parseFloat(quantity) % 1 === 0 ? parseInt(quantity) : parseFloat(quantity).toFixed(2)} {unit}</div>
+
     <div className="col cost">₱{cost.toFixed(2)}</div>
   </div>
 );
@@ -20,27 +21,45 @@ const ProductCostBreakdown = () => {
 
   if (!product) return <div className="not-found">Product not found</div>;
 
-  const renderIngredient = (ing, path = "", level = 0) => {
+  const renderIngredient = (ing, path = "", level = 0, parentMultiplier = 1) => {
     const key = `${path}-${ing.ingId}`;
 
     if (ing.recipe) {
       const recipe = recipes.find(r => r.id === ing.ingId);
       if (!recipe) return <div key={key} className="error">Recipe not found</div>;
 
+      const recipeQty = recipe.quantity ?? 1;
+      const multiplier = (ing.quantity / recipeQty) * parentMultiplier;
       const cost = getRecipeCost(ing.ingId, ing.quantity, ing.unit);
 
+      const shouldNest = !ing.noNest;
+
+      if (level === 0 && !shouldNest) {
+        // Top-level noNest: only show row, skip children
+        return (
+          <IngredientRow
+            key={key}
+            className="recipe-ingredient"
+            name={recipe.name}
+            cost={cost}
+            quantity={ing.alterQuantity ?? ing.quantity}
+            unit={ing.alterUnit ?? ing.unit}
+          />
+        );
+      }
+
       if (level === 0) {
-        // Skip rendering recipe row at top level, render only its ingredients
+        // Top-level normal: skip recipe row, show children
         return (
           <div key={key}>
             {recipe.ingredients.map((subIng, i) =>
-              renderIngredient(subIng, `${key}-sub${i}`, level + 1)
+              renderIngredient(subIng, `${key}-sub${i}`, level + 1, multiplier)
             )}
           </div>
         );
       }
 
-      // For nested levels, render recipe and its ingredients
+      // Nested: show recipe row, and children unless noNest is true
       return (
         <div key={key}>
           <IngredientRow
@@ -50,9 +69,9 @@ const ProductCostBreakdown = () => {
             quantity={ing.alterQuantity ?? ing.quantity}
             unit={ing.alterUnit ?? ing.unit}
           />
-          {level < 1 &&
+          {shouldNest &&
             recipe.ingredients.map((subIng, i) =>
-              renderIngredient(subIng, `${key}-sub${i}`, level + 1)
+              renderIngredient(subIng, `${key}-sub${i}`, level + 1, multiplier)
             )
           }
         </div>
@@ -61,14 +80,15 @@ const ProductCostBreakdown = () => {
       const ingredient = ingredients.find(i => i.id === ing.ingId);
       if (!ingredient) return <div key={key} className="error">Ingredient not found</div>;
 
-      const cost = getIngredientCost(ing.ingId, ing.quantity, ing.unit);
+      const scaledQty = ing.quantity * parentMultiplier;
+      const cost = getIngredientCost(ing.ingId, scaledQty, ing.unit);
 
       return (
         <IngredientRow
           key={key}
           name={ingredient.name}
           cost={cost}
-          quantity={ing.alterQuantity ?? ing.quantity}
+          quantity={((ing.alterQuantity ?? ing.quantity) * parentMultiplier).toFixed(2)}
           unit={ing.alterUnit ?? ing.unit}
         />
       );

@@ -9,7 +9,7 @@ export const recipes = [
     { name: 'palamig powder', ingId: "powderedpalamig", recipe: false, quantity: 60, unit: "g" }
   ] },
   { name: "Fried rice", type: 'e', id: "friedrice", quantity: 1, unit: "cup", ingredients: [
-    { name: 'rice', ingId: "rice", recipe: true, quantity: 1.5, unit: "cup" },
+    { name: 'rice', ingId: "rice", recipe: true, quantity: 1.5, unit: "cup", noNest: true },
     { name: 'mantika', ingId: "mantika", recipe: false, quantity: 2, unit: "Tbs" },
     { name: 'bawang', ingId: "bawang", recipe: false, quantity: 5, unit: "g" },
     { name: 'garlic powder', ingId: "garlicpowder", recipe: false, quantity: 4.6, unit: "g", alterQuantity: 1.5, alterUnit: 'tsp' },
