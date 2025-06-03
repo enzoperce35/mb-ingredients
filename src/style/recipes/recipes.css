@@ -1,18 +1,37 @@
+/* Container for both cards and table */
 .recipes-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 1rem;
-  flex-wrap: wrap;
   padding: 1rem;
   background-color: #f9f9f9;
+  box-sizing: border-box;
 }
 
+/* 2-column layout for tablets */
+@media (min-width: 600px) {
+  .recipes-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3-column layout for desktops */
+@media (min-width: 1024px) {
+  .recipes-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Recipe Card Styles */
 .recipe-card {
   border: 1px solid #ccc;
   border-radius: 8px;
   padding: 1rem;
-  width: 300px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .recipe-card h2 {
@@ -27,10 +46,58 @@
 .recipe-card-link {
   text-decoration: none;
   color: inherit;
+  display: block;
 }
 
 .recipe-card-link:hover .recipe-card {
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px);
+}
+
+/* Table Container */
+.recipes-table-container {
+  margin-top: 2rem;
+  overflow-x: auto;
+  padding: 1rem;
+}
+
+/* Styled Table */
+.recipes-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.recipes-table th,
+.recipes-table td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.recipes-table thead {
+  background-color: #f3f4f6;
+}
+
+.recipes-table th {
+  font-weight: 600;
+  color: #333;
+}
+
+.recipes-table tr:hover {
+  background-color: #f9fafb;
+}
+
+.clickable-row {
   cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.clickable-row:hover {
+  background-color: #eef2f7;
 }
 

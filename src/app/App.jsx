@@ -5,10 +5,10 @@ import Ingredients from "./ingredients/ingredients";
 import IngredientChanges from "./ingredients/changes";
 import IngredientDetail from "./ingredients/detail";
 import Recipes from "./recipes/recipes";
-import RecipeDetail from "./recipes/recipe-detail";
 import Products from "./products/products";
 import ProductTable from "./products/products";
 import ProductCostBreakdown from "./products/ProductCostBreakdown";
+import RecipePageRouter from "./recipes/RecipePageRouter"; // NEW IMPORT
 import "../style/App.css";
 
 function App() {
@@ -35,12 +35,10 @@ function App() {
           />
           <Route path="ingredient-changes" element={<IngredientChanges />} />
           <Route path="ingredient/:ingredientId" element={<IngredientDetail />} />
-
-          <Route path="/" element={<ProductTable />} />
           <Route path="/product/:productId/cost-breakdown" element={<ProductCostBreakdown />} />
-
-          {/* Add this new route for recipe details */}
-          <Route path="recipe/:id" element={<RecipeDetail />} />
+          
+          {/* Updated recipe detail route to use dynamic router */}
+          <Route path="recipe/:id" element={<RecipePageRouter />} />
         </Route>
       </Routes>
     </BrowserRouter>
