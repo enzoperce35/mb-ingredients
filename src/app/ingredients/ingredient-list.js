@@ -35,7 +35,7 @@ export const ingredients = [
   { name: "Ground black pepper", type: 'a', id: "groundblackpepper", brand: null, price: 150, quantity: 0.25, unit: "kg", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 20 },
   { name: "Ground pork", type: 'a', id: "groundpork", brand: null, price: 260, quantity: 1, unit: "kg", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 15 },
   { name: "Ham", type: 'a', id: "ham", brand: "All Time", price: 79, quantity: 250, unit: "g", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 25 },
-  { name: "Harina", type: 'a', id: "harina", brand: null, price: 45, quantity: 1, unit: "kg", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 20 },
+  { name: "Harina", type: 'a', id: "harina", brand: null, price: 48, quantity: 1, unit: "kg", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 20 },
   { name: "Honey", type: 'a', id: "honey", brand: null, price: 59, quantity: 320, unit: "g", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },
   { name: "Hotdog", type: 'a', id: "hotdog", brand: "All Time", price: 169, quantity: 30, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },
   { name: "Hot sauce", type: 'a', id: "hotsauce", brand: "Red Label", price: 24, quantity: 100, unit: "g", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },

@@ -8,19 +8,30 @@ export const recipes = [
   { name: "Palamig", type: 'e', id: "palamig", quantity: 1, unit: "l", ingredients: [
     { name: 'palamig powder', ingId: "powderedpalamig", recipe: false, quantity: 60, unit: "g" }
   ] },
-  { name: "Fried rice", type: 'e', id: "friedrice", quantity: 1, unit: "cup", ingredients: [
+  { name: "Fried garlic", type: 'e', id: "friedgarlic", quantity: 200, unit: "g", ingredients: [
+    { name: 'bawang', ingId: "bawang", recipe: false, quantity: 300, unit: "g", alterQuantity: 5, alterUnit: 'bulb' },
+  ] },
+  { name: "Siomai toyo mixture", type: 'e', id: "siomaitoyomixture", quantity: 34, unit: "fl-oz", ingredients: [
+    { name: 'tubig', ingId: "water", recipe: false, quantity: 2, unit: "cup" },
+    { name: 'asukal', ingId: "sugarwhite", recipe: false, quantity: 37.8, unit: "g", alterQuantity: 3, alterUnit: "Tbs" },
+    { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 15, unit: "g", alterQuantity: 1, alterUnit: "Tbs" },
+    { name: 'toyo', ingId: "toyo", recipe: false, quantity: 17, unit: "fl-oz", alterQuantity: 2, alterUnit: "cup" },
+  ] },
+  
+  
+  { name: "Fried rice", type: 'g', id: "friedrice", quantity: 1, unit: "cup", ingredients: [
     { name: 'rice', ingId: "rice", recipe: true, quantity: 1.5, unit: "cup", noNest: true },
     { name: 'mantika', ingId: "mantika", recipe: false, quantity: 2, unit: "Tbs" },
     { name: 'bawang', ingId: "bawang", recipe: false, quantity: 5, unit: "g" },
     { name: 'garlic powder', ingId: "garlicpowder", recipe: false, quantity: 4.6, unit: "g", alterQuantity: 1.5, alterUnit: 'tsp' },
     { name: 'rock salt', ingId: "saltrock", recipe: false, quantity: 2, unit: "g" },
   ] },
-  { name: "Fried egg", type: 'e', id: "friedegg", quantity: 1, unit: "each", ingredients: [
+  { name: "Fried egg", type: 'g', id: "friedegg", quantity: 1, unit: "each", ingredients: [
     { name: 'egg', ingId: "eggxs", recipe: false, quantity: 1, unit: "each" },
     { name: 'mantika', ingId: "mantika", recipe: false, quantity: 1, unit: "Tbs" },
     { name: 'ketchup', ingId: "bananaketchup", recipe: false, quantity: 18.5, unit: 'g', alterQuantity: 1, alterUnit: "Tbs" }
   ] },
-  { name: "Coleslaw", type: 'e', id: "coleslaw", quantity: 250, unit: "g", ingredients: [
+  { name: "Coleslaw", type: 'g', id: "coleslaw", quantity: 250, unit: "g", ingredients: [
     { name: 'repolyo', ingId: "repolyo", recipe: false, quantity: 125, unit: "g" },
     { name: 'carrot', ingId: "carrot", recipe: false, quantity: 10, unit: "g" },
     { name: 'rock salt', ingId: "saltrock", recipe: false, quantity: 1.5, unit: 'g', alterQuantity: 0.2, alterUnit: "tsp" },
@@ -28,21 +39,51 @@ export const recipes = [
     { name: 'white sugar', ingId: "sugarwhite", recipe: false, quantity: 2.1, unit: 'g', alterQuantity: 0.5, alterUnit: "tsp" },
     { name: 'mayonnaise', ingId: "mayonnaise", recipe: false, quantity: 0.5, unit: 'cup' }
   ] },
+  { name: "Maruya mixture", type: 'g', id: "maruyamixture", quantity: 651, unit: "ml", ingredients: [
+    { name: 'harina', ingId: "harina", recipe: false, quantity: 120, unit: "g", alterQuantity: 1, alterUnit: "cup" },
+    { name: 'asukal', ingId: "sugarwhite", recipe: false, quantity: 100, unit: "g", alterQuantity: 1, alterUnit: "cup" },
+    { name: 'saba', ingId: "sagingsaba", recipe: false, quantity: 440, unit: 'g', alterQuantity: '4-5', alterUnit: "pcs" },
+    { name: 'egg xs', ingId: "eggxs", recipe: false, quantity: 1, unit: "each" },
+    { name: 'evap', ingId: "evap", recipe: false, quantity: 120, unit: 'ml'},
+  ] },
+  { name: "Siomai mixture", type: 'g', id: "siomaimixture", quantity: 131, unit: "each", ingredients: [
+    { name: 'ground pork', ingId: "groundpork", recipe: false, quantity: 1, unit: "kg" },
+    { name: 'bawang', ingId: "bawang", recipe: false, quantity: 60, unit: "g", alterQuantity: 1, alterUnit: 'bulb' },
+    { name: 'carrot', ingId: "carrot", recipe: false, quantity: 113, unit: "g", alterQuantity: 1, alterUnit: 'each' },
+    { name: 'liquid seasoning', ingId: "liquidseasoning", recipe: false, quantity: 0.25, unit: "cup" },
+    { name: 'oyster sauce', ingId: "oystersauce", recipe: false, quantity: 192, unit: "g", alterQuantity: 1/4, alterUnit: 'cup' },
+    { name: 'asukal', ingId: "sugarwhite", recipe: false, quantity: 12.6, unit: "g", alterQuantity: 1, alterUnit: "Tbs" },
+    { name: 'harina', ingId: "harina", recipe: false, quantity: 60, unit: "g", alterQuantity: 1/2, alterUnit: "cup" },
+    { name: 'medium egg', ingId: "eggmedium", recipe: false, quantity: 1, unit: "each" },
+    { name: 'bread crumbs', ingId: "breadcrumbs", recipe: false, quantity: 78, unit: "g", alterQuantity: 1, alterUnit: "cup" },
+    { name: 'pamintang durog', ingId: "groundblackpepper", recipe: false, quantity: 2.3, unit: "g", alterQuantity: 1, alterUnit: 'tsp' },
+    { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 5, unit: "g", alterQuantity: 1, alterUnit: "tsp" },
+  ] },
   
-  
-  
-  
-  
-  
-  
-  
+  { name: "Chili oil", type: 'g', id: "chilioil", quantity: 2, unit: "cup", ingredients: [
+    { name: 'mantika', ingId: "mantika", recipe: false, quantity: 2, unit: "cup" },
+    { name: 'asukal', ingId: "sugarwhite", recipe: false, quantity: 6.3, unit: "g", alterQuantity: 0.5, alterUnit: "Tbs" },
+    { name: 'chili powder', ingId: "chilipowder", recipe: false, quantity: 3, unit: "g", alterQuantity: 1, alterUnit: 'tsp' },
+    { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 2.5, unit: "g", alterQuantity: 0.5, alterUnit: "tsp" },
+    { name: 'sili', ingId: "sili", recipe: false, quantity: 38, unit: "g" },
+  ] },
+  { name: "1 siomai", type: 'g', id: "1siomai", quantity: 1, unit: "each", ingredients: [
+    { name: 'siomai mixture', ingId: "siomaimixture", recipe: true, quantity: 1, unit: "each" },
+    { name: 'molo', ingId: "molo", recipe: false, quantity: 1, unit: "each" },
+  ] },
+  { name: "siomai condiments", type: 'g', id: "siomaicondiments", quantity: 1, unit: "each", ingredients: [
+    { name: 'chili oil', ingId: "chilioil", recipe: true,  quantity: 2, unit: "tsp"  },
+    { name: 'toyo', ingId: "siomaitoyomixture", recipe: true,  quantity: 2, unit: "Tbs" },
+    { name: 'fried garlic', ingId: "friedgarlic", recipe: true,  quantity: 5, unit: "g" },
+    { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 6, unit: "g" },
+  ] },
   
   
   
   { name: "BBQ sauce", type: 'f', id: "bbqsauce", quantity: 40, unit: "Tbs", prepTime: '8 mins',
     ingredients: [
       { name: 'tubig', ingId: "water", recipe: false, quantity: 1, unit: "cup" },
-      { name: 'liquid Seasoning', ingId: "liquidseasoning", recipe: false, quantity: 0.25, unit: "cup" },
+      { name: 'liquid seasoning', ingId: "liquidseasoning", recipe: false, quantity: 0.25, unit: "cup" },
       { name: 'ketchup', ingId: "bananaketchup", recipe: false, quantity: 80, unit: "g", alterQuantity: 0.25, alterUnit: 'cup' },
       { name: 'toyo', ingId: "toyo", recipe: false, quantity: 0.125, unit: "cup" },
       { name: 'garlic Powder', ingId: "garlicpowder", recipe: false, quantity: 1.5, unit: "g", alterQuantity: 0.5, alterUnit: 'tsp' },
@@ -211,8 +252,8 @@ export const recipes = [
 
 // groundblackpepper 1tsp = 2.3g
 // rock salt 1tsp = 6g
-// vetsin 1tsp = 5g
-// white sugar 1tsp = 4.2g
+// vetsin 1tsp = 5g 1tbsp = 15g
+// white sugar 1tsp = 4.2g  1tbsp = 12.6g 1cup = 200g
 // bawang 1 bulb = 60g clove = 6g
 // bawang 1 whole = 60g
 // harina 1 cup = 120g

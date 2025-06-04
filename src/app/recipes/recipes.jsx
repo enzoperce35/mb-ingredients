@@ -5,7 +5,7 @@ import { getProductCost } from "../utils/costCalculations";
 
 export default function Recipes() {
   const foodRecipes = recipes.filter(recipe => recipe.type === 'f');
-  const extraRecipes = recipes.filter(recipe => recipe.type === 'e');
+  const extraRecipes = recipes.filter(recipe => recipe.type === 'g');
   const navigate = useNavigate();
 
   return (

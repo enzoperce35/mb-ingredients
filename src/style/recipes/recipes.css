@@ -37,6 +37,10 @@
 .recipe-card h2 {
   margin-top: 0;
   font-size: 1.5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;  /* optional */
 }
 
 .recipe-card p {

@@ -60,8 +60,6 @@ export const products = [
     { name: 'sour cream powder', ingId: "sourcreampowder", recipe: false,  quantity: 8, unit: "g" },
     { name: 'fries pouch small', ingId: "frenchfriespouchsmall", recipe: false,  quantity: 1, unit: "each" },
   ] },
-  
-  
   { name: "Fries large salt", type: 'i', id: "frieslargesalt", price: 60, quantity: 1, unit: "each", ingredients: [
     { name: 'french fries', ingId: "frenchfries", recipe: false,  quantity: 180, unit: "g" },
     { name: 'iodized salt', ingId: "saltiodized", recipe: false,  quantity: 2, unit: "g" },
@@ -91,6 +89,42 @@ export const products = [
     { name: 'dough', ingId: "empanadadough", recipe: true,  quantity: 10, unit: "each", noNest: true  },
     { name: 'filling', ingId: "empanadafilling", recipe: true,  quantity: 10, unit: "each", noNest: true  },
     { name: 'lb2', ingId: "lb2", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Maruya set", type: 'i', id: "maruyaset", price: 50, quantity: 1, unit: "each", ingredients: [
+    { name: 'maruya mixture', ingId: "maruyamixture", recipe: true,  quantity: 180, unit: "ml", noNest: true  },
+    { name: 'condensed', ingId: "condensed", recipe: false,  quantity: 3, unit: "Tbs"  },
+    { name: 'lb1', ingId: "lb1", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Maruya bites", type: 'i', id: "maruyabites", price: 120, quantity: 1, unit: "each", ingredients: [
+    { name: 'maruya mixture', ingId: "maruyamixture", recipe: true,  quantity: 480, unit: "ml", noNest: true  },
+    { name: 'condensed', ingId: "condensed", recipe: false,  quantity: 4.5, unit: "Tbs"  },
+    { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'lb2', ingId: "lb2", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Siomai 6pcs", type: 'i', id: "siomai6pcs", price: 45, quantity: 1, unit: "each", ingredients: [
+    { name: 'siomai', ingId: "1siomai", recipe: true,  quantity: 6, unit: "each", noNest: true  },
+    { name: 'condiments', ingId: "siomaicondiments", recipe: true,  quantity: 1, unit: "each", noNest: true  },
+    { name: 'siomai plate', ingId: "siomaiplate", recipe: false, quantity: 1, unit: "each" },
+  ] },
+  { name: "Siomai 8pcs", type: 'i', id: "siomai8pcs", price: 60, quantity: 1, unit: "each", ingredients: [
+    { name: 'siomai', ingId: "1siomai", recipe: true,  quantity: 8, unit: "each", noNest: true  },
+    { name: 'condiments', ingId: "siomaicondiments", recipe: true,  quantity: 1, unit: "each", noNest: true  },
+    { name: 'siomai plate', ingId: "siomaiplate", recipe: false, quantity: 1, unit: "each" },
+  ] },
+  { name: "Siomai Tub", type: 'i', id: "siomaitub", price: 100, quantity: 1, unit: "each", ingredients: [
+    { name: 'siomai', ingId: "1siomai", recipe: true,  quantity: 12, unit: "each", noNest: true  },
+    { name: 'fried garlic', ingId: "friedgarlic", recipe: true,  quantity: 8, unit: "g" },
+    { name: 'toyo', ingId: "siomaitoyomixture", recipe: true,  quantity: 4.5, unit: "Tbs" },
+    { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 11, unit: "g" },
+    { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Siomai Tub spicy", type: 'i', id: "siomaitubspicy", price: 100, quantity: 1, unit: "each", ingredients: [
+    { name: 'siomai', ingId: "1siomai", recipe: true,  quantity: 12, unit: "each", noNest: true  },
+    { name: 'chili oil', ingId: "chilioil", recipe: true,  quantity: 3, unit: "tsp"  },
+    { name: 'fried garlic', ingId: "friedgarlic", recipe: true,  quantity: 8, unit: "g" },
+    { name: 'toyo', ingId: "siomaitoyomixture", recipe: true,  quantity: 4.5, unit: "Tbs" },
+    { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 11, unit: "g" },
+    { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
   ] },
 ]
 
