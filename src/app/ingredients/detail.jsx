@@ -11,8 +11,13 @@ function IngredientDetail() {
 
   useEffect(() => {
     if (ingredient) {
-      const storedHistory = JSON.parse(localStorage.getItem(`ingredient_changes_${ingredient.id}`)) || [];
-      setHistory(storedHistory);
+      try {
+        const storedHistory = JSON.parse(localStorage.getItem(`ingredient_changes_${ingredient.id}`)) || [];
+        setHistory(storedHistory);
+      } catch (error) {
+        console.error('Failed to parse history from localStorage:', error);
+        setHistory([]);
+      }
     }
   }, [ingredient]);
 
@@ -56,12 +61,20 @@ function IngredientDetail() {
       </button>
 
       <h2>{ingredient.name}</h2>
+      
       {ingredient.brand && (
         <p>
-          <strong>Brand:</strong> {ingredient.brand} {ingredient.alterUnit && `(${ingredient.alterUnit})`}
+          <strong>Brand:</strong> {ingredient.brand}
         </p>
       )}
-      <p><strong>Price:</strong> {ingredient.price} per {ingredient.quantity} {ingredient.unit === 'each' ? 'pcs' : ingredient.unit}</p>
+      
+      <p>
+        <strong>Price:</strong> {ingredient.price} per{" "}
+        {ingredient.alterUnit
+          ? ingredient.alterUnit
+          : `${ingredient.quantity} ${ingredient.unit === 'each' ? 'pcs' : ingredient.unit}`}
+      </p>
+      
       <p><strong>Last Updated:</strong> {lastUpdatedFormatted}</p>
       <p className='next-check'><strong>Next Check:</strong> {nextCheckFormatted}</p>
 
@@ -90,7 +103,6 @@ function IngredientDetail() {
                 const arrow = priceDiff !== null ? (priceDiff > 0 ? "↑" : "↓") : "";
                 const arrowColor = priceDiff !== null ? (priceDiff > 0 ? "red" : "green") : "black";
                 const formattedDiff = priceDiff !== null ? `₱${Math.abs(priceDiff).toFixed(2)}` : "N/A";
-
 
                 return (
                   <tr key={index}>

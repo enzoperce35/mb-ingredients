@@ -16,24 +16,28 @@ export default function IngredientChanges() {
         try {
           const updates = JSON.parse(rawData);
           if (Array.isArray(updates)) {
-            const recentUpdates = updates.filter((update) => {
-              const updateDate = new Date(update.lastUpdated);
-              const ingredientDate = new Date(ingredient.lastUpdated);
-              return !isNaN(updateDate) && updateDate > ingredientDate;
-            });
+            const ingredientDate = new Date(ingredient.lastUpdated);
 
-            if (recentUpdates.length >= 5) {
-              const allGreater = recentUpdates.every(
+            const validUpdates = updates
+              .filter((update) => {
+                const updateDate = new Date(update.lastUpdated);
+                return !isNaN(updateDate) && updateDate > ingredientDate;
+              })
+              .sort((a, b) => new Date(b.lastUpdated) - new Date(a.lastUpdated))
+              .slice(0, 5);
+
+            if (validUpdates.length === 5) {
+              const allGreater = validUpdates.every(
                 (u) => u.priceChangeDirection === "greater"
               );
-              const allLower = recentUpdates.every(
+              const allLower = validUpdates.every(
                 (u) => u.priceChangeDirection === "lower"
               );
 
               if (allGreater || allLower) {
                 matchedIngredients.push({
                   ...ingredient,
-                  updates: recentUpdates,
+                  updates: validUpdates,
                   direction: allGreater ? "Increase" : "Decrease",
                 });
               }
@@ -88,7 +92,7 @@ export default function IngredientChanges() {
 
     const a = document.createElement("a");
     a.href = url;
-    a.download = "ingredients.js";
+    a.download = `ingredients-updated-${nowISOString.slice(0, 10)}.js`;
     a.click();
 
     URL.revokeObjectURL(url);
@@ -113,10 +117,16 @@ export default function IngredientChanges() {
               : null;
 
           const originalPrice = Number(ingredient.price);
-          const priceDiff = avgScaledPrice !== null ? avgScaledPrice - originalPrice : null;
-          const arrow = priceDiff !== null ? (priceDiff > 0 ? "↑" : "↓") : "";
-          const arrowColor = priceDiff !== null ? (priceDiff > 0 ? "red" : "green") : "black";
-          const formattedDiff = priceDiff !== null ? `₱${Math.abs(priceDiff).toFixed(2)}` : "N/A";
+          const priceDiff =
+            avgScaledPrice !== null ? avgScaledPrice - originalPrice : null;
+          const arrow =
+            priceDiff !== null ? (priceDiff > 0 ? "↑" : "↓") : "";
+          const arrowColor =
+            priceDiff !== null ? (priceDiff > 0 ? "red" : "green") : "black";
+          const formattedDiff =
+            priceDiff !== null
+              ? `₱${Math.abs(priceDiff).toFixed(2)}`
+              : "N/A";
 
           return (
             <div key={ingredient.id} className="ingredient-container">

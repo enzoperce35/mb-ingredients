@@ -120,7 +120,7 @@ export const products = [
   ] },
   { name: "Siomai Tub spicy", type: 'i', id: "siomaitubspicy", price: 100, quantity: 1, unit: "each", ingredients: [
     { name: 'siomai', ingId: "1siomai", recipe: true,  quantity: 12, unit: "each", noNest: true  },
-    { name: 'chili oil', ingId: "chilioil", recipe: true,  quantity: 3, unit: "tsp"  },
+    { name: 'chili oil', ingId: "chilioil", recipe: true,  quantity: 3, unit: "tsp", noNest: true },
     { name: 'fried garlic', ingId: "friedgarlic", recipe: true,  quantity: 8, unit: "g" },
     { name: 'toyo', ingId: "siomaitoyomixture", recipe: true,  quantity: 4.5, unit: "Tbs" },
     { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 11, unit: "g" },
