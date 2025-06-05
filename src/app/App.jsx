@@ -6,9 +6,8 @@ import IngredientChanges from "./ingredients/changes";
 import IngredientDetail from "./ingredients/detail";
 import Recipes from "./recipes/recipes";
 import Products from "./products/products";
-import ProductTable from "./products/products";
 import ProductCostBreakdown from "./products/ProductCostBreakdown";
-import RecipePageRouter from "./recipes/RecipePageRouter"; // NEW IMPORT
+import RecipeDetail from "./recipes/recipe-detail";
 import "../style/App.css";
 
 function App() {
@@ -36,9 +35,7 @@ function App() {
           <Route path="ingredient-changes" element={<IngredientChanges />} />
           <Route path="ingredient/:ingredientId" element={<IngredientDetail />} />
           <Route path="/product/:productId/cost-breakdown" element={<ProductCostBreakdown />} />
-          
-          {/* Updated recipe detail route to use dynamic router */}
-          <Route path="recipe/:id" element={<RecipePageRouter />} />
+          <Route path="recipe/:id" element={<RecipeDetail />} /> {/* Direct route */}
         </Route>
       </Routes>
     </BrowserRouter>

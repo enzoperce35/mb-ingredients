@@ -102,29 +102,37 @@ export const products = [
     { name: 'lb2', ingId: "lb2", recipe: false,  quantity: 1, unit: "each" },
   ] },
   { name: "Siomai 6pcs", type: 'i', id: "siomai6pcs", price: 45, quantity: 1, unit: "each", ingredients: [
-    { name: 'siomai', ingId: "1siomai", recipe: true,  quantity: 6, unit: "each", noNest: true  },
+    { name: 'siomai', ingId: "siomai", recipe: true,  quantity: 6, unit: "each", noNest: true  },
     { name: 'condiments', ingId: "siomaicondiments", recipe: true,  quantity: 1, unit: "each", noNest: true  },
     { name: 'siomai plate', ingId: "siomaiplate", recipe: false, quantity: 1, unit: "each" },
   ] },
   { name: "Siomai 8pcs", type: 'i', id: "siomai8pcs", price: 60, quantity: 1, unit: "each", ingredients: [
-    { name: 'siomai', ingId: "1siomai", recipe: true,  quantity: 8, unit: "each", noNest: true  },
+    { name: 'siomai', ingId: "siomai", recipe: true,  quantity: 8, unit: "each", noNest: true  },
     { name: 'condiments', ingId: "siomaicondiments", recipe: true,  quantity: 1, unit: "each", noNest: true  },
     { name: 'siomai plate', ingId: "siomaiplate", recipe: false, quantity: 1, unit: "each" },
   ] },
   { name: "Siomai Tub", type: 'i', id: "siomaitub", price: 100, quantity: 1, unit: "each", ingredients: [
-    { name: 'siomai', ingId: "1siomai", recipe: true,  quantity: 12, unit: "each", noNest: true  },
-    { name: 'fried garlic', ingId: "friedgarlic", recipe: true,  quantity: 8, unit: "g" },
-    { name: 'toyo', ingId: "siomaitoyomixture", recipe: true,  quantity: 4.5, unit: "Tbs" },
+    { name: 'siomai', ingId: "siomai", recipe: true,  quantity: 12, unit: "each", noNest: true  },
+    { name: 'fried garlic', ingId: "friedgarlic", recipe: true,  quantity: 8, unit: "g", noNest: true  },
+    { name: 'toyo', ingId: "siomaitoyomixture", recipe: true,  quantity: 4.5, unit: "Tbs", noNest: true  },
     { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 11, unit: "g" },
     { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
   ] },
   { name: "Siomai Tub spicy", type: 'i', id: "siomaitubspicy", price: 100, quantity: 1, unit: "each", ingredients: [
-    { name: 'siomai', ingId: "1siomai", recipe: true,  quantity: 12, unit: "each", noNest: true  },
+    { name: 'siomai', ingId: "siomai", recipe: true,  quantity: 12, unit: "each", noNest: true  },
     { name: 'chili oil', ingId: "chilioil", recipe: true,  quantity: 3, unit: "tsp", noNest: true },
-    { name: 'fried garlic', ingId: "friedgarlic", recipe: true,  quantity: 8, unit: "g" },
-    { name: 'toyo', ingId: "siomaitoyomixture", recipe: true,  quantity: 4.5, unit: "Tbs" },
+    { name: 'fried garlic', ingId: "friedgarlic", recipe: true,  quantity: 8, unit: "g", noNest: true  },
+    { name: 'toyo', ingId: "siomaitoyomixture", recipe: true,  quantity: 4.5, unit: "Tbs", noNest: true  },
     { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 11, unit: "g" },
     { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Beef burger solo", type: 'i', id: "beefburgersolo", price: 55, quantity: 1, unit: "each", ingredients: [
+    { name: 'beef burger', ingId: "beefburger", recipe: true,  quantity: 1, unit: "each", noNest: true  },
+    { name: 'parchment paper', ingId: "parchmentpaper", recipe: false, quantity: 1, unit: "each" },
+  ] },
+  { name: "Chicken burger solo", type: 'i', id: "chickenburgersolo", price: 55, quantity: 1, unit: "each", ingredients: [
+    { name: 'chicken burger', ingId: "chickenburger", recipe: true,  quantity: 1, unit: "each", noNest: true  },
+    { name: 'parchment paper', ingId: "parchmentpaper", recipe: false, quantity: 1, unit: "each" },
   ] },
 ]
 

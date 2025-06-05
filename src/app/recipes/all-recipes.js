@@ -17,20 +17,51 @@ export const recipes = [
     { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 15, unit: "g", alterQuantity: 1, alterUnit: "Tbs" },
     { name: 'toyo', ingId: "toyo", recipe: false, quantity: 17, unit: "fl-oz", alterQuantity: 2, alterUnit: "cup" },
   ] },
-  
-  
-  { name: "Fried rice", type: 'g', id: "friedrice", quantity: 1, unit: "cup", ingredients: [
+  { name: "siomai", type: 'e', id: "siomai", quantity: 1, unit: "each", ingredients: [
+    { name: 'siomai mixture', ingId: "siomaimixture", recipe: true, quantity: 1, unit: "each" },
+    { name: 'molo', ingId: "molo", recipe: false, quantity: 1, unit: "each" },
+  ] },
+  { name: "beef burger", type: 'e', id: "beefburger", quantity: 1, unit: "each", ingredients: [
+    { name: 'beef patty', ingId: "beefpatty", recipe: true, quantity: 1, unit: "each" },
+    { name: 'burger buns', ingId: "burgerbuns", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'coleslaw', ingId: "coleslaw", recipe: true,  quantity: 20, unit: "g" },
+    { name: 'ketchup', ingId: "bananaketchup", recipe: false, quantity: 17, unit: "g" },
+    { name: 'mayonnaise', ingId: "mayonnaise", recipe: false, quantity: 1.2, unit: 'Tbs' },
+    { name: 'pipino', ingId: "pipino", recipe: false, quantity: 5, unit: 'g' },
+    { name: 'kamatis', ingId: "kamatis", recipe: false, quantity: 5, unit: 'g' },
+  ] },
+  { name: "chicken burger", type: 'e', id: "chickenburger", quantity: 1, unit: "each", ingredients: [
+    { name: 'chicken patty', ingId: "chickenpatty", recipe: true, quantity: 1, unit: "each" },
+    { name: 'burger buns', ingId: "burgerbuns", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'coleslaw', ingId: "coleslaw", recipe: true,  quantity: 20, unit: "g" },
+    { name: 'mayonnaise', ingId: "mayonnaise", recipe: false, quantity: 2.4, unit: 'Tbs' },
+    { name: 'eggmedium', ingId: "eggmedium", recipe: false, quantity: 0.33, unit: 'each' },
+    { name: 'evap', ingId: "evap", recipe: false, quantity: 2, unit: 'tsp' },
+  ] },
+  { name: "Fried rice", type: 'e', id: "friedrice", quantity: 1, unit: "cup", ingredients: [
     { name: 'rice', ingId: "rice", recipe: true, quantity: 1.5, unit: "cup", noNest: true },
     { name: 'mantika', ingId: "mantika", recipe: false, quantity: 2, unit: "Tbs" },
     { name: 'bawang', ingId: "bawang", recipe: false, quantity: 5, unit: "g" },
     { name: 'garlic powder', ingId: "garlicpowder", recipe: false, quantity: 4.6, unit: "g", alterQuantity: 1.5, alterUnit: 'tsp' },
     { name: 'rock salt', ingId: "saltrock", recipe: false, quantity: 2, unit: "g" },
   ] },
-  { name: "Fried egg", type: 'g', id: "friedegg", quantity: 1, unit: "each", ingredients: [
+  { name: "Fried egg", type: 'e', id: "friedegg", quantity: 1, unit: "each", ingredients: [
     { name: 'egg', ingId: "eggxs", recipe: false, quantity: 1, unit: "each" },
     { name: 'mantika', ingId: "mantika", recipe: false, quantity: 1, unit: "Tbs" },
     { name: 'ketchup', ingId: "bananaketchup", recipe: false, quantity: 18.5, unit: 'g', alterQuantity: 1, alterUnit: "Tbs" }
   ] },
+  { name: "siomai condiments", type: 'e', id: "siomaicondiments", quantity: 1, unit: "each", ingredients: [
+    { name: 'chili oil', ingId: "chilioil", recipe: true,  quantity: 2, unit: "tsp"  },
+    { name: 'toyo', ingId: "siomaitoyomixture", recipe: true,  quantity: 2, unit: "Tbs" },
+    { name: 'fried garlic', ingId: "friedgarlic", recipe: true,  quantity: 5, unit: "g" },
+    { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 6, unit: "g" },
+  ] },
+
+
+
+
+
+
   { name: "Coleslaw", type: 'g', id: "coleslaw", quantity: 250, unit: "g", ingredients: [
     { name: 'repolyo', ingId: "repolyo", recipe: false, quantity: 125, unit: "g" },
     { name: 'carrot', ingId: "carrot", recipe: false, quantity: 10, unit: "g" },
@@ -67,16 +98,34 @@ export const recipes = [
     { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 2.5, unit: "g", alterQuantity: 0.5, alterUnit: "tsp" },
     { name: 'sili', ingId: "sili", recipe: false, quantity: 38, unit: "g" },
   ] },
-  { name: "1 siomai", type: 'g', id: "1siomai", quantity: 1, unit: "each", ingredients: [
-    { name: 'siomai mixture', ingId: "siomaimixture", recipe: true, quantity: 1, unit: "each" },
-    { name: 'molo', ingId: "molo", recipe: false, quantity: 1, unit: "each" },
+  { name: "Beef patty", type: 'g', id: "beefpatty", quantity: 28, unit: "each", ingredients: [
+    { name: 'ground beef', ingId: "groundbeef", recipe: false,  quantity: 1, unit: "kg"  },
+    { name: 'liquid seasoning', ingId: "liquidseasoning", recipe: false, quantity: 0.25, unit: "cup" },
+    { name: 'oyster sauce', ingId: "oystersauce", recipe: false, quantity: 192, unit: "g", alterQuantity: 1/4, alterUnit: 'cup' },
+    { name: 'bawang (pino)', ingId: "bawang", recipe: false, quantity: 40, unit: "g", alterQuantity: 1/4, alterUnit: 'cup' },
+    { name: 'sibuyas (pino)', ingId: "sibuyas", recipe: false, quantity: 55, unit: "g", alterQuantity: 1/3, alterUnit: 'cup' },
+    { name: 'garlic powder', ingId: "garlicpowder", recipe: false, quantity: 8.6, unit: "g", alterQuantity: 1, alterUnit: 'Tbs' },
+    { name: 'paprika', ingId: "paprika", recipe: false, quantity: 8.3, unit: "g", alterQuantity: 1, alterUnit: 'Tbs' },
+    { name: 'medium egg', ingId: "egg medium", recipe: false, quantity: 1, unit: "each" },
+    { name: 'breadcrumbs', ingId: "breadcrumbs", recipe: true,  quantity: 115, unit: "g", alterQuantity: 1.2, alterUnit: 'cup' },
+    { name: 'pamintang durog', ingId: "groundblackpepper", recipe: false, quantity: 2.3, unit: "g", alterQuantity: 1, alterUnit: 'tsp' },
+    { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 5, unit: "g", alterQuantity: 1, alterUnit: 'tsp' },
   ] },
-  { name: "siomai condiments", type: 'g', id: "siomaicondiments", quantity: 1, unit: "each", ingredients: [
-    { name: 'chili oil', ingId: "chilioil", recipe: true,  quantity: 2, unit: "tsp"  },
-    { name: 'toyo', ingId: "siomaitoyomixture", recipe: true,  quantity: 2, unit: "Tbs" },
-    { name: 'fried garlic', ingId: "friedgarlic", recipe: true,  quantity: 5, unit: "g" },
-    { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 6, unit: "g" },
+  { name: "Chicken patty", type: 'g', id: "chickenpatty", quantity: 19, unit: "each", ingredients: [
+    { name: 'chicken breast', ingId: "chickenbreast", recipe: false,  quantity: .50, unit: "kg"  },
+    { name: 'hot sauce', ingId: "hotsauce", recipe: false, quantity: 50, unit: "g", alterQuantity: 1/2, alterUnit: 'bottle' },
+    { name: 'liquid seasoning', ingId: "liquidseasoning", recipe: false, quantity: 0.25, unit: "cup" },
+    { name: 'paprika', ingId: "paprika", recipe: false, quantity: 3.75, unit: "g", alterQuantity: '1/4', alterUnit: 'Tbs' },
+    { name: 'garlic powder', ingId: "garlicpowder", recipe: false, quantity: 3, unit: "g", alterQuantity: 1, alterUnit: 'tsp' },
+    { name: 'chili powder', ingId: "chilipowder", recipe: false, quantity: 3, unit: "g", alterQuantity: 1, alterUnit: 'tsp' },
+    { name: 'chiliflakes', ingId: "chiliflakes", recipe: false, quantity: 3, unit: "g", alterQuantity: 1, alterUnit: 'tsp' },
+    { name: 'asin', ingId: "saltrock", recipe: false, quantity: 6, unit: "g", alterQuantity: 1, alterUnit: 'tsp' },
+    { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 3, unit: "g", alterQuantity: 1, alterUnit: 'tsp' },
+    { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 2.5, unit: "g", alterQuantity: 1/2, alterUnit: 'tsp' },
   ] },
+  
+  
+  
   
   
   
@@ -201,9 +250,6 @@ export const recipes = [
     },
   },
   
-  
-  
-  
   { name: "Empanada dough", type: 'f', id: "empanadadough", quantity: 73, unit: "each", prepTime: '30 mins',
     ingredients: [
       { name: 'tubig', ingId: "water", recipe: false, quantity: 5, unit: "Tbs" },
@@ -228,8 +274,8 @@ export const recipes = [
       { name: 'ground pork', ingId: "groundpork", recipe: false, quantity: 1, unit: "kg" },
       { name: 'sibuyas', ingId: "sibuyas", recipe: false, quantity: 60, unit: "g", alterQuantity: 1, alterUnit: 'each' },
       { name: 'bawang', ingId: "bawang", recipe: false, quantity: 60, unit: "g", alterQuantity: 1, alterUnit: 'bulb' },
-      { name: 'patatas', ingId: "patatas", recipe: false, quantity: 315, unit: "g", alterQuantity: 2, alterUnit: 'each' },
-      { name: 'carrot', ingId: "carrot", recipe: false, quantity: 225, unit: "g", alterQuantity: 2, alterUnit: 'each' },
+      { name: 'patatas (diced)', ingId: "patatas", recipe: false, quantity: 315, unit: "g", alterQuantity: 2, alterUnit: 'each' },
+      { name: 'carrot (diced)', ingId: "carrot", recipe: false, quantity: 225, unit: "g", alterQuantity: 2, alterUnit: 'each' },
       { name: 'green peas', ingId: "greenpeas", recipe: false, quantity: 155, unit: "g", alterQuantity: 1, alterUnit: 'can' },
       { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 2.5, unit: "g", alterQuantity: 1/2, alterUnit: "tsp" },
       { name: 'pamintang durog', ingId: "groundblackpepper", recipe: false, quantity: 1.15, unit: "g", alterQuantity: 1/2, alterUnit: "tsp" },
@@ -250,7 +296,7 @@ export const recipes = [
 // quantity and unit are market units they will be used for price computations
 // alterQuantity and alterunit are recipe units they will be used in the menu instructions
 
-// groundblackpepper 1tsp = 2.3g
+// groundblackpepper 1tsp = 2.3g 1tbsp = 6.9g
 // rock salt 1tsp = 6g
 // vetsin 1tsp = 5g 1tbsp = 15g
 // white sugar 1tsp = 4.2g  1tbsp = 12.6g 1cup = 200g
@@ -260,6 +306,12 @@ export const recipes = [
 // hot sauce 2tbs = 34g
 // iodized salt 1tsp = 6g 1tbsp = 23g
 // butter 1tbsp = 14g
+// banana catsup 1tbsp = 17g
+// mayonnaise 1tbsp = 17g
+// chili flakes 1tsp = 3g 1tbsp = 15g
+// chili powder 1tsp = 3g 1tbsp = 8g
+// garlic powder 1tsp = 3g
+// paprika powder 1tsp = 3g 1tbsp = 15g
 
 const weightUnits = ["mg", "g", "kg", "oz", "lb"];
 const volumeUnits = ["ml", "l", "tsp", "Tbs", "fl-oz", "cup", "gal"];

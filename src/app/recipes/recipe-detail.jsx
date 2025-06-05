@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { recipes } from "./all-recipes";
 import convertToExactKitchenUnit from "../utils/exactkitchenunits";
@@ -7,8 +7,9 @@ import { getProductCost } from "../utils/costCalculations";
 export default function RecipeDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const [showIngredientCosts, setShowIngredientCosts] = useState(false);
 
-  const recipe = recipes.find(r => String(r.id) === String(id)); // safe string comparison
+  const recipe = recipes.find(r => String(r.id) === String(id));
 
   if (!recipe) {
     return (
@@ -40,21 +41,51 @@ export default function RecipeDetail() {
         </div>
       </div>
 
-      {/* New wrapper container for landscape side-by-side layout */}
       <div className="recipe-content-landscape">
         <section className="ingredients-section">
-          <h2>Ingredients</h2>
+          {/* Keep original h2 style, position button independently */}
+          <div className="ingredients-title-container">
+            <h2>Ingredients</h2>
+            <button
+              className="ingredient-cost-toggle"
+              onClick={() => setShowIngredientCosts(prev => !prev)}
+              title={showIngredientCosts ? "Hide Ingredient Costs" : "Show Ingredient Costs"}
+            >
+              💵
+            </button>
+          </div>
+
           <ul className="ingredient-list">
-            {recipe.ingredients.map(({ name, ingId, quantity, unit, alterQuantity, alterUnit }) => (
-              <li key={ingId} className="ingredient-item">
-                <span className="ingredient-name">{name}</span>
-                <span className="ingredient-amount">
-                  {alterQuantity && alterUnit
-                    ? convertToExactKitchenUnit(alterQuantity, alterUnit)
-                    : convertToExactKitchenUnit(quantity, unit)}
-                </span>
-              </li>
-            ))}
+            {recipe.ingredients.map((ingredient) => {
+              const {
+                name,
+                ingId,
+                quantity,
+                unit,
+                alterQuantity,
+                alterUnit,
+              } = ingredient;
+
+              const formattedQuantity = alterQuantity && alterUnit
+                ? convertToExactKitchenUnit(alterQuantity, alterUnit)
+                : convertToExactKitchenUnit(quantity, unit);
+
+              const ingredientCost = showIngredientCosts
+                ? getProductCost({ ingredients: [ingredient] })
+                : null;
+
+              return (
+                <li key={ingId} className="ingredient-item">
+                  <span className="ingredient-name">{name}</span>
+                  <div className="ingredient-right">
+                    <span className="ingredient-amount">{formattedQuantity}</span>
+                    {showIngredientCosts && (
+                      <span className="ingredient-cost">₱{ingredientCost.toFixed(2)}</span>
+                      )}
+                  </div>
+                </li>
+              );
+            })}
           </ul>
         </section>
 

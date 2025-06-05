@@ -45,6 +45,7 @@
 
 .recipe-card p {
   margin: 0.3rem 0;
+  text-align: end;
 }
 
 .recipe-card-link {

@@ -66,6 +66,35 @@
   color: #2980b9;
 }
 
+.ingredients-title-container {
+  position: relative;
+}
+
+/* 💰 Icon Button */
+.ingredient-cost-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #666;
+  padding: 2px;
+}
+
+.ingredient-cost-toggle:hover {
+  color: #000;
+}
+
+/* Ingredient List Items */
+.ingredient-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 .ingredient-item {
   font-size: 1.1rem;
   margin-bottom: 0.4rem;
@@ -82,23 +111,32 @@
   padding-left: 1rem;
 }
 
+/* Right-aligned Quantity + Cost */
+.ingredient-right {
+  display: flex;
+  gap: 50px;
+  justify-content: flex-end;
+  min-width: 120px;
+}
+
 .ingredient-amount {
   flex-shrink: 0;
   text-align: right;
-  margin-right: 3rem;
   min-width: 80px;
+  margin-right: 15px;
+}
+
+.ingredient-cost {
+  text-align: right;
+  white-space: nowrap;
+  color: #444;
+  font-weight: 500;
 }
 
 .instruction-step {
   font-size: 1.1rem;
   margin-bottom: 0.7rem;
   line-height: 1.5;
-}
-
-.ingredient-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
 }
 
 @media (max-width: 600px) {
