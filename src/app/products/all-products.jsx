@@ -134,6 +134,46 @@ export const products = [
     { name: 'chicken burger', ingId: "chickenburger", recipe: true,  quantity: 1, unit: "each", noNest: true  },
     { name: 'parchment paper', ingId: "parchmentpaper", recipe: false, quantity: 1, unit: "each" },
   ] },
+  { name: "Chaofan solo", type: 'i', id: "chaofansolo", price: 60, quantity: 1, unit: "each", ingredients: [
+    { name: 'chaofan', ingId: "chaofan", recipe: true,  quantity: 1, unit: "each", noNest: true  },
+    { name: 'parchment paper', ingId: "parchmentpaper", recipe: false, quantity: 1, unit: "each" },
+  ] },
+  { name: "Chicken fillet regular", type: 'i', id: "chickenfilletregular", price: 90, quantity: 1, unit: "each", ingredients: [
+    { name: 'chicken fillet', ingId: "chickenfillet", recipe: true,  quantity: 100, unit: "g", noNest: true  },
+    { name: 'gravy', ingId: "gravy", recipe: true, quantity: 2.5, unit: "Tbs", noNest: true  },
+    { name: 'sauce cup', ingId: "saucecup", recipe: false, quantity: 1, unit: "each" },
+    { name: 'lb1', ingId: "lb1", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Chicken fillet large", type: 'i', id: "chickenfilletlarge", price: 135, quantity: 1, unit: "each", ingredients: [
+    { name: 'chicken fillet', ingId: "chickenfillet", recipe: true,  quantity: 150, unit: "g", noNest: true  },
+    { name: 'gravy', ingId: "gravy", recipe: true, quantity: 4.5, unit: "Tbs", noNest: true  },
+    { name: 'gravy cup', ingId: "gravycup", recipe: false, quantity: 1, unit: "each" },
+    { name: 'lb2', ingId: "lb2", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Puto small 25pcs", type: 'i', id: "putosmall25pcs", price: 200, quantity: 1, unit: "each", ingredients: [
+    { name: 'puto', ingId: "puto", recipe: true,  quantity: 25, unit: "each", noNest: true  },
+    { name: 'bilaosmall', ingId: "bilaosmall", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Puto medium 40pcs", type: 'i', id: "putomedium40pcs", price: 300, quantity: 1, unit: "each", ingredients: [
+    { name: 'puto', ingId: "puto", recipe: true,  quantity: 40, unit: "each", noNest: true  },
+    { name: 'bilaomedium', ingId: "bilaomedium", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Puto large 50pcs", type: 'i', id: "putolarge50pcs", price: 370, quantity: 1, unit: "each", ingredients: [
+    { name: 'puto', ingId: "puto", recipe: true,  quantity: 50, unit: "each", noNest: true  },
+    { name: 'bilaolarge', ingId: "bilaolarge", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Puto xl 75pcs", type: 'i', id: "putoxl75pcs", price: 520, quantity: 1, unit: "each", ingredients: [
+    { name: 'puto', ingId: "puto", recipe: true,  quantity: 75, unit: "each", noNest: true  },
+    { name: 'bilaoxl', ingId: "bilaoxl", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
+  ] },
 ]
 
 // quantity and unit are market units they will be used for price computations
