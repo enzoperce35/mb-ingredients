@@ -95,11 +95,11 @@ function IngredientDetail() {
             <tbody>
               {history.map((change, index) => {
                 const changeDateFormatted = formatDate(change.lastUpdated);
-                const priceQuantityUnit = `₱${change.price} / ${change.quantity}${change.unit}`;
+                const priceQuantityUnit = `₱${change.price} / ${change.alterUnit ? change.alterUnit : `${change.quantity}${change.unit}`}`;
                 const scaled = getScaledPrice(change, ingredient.quantity, ingredient.unit);
-                const scaledPrice = `₱${scaled.toFixed(2)} / ${ingredient.quantity}${ingredient.unit}`;
+                const scaledPrice = `₱${scaled?.toFixed(2) ?? "N/A"} / ${ingredient.alterUnit ? ingredient.alterUnit : `${ingredient.quantity} ${ingredient.unit === 'each' ? 'pcs' : ingredient.unit}`}`;
 
-                const priceDiff = scaled - Number(ingredient.price);
+                const priceDiff = scaled !== null ? scaled - Number(ingredient.price) : null;
                 const arrow = priceDiff !== null ? (priceDiff > 0 ? "↑" : "↓") : "";
                 const arrowColor = priceDiff !== null ? (priceDiff > 0 ? "red" : "green") : "black";
                 const formattedDiff = priceDiff !== null ? `₱${Math.abs(priceDiff).toFixed(2)}` : "N/A";
@@ -110,7 +110,9 @@ function IngredientDetail() {
                     <td className="brand-col">{change.brand}</td>
                     <td className='update-col'>{priceQuantityUnit}</td>
                     <td>{scaledPrice}</td>
-                    <td style={{ color: arrowColor }}>{`${arrow} ${formattedDiff} / ${ingredient.quantity}${ingredient.unit}`} </td>
+                    <td style={{ color: arrowColor }}>
+                      {`${arrow} ${formattedDiff} / ${ingredient.alterUnit ? ingredient.alterUnit : `${ingredient.quantity} ${ingredient.unit === 'each' ? 'pcs' : ingredient.unit}`}`}
+                    </td>
                     <td>
                       <button className="delete-button" onClick={() => handleDeleteUpdate(index)}>
                         Delete

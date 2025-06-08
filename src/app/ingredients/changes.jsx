@@ -106,6 +106,7 @@ export default function IngredientChanges() {
         ingredientChanges.map((ingredient) => {
           const baseQtyRaw = Number(ingredient.quantity);
           const baseUnit = ingredient.unit;
+          const displayUnit = ingredient.alterUnit || `${ingredient.quantity} ${ingredient.unit}`;
 
           const scaledPrices = ingredient.updates
             .map((update) => getScaledPrice(update, baseQtyRaw, baseUnit))
@@ -137,7 +138,7 @@ export default function IngredientChanges() {
               <h3>{ingredient.name}</h3>
               <p>
                 <strong>Brand:</strong> {ingredient.brand} <br />
-                <strong>Price:</strong> ₱{ingredient.price} per {ingredient.quantity} {ingredient.unit}
+                <strong>Price:</strong> ₱{ingredient.price} per {displayUnit}
               </p>
 
               <table className="ingredient-table">
@@ -149,27 +150,32 @@ export default function IngredientChanges() {
                   </tr>
                 </thead>
                 <tbody>
-                  {ingredient.updates.map((update, idx) => {
-                    const scaled = getScaledPrice(update, baseQtyRaw, baseUnit);
-                    return (
-                      <tr key={idx}>
-                        <td>{new Date(update.lastUpdated).toLocaleDateString()}</td>
-                        <td>{update.brand ?? ""}</td>
-                        <td>
-                          {scaled !== null
-                            ? `₱${scaled.toFixed(2)} per ${ingredient.quantity} ${ingredient.unit}`
-                            : `₱${update.price} (${update.quantity} ${update.unit})`}
-                        </td>
-                      </tr>
-                    );
-                  })}
+                  {[...ingredient.updates]
+                    .reverse()
+                    .map((update, idx) => {
+                      const scaled = getScaledPrice(update, baseQtyRaw, baseUnit);
+                      const updateDisplayUnit = update.alterUnit
+                        ? update.alterUnit
+                        : `${update.quantity} ${update.unit === "each" ? "pcs" : update.unit}`;
+                      return (
+                        <tr key={idx}>
+                          <td>{new Date(update.lastUpdated).toLocaleDateString()}</td>
+                          <td>{update.brand ?? ""}</td>
+                          <td>
+                            {scaled !== null
+                              ? `₱${scaled.toFixed(2)} per ${displayUnit}`
+                              : `₱${update.price} (${updateDisplayUnit})`}
+                          </td>
+                        </tr>
+                      );
+                    })}
                 </tbody>
                 <tfoot>
                   <tr>
                     <td colSpan={2}><strong>Average Scaled Price</strong></td>
                     <td>
                       {avgScaledPrice !== null
-                        ? `₱${avgScaledPrice.toFixed(2)} per ${ingredient.quantity} ${ingredient.unit}`
+                        ? `₱${avgScaledPrice.toFixed(2)} per ${displayUnit}`
                         : "N/A"}
                     </td>
                   </tr>

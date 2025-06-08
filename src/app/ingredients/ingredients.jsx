@@ -4,6 +4,7 @@ import IngredientTable from "./table";
 
 const weightUnits = ["mg", "g", "kg", "oz", "lb"];
 const volumeUnits = ["ml", "l", "tsp", "Tbs", "fl-oz", "cup", "gal"];
+const timeUnits = ["second", "minute", "hour"];
 
 const getLatestUpdatedDate = (ingredient) => {
   const storedChanges = JSON.parse(localStorage.getItem(`ingredient_changes_${ingredient.id}`)) || [];
@@ -17,30 +18,55 @@ const getLatestUpdatedDate = (ingredient) => {
   return latestStoredDate > originalDate ? latestStoredDate : originalDate;
 };
 
-const convertToGramsOrMl = (value, unit) => {
+const convertToBaseUnit = (value, unit) => {
   const num = parseFloat(value);
   if (isNaN(num)) return null;
-  const conversions = {
-    mg: num / 1000,
-    g: num,
-    kg: num * 1000,
-    oz: num * 28.35,
-    lb: num * 453.6,
-    ml: num,
-    l: num * 1000,
-    tsp: num * 4.93,
-    Tbs: num * 14.79,
-    "fl-oz": num * 29.57,
-    cup: num * 236.6,
-    gal: num * 3785,
-    each: num,
-  };
-  return conversions[unit] || null;
+
+  // Weight units converted to grams
+  if (weightUnits.includes(unit)) {
+    const conversions = {
+      mg: num / 1000,
+      g: num,
+      kg: num * 1000,
+      oz: num * 28.35,
+      lb: num * 453.6,
+    };
+    return conversions[unit] || null;
+  }
+
+  // Volume units converted to milliliters
+  if (volumeUnits.includes(unit)) {
+    const conversions = {
+      ml: num,
+      l: num * 1000,
+      tsp: num * 4.93,
+      Tbs: num * 14.79,
+      "fl-oz": num * 29.57,
+      cup: num * 236.6,
+      gal: num * 3785,
+    };
+    return conversions[unit] || null;
+  }
+
+  // Time units converted to seconds (base unit)
+  if (timeUnits.includes(unit)) {
+    const conversions = {
+      second: num,
+      minute: num * 60,
+      hour: num * 3600,
+    };
+    return conversions[unit] || null;
+  }
+
+  // For 'each' or unknown units, return number as is
+  if (unit === "each") return num;
+
+  return null;
 };
 
 const getPriceChangeDirection = (original, updated) => {
-  const originalAmount = convertToGramsOrMl(original.quantity, original.unit);
-  const updatedAmount = convertToGramsOrMl(updated.quantity, updated.unit);
+  const originalAmount = convertToBaseUnit(original.quantity, original.unit);
+  const updatedAmount = convertToBaseUnit(updated.quantity, updated.unit);
 
   if (!originalAmount || !updatedAmount) return "equal";
 
@@ -130,9 +156,10 @@ function Ingredients() {
   };
 
   const getAvailableUnits = (unit) => {
-    const isWeightUnit = weightUnits.includes(unit);
-    const isVolumeUnit = volumeUnits.includes(unit);
-    return isWeightUnit ? weightUnits : isVolumeUnit ? volumeUnits : ["each"];
+    if (weightUnits.includes(unit)) return weightUnits;
+    if (volumeUnits.includes(unit)) return volumeUnits;
+    if (timeUnits.includes(unit)) return timeUnits;
+    return ["each"];
   };
 
   const getUpdateDirectionsHistory = (ingredient) => {

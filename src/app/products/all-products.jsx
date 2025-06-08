@@ -10,96 +10,117 @@ export const products = [
   { name: "Extra bbq sauce", type: 'i', id: "extrabbqsauce", price: 20, quantity: 1, unit: "each", ingredients: [
     { name: 'BBQ sauce', ingId: "bbqsauce", recipe: true,  quantity: 4.5, unit: "Tbs", noNest: true },
     { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 1, unit: "minute" }, //for re-heating
   ] },
   { name: "Extra buffalo sauce", type: 'i', id: "extrabuffalosauce", price: 20, quantity: 1, unit: "each", ingredients: [
     { name: 'Buffalo sauce', ingId: "buffalosauce", recipe: true,  quantity: 4.5, unit: "Tbs", noNest: true },
     { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 1, unit: "minute" }, //for re-heating
   ] },
   { name: "Extra coleslaw", type: 'i', id: "extracoleslaw", price: 20, quantity: 1, unit: "each", ingredients: [
     { name: 'Coleslaw', ingId: "coleslaw", recipe: true,  quantity: 40, unit: "g", noNest: true },
     { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 1, unit: "minute" }, //for re-heating
   ] },
   { name: "Extra gravy", type: 'i', id: "extragravy", price: 20, quantity: 1, unit: "each", ingredients: [
     { name: 'gravy', ingId: "gravy", recipe: true,  quantity: 4.5, unit: "tbs", noNest: true },
     { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 1, unit: "minute" }, //for re-heating
   ] },
   { name: "Extra honesoy garlic sauce", type: 'i', id: "extrahonesoygarlicsauce", price: 20, quantity: 1, unit: "each", ingredients: [
     { name: 'honesoy garlic sauce', ingId: "honesoygarlicsauce", recipe: true,  quantity: 4.5, unit: "tbs", noNest: true },
     { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 1, unit: "minute" }, //for re-heating
   ] },
   { name: "Extra mushroom sauce", type: 'i', id: "extramushroomsauce", price: 20, quantity: 1, unit: "each", ingredients: [
     { name: 'gravy', ingId: "gravy", recipe: true,  quantity: 3.5, unit: "tbs", noNest: true },
     { name: 'mushroom', ingId: "mushroomps", recipe: false,  quantity: 15, unit: "g" },
     { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 1, unit: "minute" }, //for re-heating
   ] },
   { name: "Extra orange sauce", type: 'i', id: "extraorangesauce", price: 20, quantity: 1, unit: "each", ingredients: [
     { name: 'orange sauce', ingId: "orangesauce", recipe: true,  quantity: 3.5, unit: "tbs", noNest: true },
     { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 1, unit: "minute" }, //for re-heating
   ] },
   { name: "Extra veggies", type: 'i', id: "extraveggies", price: 20, quantity: 1, unit: "each", ingredients: [
     { name: 'veggies', ingId: "veggies", recipe: true,  quantity: 60, unit: "g", noNest: true },
     { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 1, unit: "minute" }, //for re-heating
   ] },
   { name: "Fries regular salt", type: 'i', id: "friesregularsalt", price: 35, quantity: 1, unit: "each", ingredients: [
     { name: 'french fries', ingId: "frenchfries", recipe: false,  quantity: 100, unit: "g" },
     { name: 'iodized salt', ingId: "saltiodized", recipe: false,  quantity: 1, unit: "g" },
     { name: 'fries pouch small', ingId: "frenchfriespouchsmall", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute" },
   ] },
   { name: "Fries regular cheese", type: 'i', id: "friesregularcheese", price: 40, quantity: 1, unit: "each", ingredients: [
     { name: 'french fries', ingId: "frenchfries", recipe: false,  quantity: 100, unit: "g" },
     { name: 'cheese powder', ingId: "cheesepowder", recipe: false,  quantity: 5, unit: "g" },
     { name: 'fries pouch small', ingId: "frenchfriespouchsmall", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute" },
+    
   ] },
   { name: "Fries regular bbq", type: 'i', id: "friesregularbbq", price: 40, quantity: 1, unit: "each", ingredients: [
     { name: 'french fries', ingId: "frenchfries", recipe: false,  quantity: 100, unit: "g" },
     { name: 'bbq powder', ingId: "bbqpowder", recipe: false,  quantity: 8, unit: "g" },
     { name: 'fries pouch small', ingId: "frenchfriespouchsmall", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute" },
   ] },
   { name: "Fries regular sour cream", type: 'i', id: "friesregularsourcream", price: 40, quantity: 1, unit: "each", ingredients: [
     { name: 'french fries', ingId: "frenchfries", recipe: false,  quantity: 100, unit: "g" },
     { name: 'sour cream powder', ingId: "sourcreampowder", recipe: false,  quantity: 8, unit: "g" },
     { name: 'fries pouch small', ingId: "frenchfriespouchsmall", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute" },
   ] },
   { name: "Fries large salt", type: 'i', id: "frieslargesalt", price: 60, quantity: 1, unit: "each", ingredients: [
     { name: 'french fries', ingId: "frenchfries", recipe: false,  quantity: 180, unit: "g" },
     { name: 'iodized salt', ingId: "saltiodized", recipe: false,  quantity: 2, unit: "g" },
     { name: 'fries pouch small', ingId: "frenchfriespouchlarge", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute" },
   ] },
   { name: "Fries large cheese", type: 'i', id: "frieslargecheese", price: 65, quantity: 1, unit: "each", ingredients: [
     { name: 'french fries', ingId: "frenchfries", recipe: false,  quantity: 180, unit: "g" },
     { name: 'cheese powder', ingId: "cheesepowder", recipe: false,  quantity: 9, unit: "g" },
     { name: 'fries pouch small', ingId: "frenchfriespouchlarge", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute" },
   ] },
   { name: "Fries large bbq", type: 'i', id: "frieslargebbq", price: 65, quantity: 1, unit: "each", ingredients: [
     { name: 'french fries', ingId: "frenchfries", recipe: false,  quantity: 180, unit: "g" },
     { name: 'bbq powder', ingId: "bbqpowder", recipe: false,  quantity: 12, unit: "g" },
     { name: 'fries pouch small', ingId: "frenchfriespouchlarge", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute" },
   ] },
   { name: "Fries large sour cream", type: 'i', id: "frieslargesourcream", price: 65, quantity: 1, unit: "each", ingredients: [
     { name: 'french fries', ingId: "frenchfries", recipe: false,  quantity: 180, unit: "g" },
     { name: 'sour cream powder', ingId: "sourcreampowder", recipe: false,  quantity: 12, unit: "g" },
     { name: 'fries pouch small', ingId: "frenchfriespouchlarge", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute" },
   ] },
   { name: "Empanada 5pcs", type: 'i', id: "empanada5pcs", price: 100, quantity: 1, unit: "each", ingredients: [
     { name: 'dough', ingId: "empanadadough", recipe: true,  quantity: 5, unit: "each", noNest: true },
     { name: 'filling', ingId: "empanadafilling", recipe: true,  quantity: 5, unit: "each", noNest: true  },
     { name: 'lb1', ingId: "lb1", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 6, unit: "minute" },
   ] },
   { name: "Empanada 10pcs", type: 'i', id: "empanada10pcs", price: 190, quantity: 1, unit: "each", ingredients: [
     { name: 'dough', ingId: "empanadadough", recipe: true,  quantity: 10, unit: "each", noNest: true  },
     { name: 'filling', ingId: "empanadafilling", recipe: true,  quantity: 10, unit: "each", noNest: true  },
     { name: 'lb2', ingId: "lb2", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 12, unit: "minute" },
   ] },
   { name: "Maruya set", type: 'i', id: "maruyaset", price: 50, quantity: 1, unit: "each", ingredients: [
     { name: 'maruya mixture', ingId: "maruyamixture", recipe: true,  quantity: 180, unit: "ml", noNest: true  },
     { name: 'condensed', ingId: "condensed", recipe: false,  quantity: 3, unit: "Tbs"  },
     { name: 'lb1', ingId: "lb1", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute" },
   ] },
   { name: "Maruya bites", type: 'i', id: "maruyabites", price: 120, quantity: 1, unit: "each", ingredients: [
     { name: 'maruya mixture', ingId: "maruyamixture", recipe: true,  quantity: 480, unit: "ml", noNest: true  },
     { name: 'condensed', ingId: "condensed", recipe: false,  quantity: 4.5, unit: "Tbs"  },
     { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
     { name: 'lb2', ingId: "lb2", recipe: false,  quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 8, unit: "minute" },
   ] },
   { name: "Siomai 6pcs", type: 'i', id: "siomai6pcs", price: 45, quantity: 1, unit: "each", ingredients: [
     { name: 'siomai', ingId: "siomai", recipe: true,  quantity: 6, unit: "each", noNest: true  },
@@ -137,6 +158,7 @@ export const products = [
   { name: "Chaofan solo", type: 'i', id: "chaofansolo", price: 60, quantity: 1, unit: "each", ingredients: [
     { name: 'chaofan', ingId: "chaofan", recipe: true,  quantity: 1, unit: "each", noNest: true  },
     { name: 'parchment paper', ingId: "parchmentpaper", recipe: false, quantity: 1, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 8, unit: "minute" },
   ] },
   { name: "Chicken fillet regular", type: 'i', id: "chickenfilletregular", price: 90, quantity: 1, unit: "each", ingredients: [
     { name: 'chicken fillet', ingId: "chickenfillet", recipe: true,  quantity: 100, unit: "g", noNest: true  },

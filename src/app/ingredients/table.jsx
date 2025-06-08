@@ -1,5 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
+
+const timeUnitLabels = {
+  second: "seconds",
+  minute: "minutes",
+  hour: "hours",
+};
 
 const IngredientTable = ({
   ingredients,
@@ -15,9 +21,8 @@ const IngredientTable = ({
   getLatestUpdatedDate,
   getAvailableUnits,
   getUpdateDirectionsHistory,
-  colors
+  colors,
 }) => {
-
   const sortedIngredients = [...ingredients].sort((a, b) => {
     const now = new Date();
 
@@ -41,7 +46,7 @@ const IngredientTable = ({
       <table>
         <tbody>
           {sortedIngredients
-            .filter(ingredient => ingredient.type !== 'c')
+            .filter((ingredient) => ingredient.type !== "c")
             .map((ingredient) => {
               const lastUpdatedDate = getLatestUpdatedDate(ingredient);
               const nextCheckDate = new Date(lastUpdatedDate);
@@ -51,29 +56,36 @@ const IngredientTable = ({
               const isEach = ingredient.unit === "each";
               const updateDirections = getUpdateDirectionsHistory(ingredient);
 
+              // Label for unit display: use plural for time units, "pcs" for each, otherwise unit as is
+              const unitLabel = isEach
+                ? "pcs"
+                : timeUnitLabels[ingredient.unit]
+                ? timeUnitLabels[ingredient.unit]
+                : ingredient.unit;
+
               return (
                 <tr
                   key={ingredient.id || ingredient.name}
-                  className={isDue ? 'due-check' : ''}
+                  className={isDue ? "due-check" : ""}
                   ref={(el) => (ingredientRefs.current[ingredient.id] = el)}
                 >
                   <td>
                     <div
                       className="ingredient-name"
                       style={{
-                        color: updatedIngredientId === ingredient.id ? 'orange' : 'inherit'
+                        color: updatedIngredientId === ingredient.id ? "orange" : "inherit",
                       }}
                     >
                       <Link to={`/ingredient/${ingredient.id}`}>{ingredient.name}</Link>
                     </div>
                   </td>
 
-                  <td className='indicator-container'>
+                  <td className="indicator-container">
                     <div className="update-indicators">
                       {updateDirections.map((direction, i) => (
                         <div
                           key={i}
-                          className={`indicator-circle ${direction ? direction : ''} ${direction ? 'filled' : ''}`}
+                          className={`indicator-circle ${direction ? direction : ""} ${direction ? "filled" : ""}`}
                           style={{ backgroundColor: colors[direction] }}
                         ></div>
                       ))}
@@ -127,7 +139,9 @@ const IngredientTable = ({
                           ) : (
                             <select name="unit" value={formData.unit} onChange={handleChange} className="unit-dropdown">
                               {availableUnits.map((unit) => (
-                                <option key={unit} value={unit}>{unit}</option>
+                                <option key={unit} value={unit}>
+                                  {timeUnitLabels[unit] || unit}
+                                </option>
                               ))}
                             </select>
                           )}
@@ -135,7 +149,9 @@ const IngredientTable = ({
                         <button onClick={handleUpdate}>update</button>
                       </div>
                     ) : (
-                      <span>{ingredient.price} per {ingredient.quantity} {ingredient.unit === 'each' ? 'pcs' : ingredient.unit}</span>
+                      <span>
+                        {ingredient.price} per {ingredient.quantity} {unitLabel}
+                      </span>
                     )}
                   </td>
                 </tr>

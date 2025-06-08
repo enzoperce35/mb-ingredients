@@ -106,5 +106,6 @@ export const ingredients = [
   { name: "Parchment paper", type: "b", id: "parchmentpaper", brand: null, price: 650, quantity: 1000, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 300 },
   { name: "Siomai plate", type: "b", id: "siomaiplate", brand: null, price: 16, quantity: 40, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 50 },
   { name: "Aluminum foil 300m", type: "b", id: "aluminumfoil300m", brand: null, price: 577.5, quantity: 236, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 150 },
-  { name: "Cling wrap 12x300", type: "b", id: "clingwrap12x300", brand: null, price: 377.5, quantity: 168, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 150 }
+  { name: "Cling wrap 12x300", type: "b", id: "clingwrap12x300", brand: null, price: 377.5, quantity: 168, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 150 },
+  { name: "LPG", type: "b", id: "lpg11kgs", brand: null, price: 980, quantity: 3600, unit: "minute", alterUnit: '60 hours', lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 }, // based on Hanabishi GS-404 gas level consumption(big and small burners on high flame with big burner slighlty used more)
 ];

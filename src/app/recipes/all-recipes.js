@@ -1,6 +1,7 @@
 export const recipes = [
   { name: "Rice", type: 'e', id: "rice", quantity: 17, unit: "cup", ingredients: [
-    { name: 'bigas', ingId: "bigas", recipe: false, quantity: 1818, unit: "g" }
+    { name: 'bigas', ingId: "bigas", recipe: false, quantity: 1818, unit: "g" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 15, unit: "minute", hide: true }, // scaled 30 minutes to low fire usage
   ] },
   { name: "Orange juice", type: 'e', id: "orangejuice", quantity: 1, unit: "l", ingredients: [
     { name: 'orange powder', ingId: "powderedorangejuice", recipe: false, quantity: 19, unit: "g" }
@@ -10,6 +11,7 @@ export const recipes = [
   ] },
   { name: "Fried garlic", type: 'e', id: "friedgarlic", quantity: 200, unit: "g", ingredients: [
     { name: 'bawang', ingId: "bawang", recipe: false, quantity: 300, unit: "g", alterQuantity: 5, alterUnit: 'bulb' },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute", hide: true },
   ] },
   { name: "Siomai toyo mixture", type: 'e', id: "siomaitoyomixture", quantity: 34, unit: "fl-oz", ingredients: [
     { name: 'tubig', ingId: "water", recipe: false, quantity: 2, unit: "cup" },
@@ -17,9 +19,10 @@ export const recipes = [
     { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 15, unit: "g", alterQuantity: 1, alterUnit: "Tbs" },
     { name: 'toyo', ingId: "toyo", recipe: false, quantity: 17, unit: "fl-oz", alterQuantity: 2, alterUnit: "cup" },
   ] },
-  { name: "siomai", type: 'e', id: "siomai", quantity: 1, unit: "each", ingredients: [
-    { name: 'siomai mixture', ingId: "siomaimixture", recipe: true, quantity: 1, unit: "each" },
-    { name: 'molo', ingId: "molo", recipe: false, quantity: 1, unit: "each" },
+  { name: "siomai", type: 'e', id: "siomai", quantity: 20, unit: "each", ingredients: [
+    { name: 'siomai mixture', ingId: "siomaimixture", recipe: true, quantity: 20, unit: "each" },
+    { name: 'molo', ingId: "molo", recipe: false, quantity: 20, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 25, unit: "minute", hide: true }, // scaled 30 minutes to low fire usage with re-heating
   ] },
   { name: "Beef burger", type: 'e', id: "beefburger", quantity: 1, unit: "each", ingredients: [
     { name: 'beef patty', ingId: "beefpatty", recipe: true, quantity: 1, unit: "each" },
@@ -29,6 +32,8 @@ export const recipes = [
     { name: 'mayonnaise', ingId: "mayonnaise", recipe: false, quantity: 2, unit: 'tsp' },
     { name: 'pipino', ingId: "pipino", recipe: false, quantity: 5, unit: 'g' },
     { name: 'kamatis', ingId: "kamatis", recipe: false, quantity: 5, unit: 'g' },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute", hide: true },
+    
   ] },
   { name: "Chicken burger", type: 'e', id: "chickenburger", quantity: 1, unit: "each", ingredients: [
     { name: 'chicken patty', ingId: "chickenpatty", recipe: true, quantity: 1, unit: "each" },
@@ -39,6 +44,7 @@ export const recipes = [
     { name: 'evap', ingId: "evap", recipe: false, quantity: 2, unit: 'tsp' },
     { name: 'breading', ingId: "breading", recipe: true, quantity: 2, unit: 'tsp' },
     { name: 'bread crumbs', ingId: "breadcrumbs", recipe: false, quantity: 10, unit: 'g' },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute", hide: true },
   ] },
   { name: "Fried rice", type: 'e', id: "friedrice", quantity: 1, unit: "cup", ingredients: [
     { name: 'rice', ingId: "rice", recipe: true, quantity: 1.5, unit: "cup", noNest: true },
@@ -46,11 +52,13 @@ export const recipes = [
     { name: 'bawang', ingId: "bawang", recipe: false, quantity: 5, unit: "g" },
     { name: 'garlic powder', ingId: "garlicpowder", recipe: false, quantity: 7.5, unit: "g", alterQuantity: 1.5, alterUnit: 'tsp' },
     { name: 'rock salt', ingId: "saltrock", recipe: false, quantity: 2, unit: "g" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 5, unit: "minute", hide: true },
   ] },
   { name: "Fried egg", type: 'e', id: "friedegg", quantity: 1, unit: "each", ingredients: [
     { name: 'egg', ingId: "eggxs", recipe: false, quantity: 1, unit: "each" },
     { name: 'mantika', ingId: "mantika", recipe: false, quantity: 1, unit: "Tbs" },
-    { name: 'ketchup', ingId: "bananaketchup", recipe: false, quantity: 18.5, unit: 'g', alterQuantity: 1, alterUnit: "Tbs" }
+    { name: 'ketchup', ingId: "bananaketchup", recipe: false, quantity: 18.5, unit: 'g', alterQuantity: 1, alterUnit: "Tbs" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 3, unit: "minute", hide: true },
   ] },
   { name: "Siomai condiments", type: 'e', id: "siomaicondiments", quantity: 1, unit: "each", ingredients: [
     { name: 'chili oil', ingId: "chilioil", recipe: true,  quantity: 2, unit: "tsp"  },
@@ -62,6 +70,21 @@ export const recipes = [
     { name: 'chicken fillet marinate', ingId: "chickenfilletmarinate", recipe: true,  quantity: 100, unit: "g"  },
     { name: 'breading', ingId: "breading", recipe: true, quantity: .25, unit: 'cup' },
     { name: 'breadcrumbs', ingId: "breadcrumbs", recipe: false,  quantity: 65.7, unit: "g" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute", hide: true },
+  ] },
+  { name: "Chaofan", type: 'e', id: "chaofan", quantity: 1, unit: "each", ingredients: [
+    { name: 'chaofan', ingId: "chaofanmixture", recipe: true,  quantity: 40, unit: "g" },
+    { name: 'rice', ingId: "rice", recipe: true,  quantity: 1, unit: "cup", noNest: true  },
+    { name: 'eggxs', ingId: "eggxs", recipe: false,  quantity: 1, unit: "each"  },
+    { name: 'mantika', ingId: "mantika", recipe: false,  quantity: 1, unit: "Tbs"  },
+    { name: 'liquid seasoning', ingId: "liquidseasoning", recipe: false, quantity: 1, unit: "Tbs" },
+    { name: 'oyster sauce', ingId: "oystersauce", recipe: false, quantity: 17.5, unit: "g", alterQuantity: 1, alterUnit: 'Tbs' },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 8, unit: "minute", hide: true },
+  ] },
+  { name: "Puto", type: 'e', id: "puto", quantity: 19, unit: "each", ingredients: [
+    { name: 'puto mixture', ingId: "putomixture", recipe: true,  quantity: 2.375, unit: "cup" },
+    { name: 'cheese', ingId: "cheese", recipe: false, quantity: 11.25, unit: "g" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 15, unit: "minute", hide: true },
   ] },
 
 
@@ -104,6 +127,7 @@ export const recipes = [
     { name: 'chili powder', ingId: "chilipowder", recipe: false, quantity: 3, unit: "g", alterQuantity: 1, alterUnit: 'tsp' },
     { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 2.5, unit: "g", alterQuantity: 0.5, alterUnit: "tsp" },
     { name: 'sili', ingId: "sili", recipe: false, quantity: 38, unit: "g" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute", hide: true },
   ] },
   { name: "Beef patty", type: 'g', id: "beefpatty", quantity: 28, unit: "each", ingredients: [
     { name: 'ground beef', ingId: "groundbeef", recipe: false,  quantity: 1, unit: "kg"  },
@@ -130,14 +154,6 @@ export const recipes = [
     { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 3, unit: "g", alterQuantity: 1, alterUnit: 'tsp' },
     { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 2.5, unit: "g", alterQuantity: 1/2, alterUnit: 'tsp' },
   ] },
-  { name: "Chaofan", type: 'g', id: "chaofan", quantity: 1, unit: "each", ingredients: [
-    { name: 'chaofan', ingId: "chaofanmixture", recipe: true,  quantity: 40, unit: "g", noNest: true  },
-    { name: 'rice', ingId: "rice", recipe: true,  quantity: 1, unit: "cup", noNest: true  },
-    { name: 'eggxs', ingId: "eggxs", recipe: false,  quantity: 1, unit: "each"  },
-    { name: 'mantika', ingId: "mantika", recipe: false,  quantity: 1, unit: "Tbs"  },
-    { name: 'liquid seasoning', ingId: "liquidseasoning", recipe: false, quantity: 1, unit: "Tbs" },
-    { name: 'oyster sauce', ingId: "oystersauce", recipe: false, quantity: 17.5, unit: "g", alterQuantity: 1, alterUnit: 'Tbs' },
-  ] },
   { name: "Chicken fillet marinate", type: 'g', id: "chickenfilletmarinate", quantity: 4.5, unit: "kg", ingredients: [
     { name: 'chicken breast', ingId: "chickenbreast", recipe: false,  quantity: 5, unit: "kg" },
     { name: 'paprika', ingId: "paprika", recipe: false, quantity: 90, unit: "g", alterQuantity: 6, alterUnit: 'Tbs' },
@@ -146,10 +162,6 @@ export const recipes = [
     { name: 'asin', ingId: "saltrock", recipe: false, quantity: 60, unit: "g", alterQuantity: 3, alterUnit: 'Tbs' },
     { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 10.5, unit: "g", alterQuantity: 1.5, alterUnit: 'Tbs' },
     { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 22.5, unit: "g", alterQuantity: 1.5, alterUnit: 'Tbs' },
-  ] },
-  { name: "Puto", type: 'f', id: "puto", quantity: 1, unit: "each", ingredients: [
-    { name: 'puto mixture', ingId: "putomixture", recipe: true,  quantity: 0.125, unit: "cup" },
-    { name: 'cheese', ingId: "cheese", recipe: false, quantity: 1.25, unit: "g" },
   ] },
 
 
@@ -168,7 +180,8 @@ export const recipes = [
       { name: 'brown Sugar', ingId: "sugarbrown", recipe: false, quantity: 110, unit: "g", alterQuantity: 0.5, alterUnit: 'cup' },
       { name: 'worcestershire sauce', ingId: "worcestershiresauce", recipe: false, quantity: 0.125, unit: "cup" },
       { name: 'cornstarch', ingId: "cornstarch", recipe: false, quantity: 120, unit: "g", alterQuantity: 1, alterUnit: 'cup' },
-      { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 3, unit: "g" }
+      { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 3, unit: "g" },
+      { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 8, unit: "minute", hide: true },
     ],
     instructions: {
       steps: [
@@ -188,7 +201,8 @@ export const recipes = [
       { name: 'garlic powder', ingId: "garlicpowder", recipe: false, quantity: 2.5, unit: "g", alterQuantity: 0.5, alterUnit: 'tsp' },
       { name: 'brown sugar', ingId: "sugarbrown", recipe: false, quantity: 12, unit: "g", alterQuantity: 1, alterUnit: 'Tbs' },
       { name: 'suka', ingId: "vinegar", recipe: false, quantity: 7.4, unit: "ml", alterQuantity: 0.5, alterUnit: 'Tbs' },
-      { name: 'banana ketchup', ingId: "bananaketchup", recipe: false, quantity: 120, unit: "g", alterQuantity: 0.5, alterUnit: 'cup' }
+      { name: 'banana ketchup', ingId: "bananaketchup", recipe: false, quantity: 120, unit: "g", alterQuantity: 0.5, alterUnit: 'cup' },
+      { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 8, unit: "minute", hide: true },
     ],
     instructions: {
       steps: [
@@ -207,6 +221,7 @@ export const recipes = [
       { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 1, unit: "g" },
       { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 1, unit: "g" },
       { name: 'hot sauce', ingId: "hotsauce", recipe: false, quantity: 34, unit: "g", alterQuantity: 2, alterUnit: 'Tbs' },
+      { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 8, unit: "minute", hide: true },
     ],
     instructions: {
       steps: [
@@ -226,6 +241,7 @@ export const recipes = [
       { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 1, unit: "g" },
       { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 1, unit: "g" },
       { name: 'cornstarch', ingId: "cornstarch", recipe: false, quantity: 30, unit: "g", alterQuantity: 0.25, alterUnit: "cup" },
+      { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 8, unit: "minute", hide: true },
     ],
     instructions: {
       steps: [
@@ -236,7 +252,7 @@ export const recipes = [
       ],
     },
   },
-  { name: "Gravy", type: 'f', id: "gravy", quantity: 651, unit: "ml", prepTime: '10 mins',
+  { name: "Gravy", type: 'f', id: "gravy", quantity: 651, unit: "ml", prepTime: '8 mins',
     ingredients: [
       { name: 'tubig', ingId: "water", recipe: false, quantity: 5, unit: "cup" },
       { name: 'butter', ingId: "butter", recipe: false, quantity: 50, unit: "g", alterQuantity: 0.25, alterUnit: 'each' },
@@ -244,6 +260,7 @@ export const recipes = [
       { name: 'beef cube', ingId: "beefcube", recipe: false, quantity: 2, unit: "each" },
       { name: 'liquid seasoning', ingId: "liquidseasoning", recipe: false, quantity: 80, unit: "ml" },
       { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 1.2, unit: "g", alterQuantity: 0.5, alterUnit: 'tsp'},
+      { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 8, unit: "minute", hide: true },
     ],
     instructions: {
       steps: [
@@ -267,6 +284,7 @@ export const recipes = [
       { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 1, unit: "g" },
       { name: 'asin', ingId: "saltrock", recipe: false, quantity: 1, unit: "g" },
       { name: 'mantika', ingId: "mantika", recipe: false, quantity: 3, unit: "Tbs" },
+      { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 5, unit: "minute", hide: true },
     ],
     instructions: {
       steps: [
@@ -310,6 +328,7 @@ export const recipes = [
       { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 1.15, unit: "g", alterQuantity: 1/2, alterUnit: "tsp" },
       { name: 'liquid seasoning', ingId: "liquidseasoning", recipe: false, quantity: .50, unit: "cup" },
       { name: 'pasas', ingId: "pasas", recipe: false, quantity: 125, unit: "g" },
+      { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 20, unit: "minute", hide: true },
     ],
     instructions: {
       steps: [
@@ -341,6 +360,7 @@ export const recipes = [
     { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 2.3, unit: "g", alterQuantity: 1, alterUnit: 'tsp' },
     { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 5, unit: "g", alterQuantity: 1, alterUnit: 'tsp' },
     { name: 'green peas', ingId: "greenpeas", recipe: false, quantity: 155, unit: "g", alterQuantity: '155g', alterUnit: 'can' },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 20, unit: "minute", hide: true },
   ],
   instructions: {
     steps: [

@@ -2,38 +2,43 @@ import { recipes } from "../recipes/all-recipes";
 import { ingredients } from "../ingredients/ingredient-list";
 import { convertToBaseUnit } from "./unitConversion";
 
-// Helper functions for cost calculations with unit conversions
+// Helper: Safely get the latest update from localStorage
+function getUpdatedItem(item, useUpdated) {
+  if (!useUpdated) return item;
+
+  const stored = localStorage.getItem("ingredient_changes_" + item.id);
+  if (!stored) return item;
+
+  try {
+    const updates = JSON.parse(stored);
+    if (Array.isArray(updates) && updates.length > 0) {
+      const last = updates[updates.length - 1];
+      return {
+        ...item,
+        price: last.price !== undefined ? last.price : item.price,
+        quantity: last.quantity !== undefined ? last.quantity : item.quantity,
+        unit: last.unit !== undefined ? last.unit : item.unit,
+      };
+    }
+  } catch (err) {
+    console.warn(`Failed to parse update for ${item.id}`, err);
+  }
+
+  return item;
+}
+
+// Ingredient cost computation with unit conversion
 export const getIngredientCost = (ingId, usedQty, usedUnit, useUpdated = false) => {
   let item = ingredients.find(i => i.id === ingId);
   if (!item) return 0;
 
-  if (useUpdated) { 
-    const stored = localStorage.getItem("ingredient_changes_" + item.id);
-    if (stored) {
-      try {
-        const updatedItem = JSON.parse(stored);
-        
-        // Ensure updatedItem is an array with at least one element before accessing [0]
-        if (Array.isArray(updatedItem) && updatedItem.length > 0) {
-          const lastUpdate = updatedItem[updatedItem.length - 1];
-          item = { 
-            ...item, 
-            price: lastUpdate.price !== undefined ? lastUpdate.price : item.price,
-            quantity: lastUpdate.quantity !== undefined ? lastUpdate.quantity : item.quantity, 
-            unit: lastUpdate.unit !== undefined ? lastUpdate.unit : item.unit 
-          };
-        }
-      } catch (err) {
-        console.warn(`Failed to parse localStorage for ingredient ${ingId}`, err);
-      }
-    }
-  }
-  
+  item = getUpdatedItem(item, useUpdated);
+
   const { quantity: baseUsedQty, unit: baseUsedUnit } = convertToBaseUnit(usedQty, usedUnit);
   const { quantity: baseItemQty, unit: baseItemUnit } = convertToBaseUnit(item.quantity, item.unit);
 
   if (baseUsedUnit !== baseItemUnit) {
-    console.warn(`Unit mismatch for ingredient ${item.name}: used unit (${baseUsedUnit}) vs item unit (${baseItemUnit})`);
+    console.warn(`Unit mismatch for ingredient ${item.name}: used (${baseUsedUnit}) vs item (${baseItemUnit})`);
     return 0;
   }
 
@@ -43,19 +48,16 @@ export const getIngredientCost = (ingId, usedQty, usedUnit, useUpdated = false) 
   return costPerBaseUnit * baseUsedQty;
 };
 
+// Recipe cost computation
 export const getRecipeCost = (recipeId, usedQty, usedUnit, useUpdated = false) => {
   const recipe = recipes.find(r => r.id === recipeId);
   if (!recipe) return 0;
 
   const totalCostForRecipeQty = recipe.ingredients.reduce((total, ing) => {
-    const quantity = ing.quantity;
-    const unit = ing.unit;
-
-    // Note: Make sure ing.recipe is boolean, and ing.ingId is correct key
     if (ing.recipe) {
-      return total + getRecipeCost(ing.ingId, quantity, unit, useUpdated);
+      return total + getRecipeCost(ing.ingId, ing.quantity, ing.unit, useUpdated);
     } else {
-      return total + getIngredientCost(ing.ingId, quantity, unit, useUpdated);
+      return total + getIngredientCost(ing.ingId, ing.quantity, ing.unit, useUpdated);
     }
   }, 0);
 
@@ -65,7 +67,7 @@ export const getRecipeCost = (recipeId, usedQty, usedUnit, useUpdated = false) =
   if (baseRecipeQty === 0) return 0;
 
   if (baseRecipeUnit !== baseUsedUnit) {
-    console.warn(`Unit mismatch for recipe ${recipe.name}: recipe unit (${baseRecipeUnit}) vs used unit (${baseUsedUnit})`);
+    console.warn(`Unit mismatch for recipe ${recipe.name}: recipe (${baseRecipeUnit}) vs used (${baseUsedUnit})`);
     return 0;
   }
 
@@ -73,6 +75,7 @@ export const getRecipeCost = (recipeId, usedQty, usedUnit, useUpdated = false) =
   return costPerBaseUnit * baseUsedQty;
 };
 
+// Product cost computation
 export const getProductCost = (product, useUpdated = false) => {
   return product.ingredients.reduce((total, ing) => {
     if (ing.recipe) {

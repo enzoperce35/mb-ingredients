@@ -43,7 +43,6 @@ export default function RecipeDetail() {
 
       <div className="recipe-content-landscape">
         <section className="ingredients-section">
-          {/* Keep original h2 style, position button independently */}
           <div className="ingredients-title-container">
             <h2>Ingredients</h2>
             <button
@@ -56,36 +55,41 @@ export default function RecipeDetail() {
           </div>
 
           <ul className="ingredient-list">
-            {recipe.ingredients.map((ingredient) => {
-              const {
-                name,
-                ingId,
-                quantity,
-                unit,
-                alterQuantity,
-                alterUnit,
-              } = ingredient;
+            {recipe.ingredients
+              .filter(ingredient => !ingredient.hide || showIngredientCosts)
+              .map((ingredient) => {
+                const {
+                  name,
+                  ingId,
+                  quantity,
+                  unit,
+                  alterQuantity,
+                  alterUnit,
+                } = ingredient;
 
-              const formattedQuantity = alterQuantity && alterUnit
-                ? convertToExactKitchenUnit(alterQuantity, alterUnit)
-                : convertToExactKitchenUnit(quantity, unit);
+                const formattedQuantity = alterQuantity && alterUnit
+                  ? convertToExactKitchenUnit(alterQuantity, alterUnit)
+                  : convertToExactKitchenUnit(quantity, unit);
 
-              const ingredientCost = showIngredientCosts
-                ? getProductCost({ ingredients: [ingredient] })
-                : null;
+                const ingredientCost = showIngredientCosts
+                  ? getProductCost({ ingredients: [ingredient] })
+                  : null;
 
-              return (
-                <li key={ingId} className="ingredient-item">
-                  <span className="ingredient-name">{name}</span>
-                  <div className="ingredient-right">
-                    <span className="ingredient-amount">{formattedQuantity}</span>
-                    {showIngredientCosts && (
-                      <span className="ingredient-cost">₱{ingredientCost.toFixed(2)}</span>
+                return (
+                  <li
+                    key={ingId}
+                    className={`ingredient-item ${ingredient.hide ? "hidden-ingredient" : ""}`}
+                  >
+                    <span className="ingredient-name">{name}</span>
+                    <div className="ingredient-right">
+                      <span className="ingredient-amount">{formattedQuantity}</span>
+                      {showIngredientCosts && (
+                        <span className="ingredient-cost">₱{ingredientCost.toFixed(2)}</span>
                       )}
-                  </div>
-                </li>
-              );
-            })}
+                    </div>
+                  </li>
+                );
+              })}
           </ul>
         </section>
 
