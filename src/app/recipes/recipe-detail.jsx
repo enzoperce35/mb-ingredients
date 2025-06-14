@@ -104,6 +104,13 @@ export default function RecipeDetail() {
           </section>
         )}
       </div>
+
+      {recipe.note && (
+        <div>
+          <h3>📌 Note</h3>
+          <p className="recipe-note">{recipe.note}</p>
+        </div>
+      )}
     </div>
   );
 }

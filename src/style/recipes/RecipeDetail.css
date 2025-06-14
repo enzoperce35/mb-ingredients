@@ -139,6 +139,10 @@
   line-height: 1.5;
 }
 
+.recipe-note {
+  padding-left: 20px;
+}
+
 @media (max-width: 600px) {
   .recipe-header {
     flex-direction: column;
