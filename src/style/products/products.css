@@ -46,22 +46,6 @@
 }
 
 /* Clickable cost cell styles */
-.product-table td.clickable {
-  cursor: pointer;
-}
-
-.product-table td.clickable:hover,
-.product-table td.clickable:focus {
-  color: #0b47a1;
-  background-color: #e6f0ff;
-  outline: none;
-}
-
-.product-table td.clickable:focus {
-  outline: 2px solid #0056b3;
-  outline-offset: 2px;
-}
-
 td.diff-positive {
   color: green;
   font-weight: bold;

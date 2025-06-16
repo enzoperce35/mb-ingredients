@@ -120,7 +120,7 @@ export const recipes = [
   ] },
   { name: "bihon", type: 'e', id: "bihon", quantity: 1, unit: "each", ingredients: [
     { name: 'bihon noodles', ingId: "noodlesbihon", recipe: true,  quantity: 1, unit: "cup" },
-    { name: 'bihon toppings', ingId: "pansitbihontoppings", recipe: true,  quantity: 80, unit: "g" }, // 70g for veggies and 10g for kikiam
+    { name: 'bihon toppings', ingId: "pancitbihontoppings", recipe: true,  quantity: 80, unit: "g" }, // 70g for veggies and 10g for kikiam
     { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 6, unit: "g" },
   ] },
   { name: "Lumpiang Shanghai", type: 'e', id: "lumpiangshanghai", quantity: 2, unit: "each", ingredients: [
@@ -438,7 +438,7 @@ export const recipes = [
       ],
     },
  },
-  { name: "Pansit toppings", type: 'f', id: "pansitbihontoppings", quantity: 1450, unit: "g", ingredients: [
+  { name: "Pancit toppings", type: 'f', id: "pancitbihontoppings", quantity: 1450, unit: "g", ingredients: [
     { name: 'chicken breast', ingId: "chickenbreast", recipe: false,  quantity: .50, unit: "kg", alterQuantity: '1/2', alterUnit: 'kg'  },
     { name: 'mantika', ingId: "mantika", recipe: false, quantity: 1, unit: "cup" },
     { name: 'kikiam(sliced)', ingId: "kikiam", recipe: false, quantity: 120, unit: "g", alterQuantity: '15', alterUnit: 'each' },
@@ -497,10 +497,10 @@ export const recipes = [
   ] },
   { name: "Maruya mixture", type: 'g', id: "maruyamixture", quantity: 651, unit: "ml", ingredients: [
     { name: 'harina', ingId: "harina", recipe: false, quantity: 120, unit: "g", alterQuantity: 1, alterUnit: "cup" },
-    { name: 'asukal', ingId: "sugarwhite", recipe: false, quantity: 100, unit: "g", alterQuantity: 1, alterUnit: "cup" },
+    { name: 'asukal', ingId: "sugarwhite", recipe: false, quantity: 100, unit: "g", alterQuantity: '1/2', alterUnit: "cup" },
     { name: 'saba', ingId: "sagingsaba", recipe: false, quantity: 440, unit: 'g', alterQuantity: '4-5', alterUnit: "pcs" },
     { name: 'egg xs', ingId: "eggxs", recipe: false, quantity: 1, unit: "each" },
-    { name: 'evap', ingId: "evap", recipe: false, quantity: 120, unit: 'ml'},
+    { name: 'evap', ingId: "evap", recipe: false, quantity: 158.7, unit: 'ml', alterQuantity: '2/3', alterUnit: "cup"},
   ] },
   { name: "Siomai mixture", type: 'g', id: "siomaimixture", quantity: 150, unit: "each", ingredients: [
     { name: 'ground pork', ingId: "groundpork", recipe: false, quantity: 1, unit: "kg" },

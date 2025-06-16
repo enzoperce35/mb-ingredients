@@ -202,20 +202,92 @@ export const products = [
     { name: 'spaghettibox', ingId: "spaghettibox", recipe: false,  quantity: 1, unit: "each" },
     { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 3, unit: "minute" }, //for re-heating
   ] },
+  { name: "Carbonara medium", type: 'i', id: "carbonaramediumbilao", price: 550, quantity: 1, unit: "each", ingredients: [
+    { name: 'carbonara', ingId: "carbonara", recipe: true,  quantity: 10, unit: "each", noNest: true  },
+    { name: 'bilaomedium', ingId: "bilaomedium", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Carbonara large", type: 'i', id: "carbonaralargebilao", price: 750, quantity: 1, unit: "each", ingredients: [
+    { name: 'carbonara', ingId: "carbonara", recipe: true,  quantity: 15, unit: "each", noNest: true  },
+    { name: 'bilaolarge', ingId: "bilaolarge", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Carbonara xl", type: 'i', id: "carbonaraxlbilao", price: 950, quantity: 1, unit: "each", ingredients: [
+    { name: 'carbonara', ingId: "carbonara", recipe: true,  quantity: 20, unit: "each", noNest: true  },
+    { name: 'bilaoxl', ingId: "bilaoxl", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
+  ] },
   { name: "Spaghetti solo", type: 'i', id: "spaghettisolo", price: 60, quantity: 1, unit: "each", ingredients: [
     { name: 'spaghetti', ingId: "spaghetti", recipe: true,  quantity: 1, unit: "each", noNest: true  },
     { name: 'spaghettibox', ingId: "spaghettibox", recipe: false,  quantity: 1, unit: "each" },
     { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 3, unit: "minute" }, //for re-heating
+  ] },
+  { name: "Spaghetti medium", type: 'i', id: "spaghettimediumbilao", price: 550, quantity: 1, unit: "each", ingredients: [
+    { name: 'spaghetti', ingId: "spaghetti", recipe: true,  quantity: 10, unit: "each", noNest: true  },
+    { name: 'bilaomedium', ingId: "bilaomedium", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Spaghetti large", type: 'i', id: "spaghettilargebilao", price: 750, quantity: 1, unit: "each", ingredients: [
+    { name: 'spaghetti', ingId: "spaghetti", recipe: true,  quantity: 15, unit: "each", noNest: true  },
+    { name: 'bilaolarge', ingId: "bilaolarge", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Spaghetti xl", type: 'i', id: "spaghettixlbilao", price: 950, quantity: 1, unit: "each", ingredients: [
+    { name: 'spaghetti', ingId: "spaghetti", recipe: true,  quantity: 20, unit: "each", noNest: true  },
+    { name: 'bilaoxl', ingId: "bilaoxl", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
   ] },
   { name: "Palabok solo", type: 'i', id: "palaboksolo", price: 60, quantity: 1, unit: "each", ingredients: [
     { name: 'palabok', ingId: "palabok", recipe: true,  quantity: 1, unit: "each", noNest: true  },
     { name: 'spaghettibox', ingId: "spaghettibox", recipe: false,  quantity: 1, unit: "each" },
     { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 3, unit: "minute" }, //for re-heating
   ] },
-  { name: "Pansit bihon solo", type: 'i', id: "pansitbihonsolo", price: 60, quantity: 1, unit: "each", ingredients: [
+  { name: "Palabok medium", type: 'i', id: "palabokmediumbilao", price: 500, quantity: 1, unit: "each", ingredients: [
+    { name: 'palabok', ingId: "palabok", recipe: true,  quantity: 10, unit: "each", noNest: true  },
+    { name: 'bilaomedium', ingId: "bilaomedium", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Palabok large", type: 'i', id: "palaboklargebilao", price: 700, quantity: 1, unit: "each", ingredients: [
+    { name: 'palabok', ingId: "palabok", recipe: true,  quantity: 15, unit: "each", noNest: true  },
+    { name: 'bilaolarge', ingId: "bilaolarge", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Palabok xl", type: 'i', id: "palabokxlbilao", price: 850, quantity: 1, unit: "each", ingredients: [
+    { name: 'palabok', ingId: "palabok", recipe: true,  quantity: 20, unit: "each", noNest: true  },
+    { name: 'bilaoxl', ingId: "bilaoxl", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Pancit bihon solo", type: 'i', id: "pancitbihonsolo", price: 60, quantity: 1, unit: "each", ingredients: [
     { name: 'bihon', ingId: "bihon", recipe: true,  quantity: 1, unit: "each", noNest: true  },
     { name: 'spaghettibox', ingId: "spaghettibox", recipe: false,  quantity: 1, unit: "each" },
     { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 3, unit: "minute" }, //for re-heating
+  ] },
+  { name: "Pancit bihon medium", type: 'i', id: "pancitbihonmediumbilao", price: 600, quantity: 1, unit: "each", ingredients: [
+    { name: 'bihon', ingId: "bihon", recipe: true,  quantity: 10, unit: "each", noNest: true  },
+    { name: 'bilaomedium', ingId: "bilaomedium", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Pancit bihon large", type: 'i', id: "pancitbihonlargebilao", price: 850, quantity: 1, unit: "each", ingredients: [
+    { name: 'bihon', ingId: "bihon", recipe: true,  quantity: 15, unit: "each", noNest: true  },
+    { name: 'bilaolarge', ingId: "bilaolarge", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
+  ] },
+  { name: "Pancit bihon xl", type: 'i', id: "pancitbihonxlbilao", price: 1050, quantity: 1, unit: "each", ingredients: [
+    { name: 'bihon', ingId: "bihon", recipe: true,  quantity: 20, unit: "each", noNest: true  },
+    { name: 'bilaoxl', ingId: "bilaoxl", recipe: false, quantity: 1, unit: "each" },
+    { name: 'aluminum foil', ingId: "aluminumfoil300m", recipe: false, quantity: 1, unit: "each" },
+    { name: 'cling wrap', ingId: "clingwrap12x300", recipe: false,  quantity: 1, unit: "each" },
   ] },
   { name: "Shanghai 12pcs", type: 'i', id: "shanghai12pcs", price: 85, quantity: 1, unit: "each", ingredients: [
     { name: 'shanghai', ingId: "lumpiangshanghai", recipe: true,  quantity: 12, unit: "each", noNest: true  },

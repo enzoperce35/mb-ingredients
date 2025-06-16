@@ -32,21 +32,21 @@ const ProductTable = () => {
             const diffText = diff > 0 ? `+${diff.toFixed(2)}` : `${diff.toFixed(2)}`;
 
             return (
-              <tr key={product.id || idx}>
+              <tr
+                key={product.id || idx}
+                className="clickable-row"
+                tabIndex={0}
+                role="button"
+                title="View cost breakdown"
+                onClick={() => navigate(`/product/${product.id}/cost-breakdown`)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    navigate(`/product/${product.id}/cost-breakdown`);
+                  }
+                }}
+              >
                 <td>{product.name}</td>
-                <td
-                  className="clickable"
-                  onClick={() => navigate(`/product/${product.id}/cost-breakdown`)}
-                  title="View cost breakdown"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      navigate(`/product/${product.id}/cost-breakdown`);
-                    }
-                  }}
-                >
-                  ₱{cost.toFixed(2)}
-                </td>
+                <td>₱{cost.toFixed(2)}</td>
                 <td>₱{product.price.toFixed(2)}</td>
                 <td>₱{profit.toFixed(2)}</td>
                 <td className={diffClass}>{diffText}</td>
