@@ -39,7 +39,7 @@ export const ingredients = [
   { name: "Honey", type: 'a', id: "honey", brand: null, price: 59, quantity: 320, unit: "g", alterUnit: '320g bottle', lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },
   { name: "Hotdog", type: 'a', id: "hotdog", brand: "All Time", price: 169, quantity: 30, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },
   { name: "Hot sauce", type: 'a', id: "hotsauce", brand: "Red Label", price: 24, quantity: 100, unit: "g", alterUnit: '100g bottle', lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },
-  { name: "Iced tea", type: 'a', id: "icedtea", brand: "Pitchel", price: 16, quantity: 20, unit: "g", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 50 },
+  { name: "Iced tea", type: 'a', id: "powderedicedtea", brand: "Pitchel", price: 16, quantity: 20, unit: "g", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 50 },
   { name: "Jelly powder", type: 'a', id: "jellypowder", brand: "Mr Gulaman", price: 14.50, quantity: 25, unit: "g", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 50 },
   { name: "Kalamansi", type: 'a', id: "kalamansi", brand: null, price: 70, quantity: 1, unit: "kg", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 15 },
   { name: "Kamatis", type: 'a', id: "kamatis", brand: null, price: 80, quantity: 1, unit: "kg", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 15 },
@@ -88,6 +88,7 @@ export const ingredients = [
   { name: "Kerimo cup", type: "b", id: "kerimocup", brand: null, price: 100, quantity: 50, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 25 },
   { name: "Fries cup", type: "b", id: "friescup", brand: null, price: 50, quantity: 50, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 25 },
   { name: "Gravy cup", type: "b", id: "gravycup", brand: null, price: 50, quantity: 50, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },
+  { name: "Plastic cup medium", type: "b", id: "plasticcupmedium", brand: null, price: 50, quantity: 50, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },
   { name: "LB2", type: "b", id: "lb2", brand: "Trigem", price: 128.75, quantity: 50, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },
   { name: "LB1", type: "b", id: "lb1", brand: "Trigem", price: 116.82, quantity: 50, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },
   { name: "Bending straw", type: "b", id: "bendingstraw", brand: null, price: 19.6, quantity: 100, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 45 },
@@ -105,7 +106,7 @@ export const ingredients = [
   { name: "Water", type: "c", id: "water", brand: null, price: 0, quantity: 0, unit: "cup", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 0 },
   { name: "Parchment paper", type: "b", id: "parchmentpaper", brand: null, price: 650, quantity: 1000, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 300 },
   { name: "Siomai plate", type: "b", id: "siomaiplate", brand: null, price: 16, quantity: 40, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 50 },
-  { name: "Aluminum foil 300m", type: "b", id: "aluminumfoil300m", brand: null, price: 577.5, quantity: 236, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 150 },
-  { name: "Cling wrap 12x300", type: "b", id: "clingwrap12x300", brand: null, price: 377.5, quantity: 168, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 150 },
+  { name: "Aluminum foil 300m", type: "b", id: "aluminumfoil300m", brand: null, price: 577.5, quantity: 164, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 150 },  // large bilao(14inch) needs 4 18inch foil for packaging
+  { name: "Cling wrap 12x300", type: "b", id: "clingwrap12x300", brand: null, price: 377.5, quantity: 169, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 150 },  // large bilao(14inch) needs 5 14inch foil for packaging
   { name: "LPG", type: "b", id: "lpg11kgs", brand: null, price: 980, quantity: 3600, unit: "minute", alterUnit: '60 hours', lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 }, // based on Hanabishi GS-404 gas level consumption(big and small burners on high flame with big burner slighlty used more)
 ];

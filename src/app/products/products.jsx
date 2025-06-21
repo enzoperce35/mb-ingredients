@@ -6,6 +6,11 @@ import { getProductCost } from "../utils/costCalculations";
 const ProductTable = () => {
   const navigate = useNavigate();
 
+  // Sort products alphabetically by name (case-insensitive)
+  const sortedProducts = [...products].sort((a, b) =>
+    a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
+  );
+
   return (
     <div className="product-table-container">
       <table className="product-table">
@@ -19,11 +24,11 @@ const ProductTable = () => {
           </tr>
         </thead>
         <tbody>
-          {products.map((product, idx) => {
+          {sortedProducts.map((product, idx) => {
             const cost = getProductCost(product);
             const updated = getProductCost(product, true);
             const profit = product.price - cost;
-            const diff = cost - updated  ;
+            const diff = cost - updated;
 
             let diffClass = "";
             if (diff > 0) diffClass = "diff-positive";
