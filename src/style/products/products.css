@@ -1,3 +1,5 @@
+/* ProductTable.css */
+
 .product-table-container {
   max-width: 960px;
   margin: 2rem auto;
@@ -6,89 +8,77 @@
   border-radius: 14px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   overflow-x: auto;
-  font-family: "Segoe UI", sans-serif;
-  font-size: 0.85rem; /* smaller overall text */
 }
 
-.product-table-container h2 {
-  margin-bottom: 1rem;
-  font-size: 1.5rem; /* slightly smaller */
-  color: #2a2a2a;
-  text-align: center;
+.product-table-container.small-text .product-table th,
+.product-table-container.small-text .product-table td {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.6rem;
+  line-height: 1.4;
 }
 
 .product-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 600px;
-  font-size: 0.85rem; /* smaller text in table */
+  table-layout: fixed; /* Ensures fixed widths per column */
 }
 
 .product-table th,
 .product-table td {
-  padding: 10px 14px; /* reduce padding */
-  text-align: left;
-}
-
-.product-table th {
-  background-color: #f0f0f0;
-  color: #222;
-  font-weight: 600;
-  font-size: 0.85rem;
-  border-bottom: 2px solid #ccc;
-}
-
-.product-table td {
-  color: #444;
-  border-bottom: 1px solid #e2e2e2;
+  padding: 0.5rem;
+  border-bottom: 1px solid #eee;
   vertical-align: middle;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.product-table tbody tr:nth-child(even) {
-  background-color: #fafafa;
+/* Reduce width of Name column */
+.product-table th:nth-child(1),
+.product-table td:nth-child(1) {
+  width: 30%;
 }
 
-.product-table tbody tr.clickable-row:hover {
-  background-color: #eaf4ff;
-  transition: background-color 0.2s ease;
+/* Set equal widths for Price, Cost, Profit, Change columns */
+.product-table th:nth-child(2),
+.product-table td:nth-child(2),
+.product-table th:nth-child(3),
+.product-table td:nth-child(3),
+.product-table th:nth-child(4),
+.product-table td:nth-child(4),
+.product-table th:nth-child(5),
+.product-table td:nth-child(5) {
+  width: 18.75%;
 }
 
 .group-header td {
-  background-color: #dfe6ec;
-  color: #1a1a1a;
-  font-weight: 700;
-  font-size: 0.9rem; /* smaller than before */
-  border-top: 2px solid #c5d1dc;
-  border-bottom: 1px solid #c5d1dc;
-  padding-top: 0.75rem;
-  padding-bottom: 0.5rem;
-  text-transform: capitalize;
-  letter-spacing: 0.5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color:  #dfe6ec;
+  padding: 0.6rem;
+  border-top: 2px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  font-size: 0.9rem;
+  color: #444;
 }
 
 .clickable-row {
   cursor: pointer;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s;
 }
 
-.clickable-row:focus-visible {
-  outline: 2px solid #4a90e2;
-  outline-offset: -2px;
+.clickable-row:hover,
+.clickable-row:focus {
+  background-color: #f0f8ff;
+  outline: none;
 }
 
-td.diff-positive {
-  color: #2e7d32;
-  font-weight: 600;
+.diff-positive {
+  color: #2e7d32; /* green */
+  font-weight: 500;
 }
 
-td.diff-negative {
-  color: #c62828;
-  font-weight: 600;
-}
-
-.product-table td:first-child {
-  max-width: 250px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+.diff-negative {
+  color: #c62828; /* red */
+  font-weight: 500;
 }

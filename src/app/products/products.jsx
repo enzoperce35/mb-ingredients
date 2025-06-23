@@ -1,3 +1,4 @@
+// src/components/ProductTable.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { products } from "./all-products";
@@ -6,15 +7,20 @@ import { getProductCost } from "../utils/costCalculations";
 const ProductTable = () => {
   const navigate = useNavigate();
 
+  // 1 | Helper – formats numbers and hides trailing “.00”
   const formatAmount = (value) => {
-    return Number(value) % 1 === 0 ? Number(value).toString() : value.toFixed(2);
+    const num = Number(value);
+    return Number.isInteger(num) ? num.toString() : num.toFixed(2);
   };
 
-  // Group and sort products
+  // 2 | Helper – Title-cases a string (“extra” → “Extra”)
+  const toTitle = (str) =>
+    str.replace(/\w\S*/g, (txt) => txt[0].toUpperCase() + txt.slice(1).toLowerCase());
+
+  // 3 | Group & sort
   const groupedProducts = products.reduce((acc, product) => {
     const group = product.group || "Ungrouped";
-    if (!acc[group]) acc[group] = [];
-    acc[group].push(product);
+    (acc[group] ||= []).push(product);
     return acc;
   }, {});
 
@@ -22,46 +28,47 @@ const ProductTable = () => {
     a.localeCompare(b, undefined, { sensitivity: "base" })
   );
 
-  sortedGroupKeys.forEach((group) => {
-    groupedProducts[group].sort((a, b) =>
+  sortedGroupKeys.forEach((g) =>
+    groupedProducts[g].sort((a, b) =>
       a.name.localeCompare(b.name, undefined, { sensitivity: "base" })
-    );
-  });
+    )
+  );
 
+  // 4 | Render
   return (
-    <div className="product-table-container">
+    <div className="product-table-container small-text">
       <table className="product-table">
         <thead>
           <tr>
             <th>Name</th>
-            <th>Price</th> {/* moved here */}
-            <th>Cost</th>  {/* moved after price */}
+            <th>Price</th>
+            <th>Cost</th>
             <th>Profit</th>
             <th>Change</th>
           </tr>
         </thead>
+
         <tbody>
           {sortedGroupKeys.map((groupName) => (
             <React.Fragment key={groupName}>
               <tr className="group-header">
-                <td colSpan="5">{groupName}</td>
+                <td colSpan={5}>{toTitle(groupName)}</td>
               </tr>
-              {groupedProducts[groupName].map((product, idx) => {
+
+              {groupedProducts[groupName].map((product) => {
                 const cost = getProductCost(product);
                 const updated = getProductCost(product, true);
                 const price = product.price ?? 0;
                 const profit = price - cost;
                 const diff = cost - updated;
 
-                let diffClass = "";
-                if (diff > 0) diffClass = "diff-positive";
-                else if (diff < 0) diffClass = "diff-negative";
-
+                const diffClass =
+                  diff > 0 ? "diff-positive" : diff < 0 ? "diff-negative" : "";
                 const diffText = diff > 0 ? `+${formatAmount(diff)}` : formatAmount(diff);
 
                 return (
                   <tr
-                    key={product.id || `${groupName}-${idx}`}
+                    key={product.id}
                     className="clickable-row"
                     tabIndex={0}
                     role="button"
@@ -75,8 +82,8 @@ const ProductTable = () => {
                     }}
                   >
                     <td>{product.name}</td>
-                    <td>{formatAmount(price)}</td> {/* moved here */}
-                    <td>{formatAmount(cost)}</td>  {/* moved here */}
+                    <td>{formatAmount(price)}</td>
+                    <td>{formatAmount(cost)}</td>
                     <td>{formatAmount(profit)}</td>
                     <td className={diffClass}>{diffText}</td>
                   </tr>
