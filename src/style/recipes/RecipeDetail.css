@@ -231,11 +231,12 @@
     max-height: 80vh;
   }
 
-  .ingredients-section {
-    position: sticky;
-    top: 2rem;
-    overflow-y: hidden;
-  }
+  .ingredients-section,
+  .instructions-section {
+    flex: 1 1 50%;
+    max-height: 80vh;
+    overflow-y: auto;
+  }  
 
   .instructions-section {
     overflow-y: auto;

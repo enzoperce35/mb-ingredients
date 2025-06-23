@@ -328,7 +328,7 @@ export const recipes = [
     { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 10.35, unit: "g", alterQuantity: "1.5", alterUnit: 'Tbs' },
     { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 22.5, unit: "g", alterQuantity: '1.5', alterUnit: "Tbs" },
   ],
-  note: 'The ideal output of a 5 kilo chicken wings is 137 pcs. Is costs 200 per kilo and 7.29 per piece.',
+  note: 'The ideal output of a 5 kilo chicken wings is 100 - 137 pcs. It costs 200 per kilo at 7.29 - 10 per piece.',
   },
   { name: "Beef patty", type: 'f', id: "beefpatty", quantity: 28, unit: "each", ingredients: [
     { name: 'ground beef', ingId: "groundbeef", recipe: false,  quantity: 1, unit: "kg"  },
