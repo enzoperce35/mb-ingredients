@@ -8,14 +8,14 @@
   box-sizing: border-box;
 }
 
-/* 2-column layout for tablets */
-@media (min-width: 600px) {
+/* 2-column layout for small tablets and up */
+@media (min-width: 480px) {
   .recipes-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* 3-column layout for desktops */
+/* 3-column layout for large desktops */
 @media (min-width: 1024px) {
   .recipes-container {
     grid-template-columns: repeat(3, 1fr);
@@ -40,7 +40,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  max-width: 100%;  /* optional */
+  max-width: 100%;
 }
 
 .recipe-card p {
@@ -105,4 +105,3 @@
 .clickable-row:hover {
   background-color: #eef2f7;
 }
-

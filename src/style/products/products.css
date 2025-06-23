@@ -7,26 +7,26 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
   overflow-x: auto;
   font-family: "Segoe UI", sans-serif;
+  font-size: 0.85rem; /* smaller overall text */
 }
 
 .product-table-container h2 {
   margin-bottom: 1rem;
-  font-size: 1.75rem;
+  font-size: 1.5rem; /* slightly smaller */
   color: #2a2a2a;
   text-align: center;
 }
 
-/* Table structure */
 .product-table {
   width: 100%;
   border-collapse: collapse;
   min-width: 600px;
-  font-size: 0.95rem;
+  font-size: 0.85rem; /* smaller text in table */
 }
 
 .product-table th,
 .product-table td {
-  padding: 14px 18px;
+  padding: 10px 14px; /* reduce padding */
   text-align: left;
 }
 
@@ -34,7 +34,7 @@
   background-color: #f0f0f0;
   color: #222;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   border-bottom: 2px solid #ccc;
 }
 
@@ -44,32 +44,28 @@
   vertical-align: middle;
 }
 
-/* Alternating rows */
 .product-table tbody tr:nth-child(even) {
   background-color: #fafafa;
 }
 
-/* Hover on data rows only */
 .product-table tbody tr.clickable-row:hover {
   background-color: #eaf4ff;
   transition: background-color 0.2s ease;
 }
 
-/* Group Headers */
 .group-header td {
   background-color: #dfe6ec;
   color: #1a1a1a;
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 0.9rem; /* smaller than before */
   border-top: 2px solid #c5d1dc;
   border-bottom: 1px solid #c5d1dc;
-  padding-top: 1rem;
-  padding-bottom: 0.6rem;
-  text-transform: capitalize; /* <-- Add this line */
-  letter-spacing: 0.5px;      /* Optional: slight spacing */
+  padding-top: 0.75rem;
+  padding-bottom: 0.5rem;
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
 }
 
-/* Clickable rows */
 .clickable-row {
   cursor: pointer;
   transition: background-color 0.2s ease;
@@ -80,7 +76,6 @@
   outline-offset: -2px;
 }
 
-/* Change indicators */
 td.diff-positive {
   color: #2e7d32;
   font-weight: 600;
@@ -91,7 +86,6 @@ td.diff-negative {
   font-weight: 600;
 }
 
-/* Responsive: Make first column truncate if needed */
 .product-table td:first-child {
   max-width: 250px;
   white-space: nowrap;
