@@ -1,23 +1,30 @@
-// src/components/ProductTable.jsx
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { products } from "./all-products";
 import { getProductCost } from "../utils/costCalculations";
 
-const ProductTable = () => {
+const ProductTable = ({ focusedId, onFocusChange }) => {
   const navigate = useNavigate();
+  const rowRefs = useRef({});
 
-  // 1 | Helper – formats numbers and hides trailing “.00”
+  // Scroll to last focused product on mount
+  useEffect(() => {
+    if (focusedId && rowRefs.current[focusedId]) {
+      rowRefs.current[focusedId].scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [focusedId]);
+
   const formatAmount = (value) => {
     const num = Number(value);
     return Number.isInteger(num) ? num.toString() : num.toFixed(2);
   };
 
-  // 2 | Helper – Title-cases a string (“extra” → “Extra”)
   const toTitle = (str) =>
     str.replace(/\w\S*/g, (txt) => txt[0].toUpperCase() + txt.slice(1).toLowerCase());
 
-  // 3 | Group & sort
   const groupedProducts = products.reduce((acc, product) => {
     const group = product.group || "Ungrouped";
     (acc[group] ||= []).push(product);
@@ -34,7 +41,6 @@ const ProductTable = () => {
     )
   );
 
-  // 4 | Render
   return (
     <div className="product-table-container small-text">
       <table className="product-table">
@@ -47,7 +53,6 @@ const ProductTable = () => {
             <th>Change</th>
           </tr>
         </thead>
-
         <tbody>
           {sortedGroupKeys.map((groupName) => (
             <React.Fragment key={groupName}>
@@ -63,20 +68,27 @@ const ProductTable = () => {
                 const diff = cost - updated;
 
                 const diffClass =
-                  diff > 0 ? "diff-positive" : diff < 0 ? "diff-negative" : "";
+                  diff > 0 ? "diff-negative" : diff < 0 ? "diff-positive" : "";
                 const diffText = diff > 0 ? `+${formatAmount(diff)}` : formatAmount(diff);
 
                 return (
                   <tr
                     key={product.id}
-                    className="clickable-row"
+                    ref={(el) => (rowRefs.current[product.id] = el)}
+                    className={`clickable-row ${
+                      focusedId === product.id ? "focused" : ""
+                    }`}
                     tabIndex={0}
                     role="button"
                     aria-label={`View cost breakdown for ${product.name}`}
-                    onClick={() => navigate(`/product/${product.id}/cost-breakdown`)}
+                    onClick={() => {
+                      onFocusChange?.(product.id);
+                      navigate(`/product/${product.id}/cost-breakdown`);
+                    }}
                     onKeyDown={(e) => {
                       if (e.key === "Enter" || e.key === " ") {
                         e.preventDefault();
+                        onFocusChange?.(product.id);
                         navigate(`/product/${product.id}/cost-breakdown`);
                       }
                     }}

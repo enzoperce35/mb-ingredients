@@ -174,26 +174,22 @@ export const products = [
     { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 5, unit: "minute" },
   ] },
   { name: "5pcs", type: 'i', id: "empanada5pcs", price: 100, quantity: 1, unit: "each", group: 'empanada', ingredients: [
-    { name: 'dough', ingId: "empanadadough", recipe: true,  quantity: 5, unit: "each", noNest: true },
-    { name: 'filling', ingId: "empanadafilling", recipe: true,  quantity: 5, unit: "each", noNest: true  },
+    { name: 'empanada', ingId: "empanada", recipe: true,  quantity: 5, unit: "each", noNest: true },
     { name: 'spaghettibox', ingId: "spaghettibox", recipe: false,  quantity: 1, unit: "each" },
-    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 6, unit: "minute" },
   ] },
   { name: "10pcs", type: 'i', id: "empanada10pcs", price: 190, quantity: 1, unit: "each", group: 'empanada', ingredients: [
-    { name: 'dough', ingId: "empanadadough", recipe: true,  quantity: 10, unit: "each", noNest: true  },
-    { name: 'filling', ingId: "empanadafilling", recipe: true,  quantity: 10, unit: "each", noNest: true  },
+    { name: 'empanada', ingId: "empanada", recipe: true,  quantity: 10, unit: "each", noNest: true },
     { name: 'lb2', ingId: "lb2", recipe: false,  quantity: 1, unit: "each" },
-    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 12, unit: "minute" },
   ] },
   { name: "set", type: 'i', id: "maruyaset", price: 50, quantity: 1, unit: "each", group: 'maruya', ingredients: [
     { name: 'maruya mixture', ingId: "maruyamixture", recipe: true,  quantity: 180, unit: "ml", noNest: true  },
-    { name: 'condensed', ingId: "condensed", recipe: false,  quantity: 3, unit: "Tbs"  },
+    { name: 'condensed', ingId: "condensed", recipe: false,  quantity: 60, unit: "g", alterQuantity: 3, alterUnit: "Tbs"  },
     { name: 'spaghettibox', ingId: "spaghettibox", recipe: false,  quantity: 1, unit: "each" },
     { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute" },
   ] },
   { name: "bites", type: 'i', id: "maruyabites", price: 120, quantity: 1, unit: "each", group: 'maruya', ingredients: [
     { name: 'maruya mixture', ingId: "maruyamixture", recipe: true,  quantity: 480, unit: "ml", noNest: true  },
-    { name: 'condensed', ingId: "condensed", recipe: false,  quantity: 4.5, unit: "Tbs"  },
+    { name: 'condensed', ingId: "condensed", recipe: false,  quantity: 90, unit: "g", alterQuantity: 4.5, alterUnit: "Tbs"  },
     { name: 'Gravy cup', ingId: "gravycup", recipe: false,  quantity: 1, unit: "each" },
     { name: 'lb1', ingId: "lb1", recipe: false,  quantity: 1, unit: "each" },
     { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 8, unit: "minute" },
@@ -345,7 +341,7 @@ export const products = [
     { name: 'spaghettibox', ingId: "spaghettibox", recipe: false,  quantity: 1, unit: "each" },
     { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 8, unit: "minute" },
   ] },
-  { name: "W/ 4pcs shanghai(F5)", type: 'i', id: "chaofanwith4pcsshanghai", price: 100, quantity: 1, unit: "each", group: 'chaofan', ingredients: [
+  { name: "W/ 4pcs shanghai(F5)", type: 'i', id: "chaofanwith4pcsshanghai", price: 90, quantity: 1, unit: "each", group: 'chaofan', ingredients: [
     { name: 'chaofan', ingId: "chaofan", recipe: true, quantity: 1, unit: "each", noNest: true  },
     { name: 'shanghai', ingId: "lumpiangshanghai", recipe: true,  quantity: 4, unit: "each", noNest: true  },
     { name: 'ketchup', ingId: "bananaketchup", recipe: false, quantity: 37, unit: 'g', alterQuantity: 2, alterUnit: "Tbs" },

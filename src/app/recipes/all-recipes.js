@@ -96,7 +96,7 @@ export const recipes = [
     },
   },
   
-  { name: "Empanada dough", type: 'f', id: "empanadadough", quantity: 73, unit: "each", prepTime: '30 mins',
+  { name: "Empanada dough", type: 'f', id: "empanadadough", quantity: 36, unit: "each", prepTime: '30 mins',
     ingredients: [
       { name: 'tubig', ingId: "water", recipe: false, quantity: 5, unit: "Tbs" },
       { name: 'harina', ingId: "harina", recipe: false, quantity: 480, unit: "g", alterQuantity: 4, alterUnit: 'cup' },
@@ -451,30 +451,6 @@ export const recipes = [
   ] },
 
 // SUB-RECIPES
-  { name: "Maruya mixture", type: 'g', id: "maruyamixture", quantity: 651, unit: "ml", ingredients: [
-    { name: 'harina', ingId: "harina", recipe: false, quantity: 120, unit: "g", alterQuantity: 1, alterUnit: "cup" },
-    { name: 'asukal', ingId: "sugarwhite", recipe: false, quantity: 100, unit: "g", alterQuantity: '1/2', alterUnit: "cup" },
-    { name: 'saba', ingId: "sagingsaba", recipe: false, quantity: 440, unit: 'g', alterQuantity: '4-5', alterUnit: "pcs" },
-    { name: 'egg xs', ingId: "eggxs", recipe: false, quantity: 1, unit: "each" },
-    { name: 'evap', ingId: "evap", recipe: false, quantity: 158.7, unit: 'ml', alterQuantity: '2/3', alterUnit: "cup"},
-  ] },
-  { name: "Breading", type: 'g', id: "breading", quantity: 26, unit: "cup", ingredients: [
-    { name: 'harina', ingId: "harina", recipe: false,  quantity: 2, unit: "kg"  },
-    { name: 'cornstarch', ingId: "cornstarch", recipe: true,  quantity: 1, unit: "kg" },
-    { name: 'garlic powder', ingId: "garlicpowder", recipe: false, quantity: 105, unit: "g", alterQuantity: 7, alterUnit: 'Tbs' },
-    { name: 'paprika', ingId: "paprika", recipe: false, quantity: 105, unit: "g", alterQuantity: 7, alterUnit: 'Tbs' },
-    { name: 'iodized salt', ingId: "saltiodized", recipe: false, quantity: 60, unit: "g", alterQuantity: 3, alterUnit: 'Tbs' },
-    { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 45, unit: "g", alterQuantity: 3, alterUnit: 'Tbs' },
-    { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 20.7, unit: "g", alterQuantity: 3, alterUnit: 'Tbs' },
-  ] },
-  { name: "Coleslaw", type: 'g', id: "coleslaw", quantity: 250, unit: "g", ingredients: [
-    { name: 'repolyo', ingId: "repolyo", recipe: false, quantity: 125, unit: "g" },
-    { name: 'carrot', ingId: "carrot", recipe: false, quantity: 10, unit: "g" },
-    { name: 'rock salt', ingId: "saltrock", recipe: false, quantity: 1.5, unit: 'g', alterQuantity: 0.2, alterUnit: "tsp" },
-    { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 0.6, unit: "g", alterQuantity: 0.25, alterUnit: "tsp" },
-    { name: 'white sugar', ingId: "sugarwhite", recipe: false, quantity: 2.1, unit: 'g', alterQuantity: 0.5, alterUnit: "tsp" },
-    { name: 'mayonnaise', ingId: "mayonnaise", recipe: false, quantity: 0.5, unit: 'cup' }
-  ] },
   { name: "Beef burger", type: 'g', id: "beefburger", quantity: 1, unit: "each", ingredients: [
     { name: 'beef patty', ingId: "beefpatty", recipe: true, quantity: 1, unit: "each" },
     { name: 'burger buns', ingId: "burgerbuns", recipe: false,  quantity: 1, unit: "each" },
@@ -484,7 +460,32 @@ export const recipes = [
     { name: 'pipino', ingId: "pipino", recipe: false, quantity: 5, unit: 'g' },
     { name: 'kamatis', ingId: "kamatis", recipe: false, quantity: 5, unit: 'g' },
     { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 5, unit: "minute", hide: true },
-    
+  ] },
+  { name: "bihon", type: 'g', id: "bihon", quantity: 1, unit: "each", ingredients: [
+    { name: 'bihon noodles', ingId: "noodlesbihon", recipe: true,  quantity: 1, unit: "cup" },
+    { name: 'bihon toppings', ingId: "pancitbihontoppings", recipe: true,  quantity: 80, unit: "g" }, // 70g for veggies and 10g for kikiam
+    { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 6, unit: "g" },
+  ] },
+  { name: "Bihon noodles", type: 'g', id: "noodlesbihon", quantity: 22, unit: "cup", ingredients: [
+    { name: 'bihon', ingId: "bihon", recipe: false,  quantity: 750, unit: "g" },
+    { name: 'kaldo(galing sa pinagpakuluan ng gulay)', ingId: "water", recipe: false,  quantity: 6, unit: "cup" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 10, unit: "minute", hide: true },
+  ] },
+  { name: "Breaded porkchop", type: 'g', id: "breadedporkchop", quantity: 1, unit: "each", ingredients: [
+    { name: 'marinated porkchop', ingId: "porkchopmarinate", recipe: true,  quantity: 50, unit: "g" },
+    { name: 'breading', ingId: "breading", recipe: true, quantity: .20, unit: 'cup' },
+    { name: 'breadcrumbs', ingId: "breadcrumbs", recipe: false,  quantity: 40, unit: "g" },
+    { name: 'eggmedium', ingId: "eggmedium", recipe: false,  quantity: 0.50, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 5, unit: "minute", hide: true },
+  ] },
+  { name: "Breading", type: 'g', id: "breading", quantity: 26, unit: "cup", ingredients: [
+    { name: 'harina', ingId: "harina", recipe: false,  quantity: 2, unit: "kg"  },
+    { name: 'cornstarch', ingId: "cornstarch", recipe: true,  quantity: 1, unit: "kg" },
+    { name: 'garlic powder', ingId: "garlicpowder", recipe: false, quantity: 105, unit: "g", alterQuantity: 7, alterUnit: 'Tbs' },
+    { name: 'paprika', ingId: "paprika", recipe: false, quantity: 105, unit: "g", alterQuantity: 7, alterUnit: 'Tbs' },
+    { name: 'iodized salt', ingId: "saltiodized", recipe: false, quantity: 60, unit: "g", alterQuantity: 3, alterUnit: 'Tbs' },
+    { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 45, unit: "g", alterQuantity: 3, alterUnit: 'Tbs' },
+    { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 20.7, unit: "g", alterQuantity: 3, alterUnit: 'Tbs' },
   ] },
   { name: "Chicken burger", type: 'g', id: "chickenburger", quantity: 1, unit: "each", ingredients: [
     { name: 'chicken patty', ingId: "chickenpatty", recipe: true, quantity: 1, unit: "each" },
@@ -497,17 +498,9 @@ export const recipes = [
     { name: 'bread crumbs', ingId: "breadcrumbs", recipe: false, quantity: 10, unit: 'g' },
     { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute", hide: true },
   ] },
-  { name: "Rice", type: 'g', id: "rice", quantity: 17, unit: "cup", ingredients: [
-    { name: 'bigas', ingId: "bigas", recipe: false, quantity: 1818, unit: "g" },
-    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 15, unit: "minute", hide: true }, // scaled 30 minutes to low fire usage
-  ] },
-  { name: "Fried rice", type: 'g', id: "friedrice", quantity: 1, unit: "cup", ingredients: [
-    { name: 'rice', ingId: "rice", recipe: true, quantity: 1.5, unit: "cup", noNest: true },
-    { name: 'mantika', ingId: "mantika", recipe: false, quantity: 2, unit: "Tbs" },
-    { name: 'bawang', ingId: "bawang", recipe: false, quantity: 5, unit: "g" },
-    { name: 'garlic powder', ingId: "garlicpowder", recipe: false, quantity: 7.5, unit: "g", alterQuantity: 1.5, alterUnit: 'tsp' },
-    { name: 'rock salt', ingId: "saltrock", recipe: false, quantity: 2, unit: "g" },
-    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 6, unit: "minute", hide: true },
+  { name: "Carbonara", type: 'g', id: "carbonara", quantity: 1, unit: "each", ingredients: [
+    { name: 'carbonara sauce', ingId: "carbonarasauce", recipe: true,  quantity: 0.50, unit: "cup" },
+    { name: 'spaghetti pasta', ingId: "spaghettipasta", recipe: true,  quantity: 1, unit: "cup" },
   ] },
   { name: "Chaofan", type: 'g', id: "chaofan", quantity: 1, unit: "each", ingredients: [
     { name: 'chaofan', ingId: "chaofanmixture", recipe: true,  quantity: 40, unit: "g" },
@@ -517,72 +510,6 @@ export const recipes = [
     { name: 'liquid seasoning', ingId: "liquidseasoning", recipe: false, quantity: 1, unit: "Tbs" },
     { name: 'oyster sauce', ingId: "oystersauce", recipe: false, quantity: 17.5, unit: "g", alterQuantity: 1, alterUnit: 'Tbs' },
     { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 8, unit: "minute", hide: true },
-  ] },
-  { name: "Fried garlic", type: 'g', id: "friedgarlic", quantity: 200, unit: "g", ingredients: [
-    { name: 'bawang', ingId: "bawang", recipe: false, quantity: 300, unit: "g", alterQuantity: 5, alterUnit: 'bulb' },
-    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute", hide: true },
-  ] },
-  { name: "Siomai toyo mixture", type: 'g', id: "siomaitoyomixture", quantity: 34, unit: "fl-oz", ingredients: [
-    { name: 'tubig', ingId: "water", recipe: false, quantity: 2, unit: "cup" },
-    { name: 'asukal', ingId: "sugarwhite", recipe: false, quantity: 37.8, unit: "g", alterQuantity: 3, alterUnit: "Tbs" },
-    { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 15, unit: "g", alterQuantity: 1, alterUnit: "Tbs" },
-    { name: 'toyo', ingId: "toyo", recipe: false, quantity: 17, unit: "fl-oz", alterQuantity: 2, alterUnit: "cup" },
-  ] },
-  { name: "Siomai condiments", type: 'g', id: "siomaicondiments", quantity: 1, unit: "each", ingredients: [
-    { name: 'chili oil', ingId: "chilioil", recipe: true,  quantity: 2, unit: "tsp"  },
-    { name: 'toyo', ingId: "siomaitoyomixture", recipe: true,  quantity: 2, unit: "Tbs" },
-    { name: 'fried garlic', ingId: "friedgarlic", recipe: true,  quantity: 5, unit: "g" },
-    { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 6, unit: "g" },
-  ] },
-  { name: "Siomai", type: 'g', id: "siomai", quantity: 20, unit: "each", ingredients: [
-    { name: 'siomai mixture', ingId: "siomaimixture", recipe: true, quantity: 20, unit: "each" },
-    { name: 'molo', ingId: "molo", recipe: false, quantity: 20, unit: "each" },
-    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 25, unit: "minute", hide: true }, // scaled 30 minutes to low fire usage with re-heating
-  ] },
-  { name: "Spaghetti pasta", type: 'g', id: "spaghettipasta", quantity: 20, unit: "cup", ingredients: [
-    { name: 'pasta', ingId: "pasta", recipe: false,  quantity: 900, unit: "g" },
-    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 20, unit: "minute", hide: true },
-  ] },
-  { name: "Spaghetti", type: 'g', id: "spaghetti", quantity: 1, unit: "each", ingredients: [
-    { name: 'spaghetti sauce', ingId: "spaghettisauce", recipe: true,  quantity: 0.50, unit: "cup" },
-    { name: 'spaghetti pasta', ingId: "spaghettipasta", recipe: true,  quantity: 1, unit: "cup" },
-    { name: 'cheese', ingId: "cheese", recipe: false, quantity: 5, unit: "g" },
-  ] },
-  { name: "Carbonara", type: 'g', id: "carbonara", quantity: 1, unit: "each", ingredients: [
-    { name: 'carbonara sauce', ingId: "carbonarasauce", recipe: true,  quantity: 0.50, unit: "cup" },
-    { name: 'spaghetti pasta', ingId: "spaghettipasta", recipe: true,  quantity: 1, unit: "cup" },
-  ] },
-  { name: "Noodles palabok", type: 'g', id: "noodlespalabok", quantity: 25, unit: "cup", ingredients: [
-    { name: 'palabok noodles', ingId: "palaboknoodles", recipe: false,  quantity: 750, unit: "g" },
-    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 20, unit: "minute", hide: true },
-  ] },
-  { name: "Palabok", type: 'g', id: "palabok", quantity: 1, unit: "each", ingredients: [
-    { name: 'palabok sauce', ingId: "palaboksauce", recipe: true,  quantity: 0.50, unit: "cup" },
-    { name: 'palabok noodles', ingId: "noodlespalabok", recipe: true,  quantity: 1, unit: "cup" },
-    { name: 'fried garlic', ingId: "friedgarlic", recipe: true,  quantity: 5, unit: "g" },
-    { name: 'spring onions', ingId: "springonions", recipe: false, quantity: 2, unit: "g" },
-    { name: 'chicharon', ingId: "chicharon", recipe: false, quantity: 5, unit: "g" },
-    { name: 'egg', ingId: "eggxs", recipe: false, quantity: 0.2, unit: "each" },
-    { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 6, unit: "g" },
-  ] },
-  { name: "Noodles bihon", type: 'g', id: "noodlesbihon", quantity: 22, unit: "cup", ingredients: [
-    { name: 'bihon', ingId: "bihon", recipe: false,  quantity: 750, unit: "g" },
-    { name: 'kaldo(galing sa pinagpakuluan ng gulay)', ingId: "water", recipe: false,  quantity: 6, unit: "cup" },
-    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 10, unit: "minute", hide: true },
-  ] },
-  { name: "bihon", type: 'g', id: "bihon", quantity: 1, unit: "each", ingredients: [
-    { name: 'bihon noodles', ingId: "noodlesbihon", recipe: true,  quantity: 1, unit: "cup" },
-    { name: 'bihon toppings', ingId: "pancitbihontoppings", recipe: true,  quantity: 80, unit: "g" }, // 70g for veggies and 10g for kikiam
-    { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 6, unit: "g" },
-  ] },
-  { name: "Lumpiang Shanghai", type: 'g', id: "lumpiangshanghai", quantity: 2, unit: "each", ingredients: [
-    { name: 'shanghai mixture', ingId: "shanghaimixture", recipe: true,  quantity: 15, unit: "g" },
-    { name: 'wrapper', ingId: "lumpiawrappermedium", recipe: false,  quantity: 2, unit: "each" },
-  ] },
-  { name: "Fried egg", type: 'g', id: "friedegg", quantity: 1, unit: "each", ingredients: [
-    { name: 'egg', ingId: "eggxs", recipe: false, quantity: 1, unit: "each" },
-    { name: 'mantika', ingId: "mantika", recipe: false, quantity: 1, unit: "Tbs" },
-    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 3, unit: "minute", hide: true },
   ] },
   { name: "Chicken fillet", type: 'g', id: "chickenfillet", quantity: 100, unit: "g", ingredients: [
     { name: 'chicken fillet marinate', ingId: "chickenfilletmarinate", recipe: true,  quantity: 100, unit: "g"  },
@@ -595,20 +522,97 @@ export const recipes = [
     { name: 'breading', ingId: "breading", recipe: true, quantity: .40, unit: 'cup' },
     { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 10, unit: "minute", hide: true },
   ] },
+  { name: "Coleslaw", type: 'g', id: "coleslaw", quantity: 250, unit: "g", ingredients: [
+    { name: 'repolyo', ingId: "repolyo", recipe: false, quantity: 125, unit: "g" },
+    { name: 'carrot', ingId: "carrot", recipe: false, quantity: 10, unit: "g" },
+    { name: 'rock salt', ingId: "saltrock", recipe: false, quantity: 1.5, unit: 'g', alterQuantity: 0.2, alterUnit: "tsp" },
+    { name: 'paminta', ingId: "groundblackpepper", recipe: false, quantity: 0.6, unit: "g", alterQuantity: 0.25, alterUnit: "tsp" },
+    { name: 'white sugar', ingId: "sugarwhite", recipe: false, quantity: 2.1, unit: 'g', alterQuantity: 0.5, alterUnit: "tsp" },
+    { name: 'mayonnaise', ingId: "mayonnaise", recipe: false, quantity: 0.5, unit: 'cup' }
+  ] },
+  { name: "Empanada", type: 'g', id: "empanada", quantity: 5, unit: "each", ingredients: [
+    { name: 'dough', ingId: "empanadadough", recipe: true,  quantity: 5, unit: "each", noNest: true },
+    { name: 'filling', ingId: "empanadafilling", recipe: true,  quantity: 5, unit: "each", noNest: true  },
+    { name: 'cheese', ingId: "cheese", recipe: false,  quantity: 15, unit: "g" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 6, unit: "minute" },
+  ] },
+  { name: "Fried egg", type: 'g', id: "friedegg", quantity: 1, unit: "each", ingredients: [
+    { name: 'egg', ingId: "eggxs", recipe: false, quantity: 1, unit: "each" },
+    { name: 'mantika', ingId: "mantika", recipe: false, quantity: 1, unit: "Tbs" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 3, unit: "minute", hide: true },
+  ] },
+  { name: "Fried garlic", type: 'g', id: "friedgarlic", quantity: 200, unit: "g", ingredients: [
+    { name: 'bawang', ingId: "bawang", recipe: false, quantity: 300, unit: "g", alterQuantity: 5, alterUnit: 'bulb' },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 4, unit: "minute", hide: true },
+  ] },
+  { name: "Fried rice", type: 'g', id: "friedrice", quantity: 1, unit: "cup", ingredients: [
+    { name: 'rice', ingId: "rice", recipe: true, quantity: 1.5, unit: "cup", noNest: true },
+    { name: 'mantika', ingId: "mantika", recipe: false, quantity: 2, unit: "Tbs" },
+    { name: 'bawang', ingId: "bawang", recipe: false, quantity: 5, unit: "g" },
+    { name: 'garlic powder', ingId: "garlicpowder", recipe: false, quantity: 7.5, unit: "g", alterQuantity: 1.5, alterUnit: 'tsp' },
+    { name: 'rock salt', ingId: "saltrock", recipe: false, quantity: 2, unit: "g" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 6, unit: "minute", hide: true },
+  ] },
+  { name: "Maruya mixture", type: 'g', id: "maruyamixture", quantity: 651, unit: "ml", ingredients: [
+    { name: 'harina', ingId: "harina", recipe: false, quantity: 120, unit: "g", alterQuantity: 1, alterUnit: "cup" },
+    { name: 'asukal', ingId: "sugarwhite", recipe: false, quantity: 100, unit: "g", alterQuantity: '1/2', alterUnit: "cup" },
+    { name: 'saba', ingId: "sagingsaba", recipe: false, quantity: 440, unit: 'g', alterQuantity: '4-5', alterUnit: "pcs" },
+    { name: 'egg xs', ingId: "eggxs", recipe: false, quantity: 1, unit: "each" },
+    { name: 'evap', ingId: "evap", recipe: false, quantity: 158.7, unit: 'ml', alterQuantity: '2/3', alterUnit: "cup"},
+  ] },
+  { name: "Palabok", type: 'g', id: "palabok", quantity: 1, unit: "each", ingredients: [
+    { name: 'palabok sauce', ingId: "palaboksauce", recipe: true,  quantity: 0.50, unit: "cup" },
+    { name: 'palabok noodles', ingId: "noodlespalabok", recipe: true,  quantity: 1, unit: "cup" },
+    { name: 'fried garlic', ingId: "friedgarlic", recipe: true,  quantity: 5, unit: "g" },
+    { name: 'spring onions', ingId: "springonions", recipe: false, quantity: 2, unit: "g" },
+    { name: 'chicharon', ingId: "chicharon", recipe: false, quantity: 5, unit: "g" },
+    { name: 'egg', ingId: "eggxs", recipe: false, quantity: 0.2, unit: "each" },
+    { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 6, unit: "g" },
+  ] },
+  { name: "Palabok noodles", type: 'g', id: "noodlespalabok", quantity: 25, unit: "cup", ingredients: [
+    { name: 'palabok noodles', ingId: "palaboknoodles", recipe: false,  quantity: 750, unit: "g" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 20, unit: "minute", hide: true },
+  ] },
   { name: "Puto", type: 'g', id: "puto", quantity: 19, unit: "each", ingredients: [
     { name: 'puto mixture', ingId: "putomixture", recipe: true,  quantity: 2.375, unit: "cup" },
     { name: 'cheese', ingId: "cheese", recipe: false, quantity: 11.25, unit: "g" },
     { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 15, unit: "minute", hide: true },
   ] },
-  { name: "Breaded porkchop", type: 'g', id: "breadedporkchop", quantity: 1, unit: "each", ingredients: [
-    { name: 'marinated porkchop', ingId: "porkchopmarinate", recipe: true,  quantity: 50, unit: "g" },
-    { name: 'breading', ingId: "breading", recipe: true, quantity: .20, unit: 'cup' },
-    { name: 'breadcrumbs', ingId: "breadcrumbs", recipe: false,  quantity: 40, unit: "g" },
-    { name: 'eggmedium', ingId: "eggmedium", recipe: false,  quantity: 0.50, unit: "each" },
-    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 5, unit: "minute", hide: true },
+  { name: "Rice", type: 'g', id: "rice", quantity: 17, unit: "cup", ingredients: [
+    { name: 'bigas', ingId: "bigas", recipe: false, quantity: 1818, unit: "g" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 15, unit: "minute", hide: true }, // scaled 30 minutes to low fire usage
+  ] },
+  { name: "Shanghai", type: 'g', id: "lumpiangshanghai", quantity: 2, unit: "each", ingredients: [
+    { name: 'shanghai mixture', ingId: "shanghaimixture", recipe: true,  quantity: 15, unit: "g" },
+    { name: 'wrapper', ingId: "lumpiawrappermedium", recipe: false,  quantity: 2, unit: "each" },
+  ] },
+  { name: "Siomai", type: 'g', id: "siomai", quantity: 20, unit: "each", ingredients: [
+    { name: 'siomai mixture', ingId: "siomaimixture", recipe: true, quantity: 20, unit: "each" },
+    { name: 'molo', ingId: "molo", recipe: false, quantity: 20, unit: "each" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 25, unit: "minute", hide: true }, // scaled 30 minutes to low fire usage with re-heating
+  ] },
+  { name: "Siomai condiments", type: 'g', id: "siomaicondiments", quantity: 1, unit: "each", ingredients: [
+    { name: 'chili oil', ingId: "chilioil", recipe: true,  quantity: 2, unit: "tsp"  },
+    { name: 'toyo', ingId: "siomaitoyomixture", recipe: true,  quantity: 2, unit: "Tbs" },
+    { name: 'fried garlic', ingId: "friedgarlic", recipe: true,  quantity: 5, unit: "g" },
+    { name: 'kalamansi', ingId: "kalamansi", recipe: false, quantity: 6, unit: "g" },
+  ] },
+  { name: "Siomai toyo mixture", type: 'g', id: "siomaitoyomixture", quantity: 34, unit: "fl-oz", ingredients: [
+    { name: 'tubig', ingId: "water", recipe: false, quantity: 2, unit: "cup" },
+    { name: 'asukal', ingId: "sugarwhite", recipe: false, quantity: 37.8, unit: "g", alterQuantity: 3, alterUnit: "Tbs" },
+    { name: 'vetsin', ingId: "vetsin", recipe: false, quantity: 15, unit: "g", alterQuantity: 1, alterUnit: "Tbs" },
+    { name: 'toyo', ingId: "toyo", recipe: false, quantity: 17, unit: "fl-oz", alterQuantity: 2, alterUnit: "cup" },
+  ] },
+  { name: "Spaghetti", type: 'g', id: "spaghetti", quantity: 1, unit: "each", ingredients: [
+    { name: 'spaghetti sauce', ingId: "spaghettisauce", recipe: true,  quantity: 0.50, unit: "cup" },
+    { name: 'spaghetti pasta', ingId: "spaghettipasta", recipe: true,  quantity: 1, unit: "cup" },
+    { name: 'cheese', ingId: "cheese", recipe: false, quantity: 5, unit: "g" },
+  ] },
+  { name: "Spaghetti pasta", type: 'g', id: "spaghettipasta", quantity: 20, unit: "cup", ingredients: [
+    { name: 'pasta', ingId: "pasta", recipe: false,  quantity: 900, unit: "g" },
+    { name: 'LPG', ingId: "lpg11kgs", recipe: false, quantity: 20, unit: "minute", hide: true },
   ] },
 ]
-
 
 // quantity and unit are market units they will be used for price computations
 // alterQuantity and alterunit are recipe units they will be used in the menu instructions
@@ -638,6 +642,7 @@ export const recipes = [
 // harina 1cup = 136g^
 // baking powder 1cup = 125g 1tbsp = 12.5g 1tsp = 4.2g
 // carrots = 150g^
+// condensed = 1tbsp = 20g
 
 //chicken fillet reg = 65.7g breadcrumbs
 

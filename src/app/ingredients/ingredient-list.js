@@ -23,7 +23,7 @@ export const ingredients = [
   { name: "Chicken wings", type: 'a', id: "chickenwings", brand: null, price: 7.29, quantity: 1, unit: "each", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },
   { name: "Chili flakes", type: 'a', id: "chiliflakes", brand: null, price: 22, quantity: 40, unit: "g", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },
   { name: "Chili powder", type: 'a', id: "chilipowder", brand: null, price: 13.25, quantity: 30, unit: "g", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 30 },
-  { name: "Condensed", type: 'a', id: "condensed", brand: "Jersey", price: 45, quantity: 390, unit: "ml", alterUnit: '390ml can', lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 25 },
+  { name: "Condensed", type: 'a', id: "condensed", brand: "Jersey", price: 45, quantity: 390, unit: "g", alterUnit: '390g can', lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 25 },
   { name: "Cornstarch", type: 'a', id: "cornstarch", brand: null, price: 55, quantity: 1, unit: "kg", lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 20 },
   { name: "Egg medium", type: 'a', id: "eggmedium", brand: null, price: 200, quantity: 30, unit: "each", alterUnit: 'tray', lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 15 },
   { name: "Egg XS", type: 'a', id: "eggxs", brand: null, price: 180, quantity: 30, unit: "each", alterUnit: 'tray', lastUpdated: "2025-05-24T18:31:00.000000", daysBeforeCheck: 15 },
